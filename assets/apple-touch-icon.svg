@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180" role="img" aria-label="Bilal Arshad">
+  <rect width="180" height="180" rx="36" fill="#0a0f14"/>
+  <circle cx="90" cy="72" r="34" fill="#17212c" stroke="#3dd6c6" stroke-width="4"/>
+  <text x="90" y="80" text-anchor="middle" font-family="system-ui,sans-serif" font-size="28" font-weight="700" fill="#3dd6c6">BA</text>
+  <text x="90" y="132" text-anchor="middle" font-family="system-ui,sans-serif" font-size="16" font-weight="600" fill="#eef3f8">Bilal Arshad</text>
+</svg>

@@ -1,0 +1,16 @@
+{
+  "name": "Bilal Arshad Portfolio",
+  "short_name": "Bilal Arshad",
+  "description": "Bilal Arshad — developer of Altadefinizione streaming platform. Full-Stack & Agentic AI.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0f14",
+  "theme_color": "#0a0f14",
+  "icons": [
+    {
+      "src": "/assets/apple-touch-icon.svg",
+      "sizes": "180x180",
+      "type": "image/svg+xml"
+    }
+  ]
+}
