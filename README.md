@@ -16,21 +16,73 @@ python3 -m http.server 8080
 
 Open http://127.0.0.1:8080
 
-## Deploy (GitHub Pages / Cloudflare Pages / Nginx)
+## Deploy on VPS (Nginx) — document root = repo root
 
-Point the site root to this folder. Set your domain `bilalarshad.pro` in:
+This site is static: `index.html` lives at the repo root, so the **entire cloned folder is the public web directory** (no `public/` subfolder).
 
-- `index.html` canonical + Open Graph URLs
-- `sitemap.xml`
-- `robots.txt`
+### 1. Clone on the server
 
-### Cloudflare Pages
+```bash
+sudo mkdir -p /var/www
+sudo git clone https://github.com/bilalswiftsolutions/portfolio-bilal.git /var/www/portfolio-bilal
+sudo chown -R www-data:www-data /var/www/portfolio-bilal
+```
+
+### 2. Nginx site config
+
+```bash
+sudo nano /etc/nginx/sites-available/bilalarshad.pro
+```
+
+```nginx
+server {
+    listen 80;
+    listen [::]:80;
+    server_name bilalarshad.pro www.bilalarshad.pro;
+
+    root /var/www/portfolio-bilal;
+    index index.html;
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+
+    location ~* \.(css|js|jpg|jpeg|png|gif|svg|webp|ico|woff2?)$ {
+        expires 7d;
+        add_header Cache-Control "public, immutable";
+    }
+}
+```
+
+```bash
+sudo ln -sf /etc/nginx/sites-available/bilalarshad.pro /etc/nginx/sites-enabled/
+sudo nginx -t && sudo systemctl reload nginx
+```
+
+### 3. HTTPS (recommended)
+
+```bash
+sudo certbot --nginx -d bilalarshad.pro -d www.bilalarshad.pro
+```
+
+In Cloudflare, use **Full (strict)** once Certbot is installed.
+
+### 4. Update after changes
+
+```bash
+cd /var/www/portfolio-bilal
+git pull origin main
+```
+
+No build step — `git pull` is enough.
+
+### Cloudflare Pages (alternative)
 
 1. Connect repo `portfolio-bilal`
 2. Build command: *(none)*
 3. Output directory: `/` (root)
 
-### Nginx example
+### Nginx example (HTTPS snippet)
 
 ```nginx
 server {
