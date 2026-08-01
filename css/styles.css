@@ -483,6 +483,11 @@ h1, h2, h3, p { margin: 0; }
 }
 .project-links a:hover { color: var(--accent); }
 .project-card h3 { font-size: 1.05rem; }
+.project-role {
+  font-weight: 500;
+  font-size: 0.85em;
+  color: var(--muted);
+}
 .project-card p { color: var(--muted); font-size: 14px; }
 .project-card ul {
   margin: 0;
