@@ -181,7 +181,29 @@ h1, h2, h3, p { margin: 0; }
   font-size: clamp(2rem, 5vw, 3.5rem);
   line-height: 1.08;
   letter-spacing: -0.03em;
-  max-width: 14ch;
+  max-width: 18ch;
+}
+
+.hero-name {
+  display: block;
+  margin-bottom: 12px;
+  max-width: none;
+  font-size: clamp(2.4rem, 6vw, 4rem);
+  letter-spacing: -0.04em;
+}
+
+.hero-tagline {
+  display: block;
+  font-size: clamp(1.15rem, 2.8vw, 1.65rem);
+  font-weight: 500;
+  line-height: 1.35;
+  letter-spacing: -0.02em;
+  color: var(--muted);
+  max-width: 28ch;
+}
+
+.hero-tagline .text-gradient {
+  font-weight: 700;
 }
 
 .text-gradient {

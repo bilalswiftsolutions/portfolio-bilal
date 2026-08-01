@@ -1,7 +1,7 @@
 {
-  "name": "Bilal Arshad Portfolio",
+  "name": "Bilal Arshad — Laravel Developer",
   "short_name": "Bilal Arshad",
-  "description": "Bilal Arshad — developer of Altadefinizione streaming platform. Full-Stack & Agentic AI.",
+  "description": "Bilal Arshad — Laravel developer and full-stack PHP engineer. Hire for remote Laravel, Vue.js, and React projects.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#0a0f14",
@@ -11,6 +11,12 @@
       "src": "/assets/apple-touch-icon.svg",
       "sizes": "180x180",
       "type": "image/svg+xml"
+    },
+    {
+      "src": "/assets/profile.jpg",
+      "sizes": "640x640",
+      "type": "image/jpeg",
+      "purpose": "any"
     }
   ]
 }

@@ -1,4 +1,9 @@
 User-agent: *
 Allow: /
 
+Allow: /assets/bilal-arshad.jpg
+Allow: /assets/og-image.jpg
+Allow: /assets/profile.jpg
+
 Sitemap: https://bilalarshad.pro/sitemap.xml
+Sitemap: https://bilalarshad.pro/sitemap-images.xml

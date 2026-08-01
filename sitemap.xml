@@ -1,8 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://bilalarshad.pro/</loc>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-08-01</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://bilalarshad.pro/assets/bilal-arshad.jpg</image:loc>
+      <image:title>Bilal Arshad — Laravel developer</image:title>
+      <image:caption>Official photo of Bilal Arshad, Laravel developer and full-stack software engineer in Lahore</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://bilalarshad.pro/assets/og-image.jpg</image:loc>
+      <image:title>Bilal Arshad Laravel Developer portfolio cover</image:title>
+      <image:caption>Bilal Arshad — Laravel developer, full-stack PHP engineer</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://bilalarshad.pro/assets/profile.jpg</image:loc>
+      <image:title>Bilal Arshad profile photo</image:title>
+      <image:caption>Profile photo of Bilal Arshad</image:caption>
+    </image:image>
   </url>
 </urlset>
