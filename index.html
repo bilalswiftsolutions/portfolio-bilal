@@ -36,7 +36,7 @@
   <meta name="twitter:image" content="https://bilalarshad.pro/assets/og-image.jpg" />
   <meta name="twitter:image:alt" content="Photo of Bilal Arshad — Laravel developer" />
 
-  <meta name="theme-color" content="#0a0f14" />
+  <meta name="theme-color" content="#04060c" />
   <link rel="manifest" href="/site.webmanifest" />
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="/assets/apple-touch-icon.svg" />
@@ -44,8 +44,8 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" as="style" />
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" as="style" />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="/css/styles.css" />
 
@@ -191,6 +191,10 @@
 <body>
   <span id="top" class="page-anchor" aria-hidden="true"></span>
   <a class="skip-link" href="#main">Skip to content</a>
+  <div class="scroll-progress" aria-hidden="true"></div>
+  <div class="bg-orbs" aria-hidden="true"><span></span><span></span><span></span></div>
+  <canvas id="bg-canvas" aria-hidden="true"></canvas>
+  <div class="cursor-glow" aria-hidden="true"></div>
 
   <header class="site-header">
     <div class="container header-inner">
@@ -215,11 +219,12 @@
   <main id="main">
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-bg" aria-hidden="true"></div>
+      <div class="hero-floor" aria-hidden="true"></div>
       <div class="container hero-grid">
         <div class="hero-copy">
           <p class="eyebrow reveal">Senior Full-Stack Developer · Laravel · NestJS · Next.js</p>
           <h1 id="hero-title" class="reveal">
-            <span class="hero-name">Bilal Arshad</span>
+            <span class="hero-name" data-text="Bilal Arshad">Bilal Arshad</span>
             <span class="hero-tagline">Full-stack developer building
             <span class="text-gradient">web platforms</span> and
             <span class="text-gradient">scalable APIs</span> that ship in production.</span>
@@ -228,6 +233,10 @@
             Senior full-stack developer with 8+ years delivering Laravel, NestJS, Next.js, React and Vue.js
             applications — marketplaces, payment and e-invoicing integrations, streaming platforms, REST APIs,
             AI agents and Linux/Docker deployments.
+          </p>
+          <p class="hero-typed reveal" aria-hidden="true">
+            <span class="typed-prefix">~/bilal $</span>
+            <span class="typed-text" data-words="building Keeld marketplace · NestJS + Next.js|integrating Moyasar &amp; ZATCA e-invoicing|scaling streaming to 2.4M+ users|shipping AI agents with LangGraph|crafting Laravel + Vue platforms"></span><span class="caret"></span>
           </p>
           <div class="hero-actions reveal">
             <a class="btn btn-primary" href="#projects">View projects</a>
@@ -241,6 +250,8 @@
         </div>
         <figure class="hero-visual reveal" aria-label="Bilal Arshad profile photo">
           <div class="profile-ring">
+            <span class="orbit orbit-1" aria-hidden="true"></span>
+            <span class="orbit orbit-2" aria-hidden="true"></span>
             <img
               src="/assets/profile.jpg"
               alt="Bilal Arshad — senior full-stack developer and Laravel engineer"
@@ -265,7 +276,7 @@
       <link itemprop="url" href="https://bilalarshad.pro/" />
       <link itemprop="image" href="https://bilalarshad.pro/assets/bilal-arshad.jpg" />
       <div class="container narrow">
-        <h2 id="about-title" class="section-title reveal">About Bilal Arshad</h2>
+        <h2 id="about-title" class="section-title reveal" data-num="01">About Bilal Arshad</h2>
         <p class="lead reveal" itemprop="description">
           <strong>Bilal Arshad</strong> is a senior full-stack developer based in
           <span itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
@@ -295,7 +306,7 @@
 
     <section id="skills" class="section section-alt" aria-labelledby="skills-title">
       <div class="container">
-        <h2 id="skills-title" class="section-title reveal">Skills</h2>
+        <h2 id="skills-title" class="section-title reveal" data-num="02">Skills</h2>
         <div class="skills-grid">
           <article class="skill-card reveal">
             <h3>Backend</h3>
@@ -343,7 +354,7 @@
 
     <section id="experience" class="section" aria-labelledby="experience-title">
       <div class="container">
-        <h2 id="experience-title" class="section-title reveal">Experience</h2>
+        <h2 id="experience-title" class="section-title reveal" data-num="03">Experience</h2>
         <ol class="timeline">
           <li class="timeline-item reveal">
             <div class="timeline-meta">
@@ -432,7 +443,7 @@
 
     <section id="projects" class="section section-alt" aria-labelledby="projects-title">
       <div class="container">
-        <h2 id="projects-title" class="section-title reveal">Projects</h2>
+        <h2 id="projects-title" class="section-title reveal" data-num="04">Projects</h2>
         <p class="lead reveal">Marketplaces, payment platforms, full-stack web apps, ERP systems, streaming platforms, marketing tools, and SaaS products.</p>
         <div class="projects-grid">
           <article id="keeld" class="project-card reveal">
@@ -675,7 +686,7 @@
 
     <section id="education" class="section" aria-labelledby="education-title">
       <div class="container">
-        <h2 id="education-title" class="section-title reveal">Education</h2>
+        <h2 id="education-title" class="section-title reveal" data-num="05">Education</h2>
         <div class="education-grid">
           <article class="education-card reveal">
             <div class="education-meta">
@@ -709,7 +720,7 @@
     <section id="contact" class="section contact" aria-labelledby="contact-title">
       <div class="container contact-grid">
         <div>
-          <h2 id="contact-title" class="section-title reveal">Let's build something</h2>
+          <h2 id="contact-title" class="section-title reveal" data-num="06">Let's build something</h2>
           <p class="lead reveal">Open to remote roles, relocation, and freelance projects in full-stack web development — Laravel, NestJS, Next.js and React.</p>
         </div>
         <address class="contact-cards reveal">
