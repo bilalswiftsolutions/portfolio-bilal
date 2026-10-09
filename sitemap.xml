@@ -3,13 +3,13 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://bilalarshad.pro/</loc>
-    <lastmod>2026-08-01</lastmod>
+    <lastmod>2026-10-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
       <image:loc>https://bilalarshad.pro/assets/bilal-arshad.jpg</image:loc>
       <image:title>Bilal Arshad — Laravel developer</image:title>
-      <image:caption>Official photo of Bilal Arshad, Laravel developer and full-stack software engineer in Lahore</image:caption>
+      <image:caption>Official photo of Bilal Arshad, Laravel developer and full-stack software engineer</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://bilalarshad.pro/assets/og-image.jpg</image:loc>

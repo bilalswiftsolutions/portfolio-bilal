@@ -5,7 +5,7 @@ Modern, fast, SEO-optimized portfolio site for **Bilal Arshad**.
 - Static HTML/CSS/JS (no build step — excellent Lighthouse scores)
 - Mobile-first responsive layout
 - JSON-LD Person schema, Open Graph, sitemap, robots.txt
-- Highlights full-stack Laravel, Vue, and React work
+- Highlights full-stack Laravel, NestJS, Next.js, Vue, and React work
 
 ## Local preview
 
