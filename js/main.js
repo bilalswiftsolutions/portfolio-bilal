@@ -9,6 +9,30 @@
 
   if (year) year.textContent = String(new Date().getFullYear());
 
+  // Theme toggle (dark is the default; the choice is remembered per visitor)
+  const root = document.documentElement;
+  const themeBtn = document.querySelector(".theme-toggle");
+  const themeMeta = document.querySelector('meta[name="theme-color"]');
+  const isLight = () => root.getAttribute("data-theme") === "light";
+  const syncThemeUi = () => {
+    const label = isLight() ? "Switch to dark mode" : "Switch to light mode";
+    if (themeBtn) {
+      themeBtn.setAttribute("aria-label", label);
+      themeBtn.setAttribute("title", label);
+    }
+    if (themeMeta) themeMeta.setAttribute("content", isLight() ? "#f4f7fd" : "#04060c");
+  };
+  syncThemeUi();
+  if (themeBtn) {
+    themeBtn.addEventListener("click", () => {
+      const next = isLight() ? "dark" : "light";
+      root.setAttribute("data-theme", next);
+      try { localStorage.setItem("theme", next); } catch (e) {}
+      syncThemeUi();
+      document.dispatchEvent(new CustomEvent("themechange"));
+    });
+  }
+
   if (toggle && nav) {
     toggle.addEventListener("click", () => {
       const open = nav.classList.toggle("is-open");
@@ -159,7 +183,12 @@
   const canvas = document.getElementById("bg-canvas");
   if (!canvas || !canvas.getContext) return;
   const ctx = canvas.getContext("2d");
-  const colors = ["34, 225, 255", "139, 92, 246", "255, 61, 212"];
+  const palettes = {
+    dark: ["34, 225, 255", "139, 92, 246", "255, 61, 212"],
+    light: ["8, 145, 178", "124, 58, 237", "219, 39, 119"],
+  };
+  let colors = isLight() ? palettes.light : palettes.dark;
+  let lineAlpha = isLight() ? 0.3 : 0.22;
   let w = 0;
   let h = 0;
   let dpr = 1;
@@ -184,6 +213,13 @@
       c: colors[Math.floor(Math.random() * colors.length)],
     }));
   };
+
+  document.addEventListener("themechange", () => {
+    const prev = colors;
+    colors = isLight() ? palettes.light : palettes.dark;
+    lineAlpha = isLight() ? 0.3 : 0.22;
+    particles.forEach((p) => { p.c = colors[prev.indexOf(p.c)] || colors[0]; });
+  });
 
   let resizeTimer;
   window.addEventListener("resize", () => {
@@ -235,7 +271,7 @@
         const dy = a.y - b.y;
         const d2 = dx * dx + dy * dy;
         if (d2 < LINK * LINK) {
-          const alpha = (1 - Math.sqrt(d2) / LINK) * 0.22;
+          const alpha = (1 - Math.sqrt(d2) / LINK) * lineAlpha;
           ctx.strokeStyle = `rgba(${a.c}, ${alpha.toFixed(3)})`;
           ctx.lineWidth = 0.8;
           ctx.beginPath();
