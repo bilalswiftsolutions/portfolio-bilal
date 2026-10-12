@@ -637,6 +637,109 @@ em { font-style: normal; }
 .work.is-visible:hover, .hire-link.is-visible:hover, .sp-card.is-visible:hover { transform: translateY(-4px); }
 .work--feature.is-visible:hover { transform: translateY(-3px); }
 
+/* ---------- Clay: soft 3D surfaces ---------- */
+:root {
+  --r: 18px;
+  --clay: inset 5px 5px 10px rgba(255, 255, 255, 0.95), inset -6px -8px 16px rgba(214, 140, 80, 0.16), 0 5px 0 #eedccb, 0 18px 30px -14px rgba(170, 90, 30, 0.32);
+  --clay-hover: inset 5px 5px 10px rgba(255, 255, 255, 0.95), inset -6px -8px 16px rgba(214, 140, 80, 0.18), 0 8px 0 #eedccb, 0 26px 40px -16px rgba(170, 90, 30, 0.38);
+  --clay-sm: inset 3px 3px 6px rgba(255, 255, 255, 0.95), inset -3px -4px 8px rgba(214, 140, 80, 0.16), 0 3px 0 #eedccb, 0 8px 14px -8px rgba(170, 90, 30, 0.3);
+  --clay-o: inset 6px 6px 14px rgba(255, 220, 190, 0.55), inset -8px -10px 18px rgba(150, 50, 0, 0.32), 0 6px 0 var(--o-700), 0 26px 44px -18px rgba(200, 80, 10, 0.6);
+}
+:root[data-theme="dark"] {
+  --clay: inset 4px 4px 10px rgba(255, 220, 190, 0.07), inset -6px -8px 16px rgba(0, 0, 0, 0.45), 0 5px 0 #0d0805, 0 18px 30px -14px rgba(0, 0, 0, 0.75);
+  --clay-hover: inset 4px 4px 10px rgba(255, 220, 190, 0.09), inset -6px -8px 16px rgba(0, 0, 0, 0.45), 0 8px 0 #0d0805, 0 26px 40px -16px rgba(0, 0, 0, 0.8);
+  --clay-sm: inset 2px 2px 5px rgba(255, 220, 190, 0.07), inset -3px -4px 8px rgba(0, 0, 0, 0.4), 0 3px 0 #0d0805, 0 8px 14px -8px rgba(0, 0, 0, 0.7);
+}
+.header-inner { border-radius: 20px; box-shadow: var(--clay); }
+.card, .work, .hire-link, .sp-card, .gauge, .career-item, .edu-card, .story-panel, .sp-proof-row, .sp-q, .toc, .sp-related a, .panel, .hero-stats { border-radius: var(--r); box-shadow: var(--clay); border-color: transparent; }
+.work:hover, .hire-link:hover, .sp-card:hover, .sp-proof-row:hover, .gauge:hover, .career-item:hover, .edu-card:hover { box-shadow: var(--clay-hover); }
+.status-pill, .shipped span, .note, .contact-note, .ff-list div, .work-metrics div { box-shadow: var(--clay-sm); border-color: transparent; }
+.note { background: var(--surface); }
+.work--feature, .contact-panel { box-shadow: var(--clay-o); border-color: transparent; }
+.work--feature:hover { box-shadow: inset 6px 6px 14px rgba(255, 220, 190, 0.55), inset -8px -10px 18px rgba(150, 50, 0, 0.32), 0 9px 0 var(--o-700), 0 32px 50px -20px rgba(200, 80, 10, 0.65); }
+.work--feature .work-metrics div, .contact-panel .contact-note { box-shadow: inset 3px 3px 8px rgba(255, 230, 205, 0.35), inset -4px -5px 10px rgba(150, 50, 0, 0.25); }
+.contact-panel { border-radius: 26px; }
+.tool { border-radius: var(--r); box-shadow: inset 4px 5px 12px rgba(170, 90, 30, 0.16), inset -4px -4px 10px rgba(255, 255, 255, 0.9); border-color: transparent; }
+:root[data-theme="dark"] .tool { box-shadow: inset 5px 6px 14px rgba(0, 0, 0, 0.55), inset -3px -3px 8px rgba(255, 220, 190, 0.05); }
+.logo-mark { border-radius: 13px; box-shadow: inset 3px 3px 6px rgba(255, 225, 200, 0.6), inset -3px -4px 8px rgba(150, 50, 0, 0.35), 0 4px 0 var(--o-700), 0 8px 14px -6px rgba(200, 80, 10, 0.5); transition: transform 0.5s var(--spring); }
+.logo:hover .logo-mark { transform: rotate(-12deg) scale(1.08); }
+.site-nav a { transition: color 0.2s, background-color 0.2s, transform 0.3s var(--spring), box-shadow 0.2s; }
+.site-nav a:hover, .site-nav a.is-active { background: var(--surface); box-shadow: var(--clay-sm); transform: translateY(-2px); }
+.site-nav .nav-cta:hover { animation: wiggle 0.5s var(--ease); }
+.pebble { box-shadow: inset 10px 12px 24px rgba(255, 230, 205, 0.5), inset -18px -22px 36px rgba(140, 50, 0, 0.4), 0 10px 0 var(--o-700), 0 44px 64px -30px rgba(170, 70, 10, 0.65); transition: border-radius 0.8s var(--spring); }
+.stage:hover .pebble { border-radius: 54% 46% 56% 44% / 46% 54% 46% 54%; }
+.pebble img { transition: transform 0.6s var(--spring); }
+.stage:hover .pebble img { transform: translateX(-50%) scale(1.04); }
+.note { transition: transform 0.4s var(--spring), box-shadow 0.3s; }
+.note:hover { transform: rotate(0deg) scale(1.08) !important; }
+
+/* Floating clay shapes behind the hero */
+.clay-shapes { position: absolute; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; }
+.cs { position: absolute; display: block; will-change: transform; animation: floaty 9s ease-in-out infinite; }
+.cs.s1 { left: 4%; top: 16%; width: 46px; height: 46px; border-radius: 50%; background: radial-gradient(circle at 32% 28%, #ffd9bd, var(--o-400) 55%, var(--o-600)); box-shadow: inset -4px -6px 10px rgba(150, 50, 0, 0.35), 0 12px 20px -10px rgba(200, 80, 10, 0.5); }
+.cs.s2 { left: 47%; top: 30%; width: 34px; height: 34px; border-radius: 11px; background: linear-gradient(145deg, #fff, #f3e6d9); box-shadow: inset 3px 3px 6px #fff, inset -4px -5px 8px rgba(214, 140, 80, 0.25), 0 10px 16px -8px rgba(170, 90, 30, 0.35); rotate: 18deg; animation-duration: 11s; animation-delay: -3s; }
+.cs.s3 { right: 3%; top: 70%; width: 58px; height: 58px; border-radius: 50%; border: 12px solid var(--o-300); box-shadow: inset 3px 3px 6px rgba(255, 240, 225, 0.8), inset -3px -4px 6px rgba(170, 70, 10, 0.3), 0 12px 18px -10px rgba(200, 80, 10, 0.45); animation-duration: 12s; animation-delay: -6s; }
+.cs.s4 { left: 40%; bottom: 6%; width: 22px; height: 22px; border-radius: 50%; background: radial-gradient(circle at 32% 28%, #fff, #f6e8da); box-shadow: inset -2px -3px 5px rgba(214, 140, 80, 0.3), 0 8px 12px -6px rgba(170, 90, 30, 0.35); animation-duration: 8s; animation-delay: -2s; }
+:root[data-theme="dark"] .cs.s2, :root[data-theme="dark"] .cs.s4 { background: linear-gradient(145deg, #3a291d, #261a12); box-shadow: inset 2px 2px 5px rgba(255, 220, 190, 0.08), inset -3px -4px 8px rgba(0, 0, 0, 0.5); }
+@keyframes floaty { 0%, 100% { translate: 0 0; } 50% { translate: 0 -18px; } }
+
+/* ---------- Cute motion ---------- */
+.reveal { transform: translateY(26px) scale(0.94); transition: opacity 0.6s var(--ease), transform 0.75s var(--spring); }
+.reveal.is-visible { transform: none; }
+@keyframes jelly { 0% { scale: 1 1; } 30% { scale: 1.025 0.975; } 50% { scale: 0.985 1.02; } 70% { scale: 1.01 0.995; } 100% { scale: 1 1; } }
+@keyframes wiggle { 0%, 100% { rotate: 0deg; } 25% { rotate: -4deg; } 75% { rotate: 3deg; } }
+.work:hover, .hire-link:hover, .sp-card:hover, .gauge:hover, .tool:hover, .edu-card:hover { animation: jelly 0.55s var(--ease); }
+.btn:hover { animation: wiggle 0.45s var(--ease); }
+.btn-link:hover { animation: none; }
+.chips li { transition: transform 0.25s var(--spring), box-shadow 0.1s, color 0.2s; }
+.chips li:hover { transform: translateY(-3px) rotate(-3deg); }
+.chips li:nth-child(even):hover { transform: translateY(-3px) rotate(3deg); }
+.chips li:active { transform: translateY(3px); }
+.gauge .dial { transition: transform 0.6s var(--spring); }
+.gauge:hover .dial { transform: rotate(-8deg) scale(1.05); }
+.contact-row { transition: transform 0.35s var(--spring), box-shadow 0.2s; }
+.contact-row:hover { transform: translateY(-3px) rotate(-0.6deg); }
+.work-idx, .route b { transition: transform 0.4s var(--spring); }
+.work:hover .work-idx, .section-head:hover .route b { transform: rotate(-12deg) scale(1.15); }
+.career-item { transition: transform 0.4s var(--spring), box-shadow 0.3s, opacity 0.6s var(--ease); }
+.career-item.is-visible:hover { transform: translateX(6px); }
+.degree a:hover { animation: wiggle 0.5s var(--ease); }
+.theme-toggle:hover .theme-thumb { scale: 1.1; }
+
+.hero-bit { border: 0; padding: 0; background: none; cursor: pointer; }
+.hero-bit .bit { animation: bob 3.2s 1.7s ease-in-out infinite; }
+.hero-bit:hover .bit { animation: jump 0.6s var(--spring); }
+.hero-bit.jump .bit { animation: jump 0.6s var(--spring); }
+@keyframes bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+@keyframes jump { 0% { transform: translateY(0) scale(1, 1); } 25% { transform: translateY(2px) scale(1.12, 0.86); } 55% { transform: translateY(-28px) scale(0.92, 1.1); } 100% { transform: translateY(0) scale(1, 1); } }
+.bit .b-eyes { transform: translate(var(--ex, 0px), var(--ey, 0px)); transition: transform 0.18s ease-out; }
+.bit .b-bulb { animation: glow 2.4s ease-in-out infinite; }
+@keyframes glow { 0%, 100% { fill: var(--o-300); } 50% { fill: #fff2e6; } }
+.peek-bit { pointer-events: auto; }
+.peek-bit:hover .bit { transform: translateY(-6px) rotate(-6deg); transition-delay: 0s; }
+.bubble {
+  position: absolute;
+  z-index: 4;
+  top: -20px;
+  right: 28%;
+  padding: 8px 14px;
+  border-radius: 14px 14px 4px 14px;
+  background: var(--surface);
+  box-shadow: var(--clay-sm);
+  font-size: 14px;
+  font-weight: 650;
+  white-space: nowrap;
+  color: var(--text);
+  transform-origin: 100% 100%;
+  animation: pop 0.5s 1.5s var(--spring) both;
+}
+.bubble.swap { animation: pop 0.45s var(--spring); }
+@keyframes pop { from { opacity: 0; transform: scale(0.4); } }
+.heart { position: fixed; z-index: 90; width: 16px; height: 16px; pointer-events: none; color: var(--o-500); animation: float-up 1.1s var(--ease) forwards; }
+@keyframes float-up { to { transform: translate(var(--dx, 0px), -90px) rotate(var(--rot, 0deg)) scale(0.6); opacity: 0; } }
+.career-item > .node { transition: background-color 0.3s, transform 0.4s var(--spring), box-shadow 0.3s; }
+.career-item.reached > .node { background: var(--o-500); transform: scale(1.25); box-shadow: 0 0 0 5px var(--accent-soft); }
+
 /* ---------- Responsive ---------- */
 @media (max-width: 1080px) {
   .bento, .hire-grid, .sp-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }

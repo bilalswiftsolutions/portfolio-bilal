@@ -227,10 +227,104 @@
   const stage = document.querySelector(".stage");
   const heroBit = stage && stage.querySelector(".bit");
   if (heroBit && finePointer && !reduceMotion) {
-    stage.addEventListener("pointerenter", () => {
+    stage.querySelector(".pebble").addEventListener("pointerenter", () => {
       heroBit.classList.remove("waving");
       void heroBit.getBoundingClientRect();
       heroBit.classList.add("waving");
     });
+  }
+
+  // Little hearts that float up from a point
+  const heartSvg = '<svg viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3.1 4.5 6.9 4.5c2.1 0 3.6 1.1 5.1 3 1.5-1.9 3-3 5.1-3 3.8 0 6 3.9 4.5 7.3C19.5 16.4 12 21 12 21Z"/></svg>';
+  const burst = (x, y, n) => {
+    if (reduceMotion) return;
+    for (let i = 0; i < n; i++) {
+      const h = document.createElement("span");
+      h.className = "heart";
+      h.innerHTML = heartSvg;
+      h.style.left = x - 8 + (Math.random() * 30 - 15) + "px";
+      h.style.top = y - 8 + "px";
+      h.style.setProperty("--dx", (Math.random() * 60 - 30).toFixed(0) + "px");
+      h.style.setProperty("--rot", (Math.random() * 50 - 25).toFixed(0) + "deg");
+      h.style.animationDelay = i * 60 + "ms";
+      document.body.appendChild(h);
+      setTimeout(() => h.remove(), 1400);
+    }
+  };
+
+  // Bit's eyes follow the pointer
+  const bits = Array.from(document.querySelectorAll(".bit"));
+  if (bits.length && finePointer && !reduceMotion) {
+    let px = 0, py = 0, pending = false;
+    window.addEventListener("pointermove", (e) => {
+      px = e.clientX; py = e.clientY;
+      if (pending) return;
+      pending = true;
+      requestAnimationFrame(() => {
+        pending = false;
+        bits.forEach((b) => {
+          const r = b.getBoundingClientRect();
+          if (r.bottom < 0 || r.top > window.innerHeight) return;
+          const dx = px - (r.left + r.width / 2);
+          const dy = py - (r.top + r.height * 0.4);
+          const d = Math.hypot(dx, dy) || 1;
+          const k = Math.min(d / 160, 1) * 3.2;
+          b.style.setProperty("--ex", ((dx / d) * k).toFixed(2) + "px");
+          b.style.setProperty("--ey", ((dy / d) * k).toFixed(2) + "px");
+        });
+      });
+    }, { passive: true });
+  }
+
+  // Bit's speech bubble cycles, and clicking Bit makes it jump with hearts
+  const bubble = document.querySelector(".bubble");
+  const heroBitBtn = document.querySelector(".hero-bit");
+  const lines = root.lang === "ar"
+    ? ["مرحبًا، أنا Bit!", "بلال متاح للعمل الآن", "مرّر للأسفل، سأرافقك", "اضغط عليّ!"]
+    : ["Hi, I'm Bit!", "Bilal is available now", "Scroll — I'll walk you through", "Psst… click me!"];
+  if (bubble && !reduceMotion) {
+    let li = 0;
+    setInterval(() => {
+      if (document.hidden) return;
+      li = (li + 1) % lines.length;
+      bubble.textContent = lines[li];
+      bubble.classList.remove("swap");
+      void bubble.offsetWidth;
+      bubble.classList.add("swap");
+    }, 4200);
+  }
+  if (heroBitBtn) {
+    heroBitBtn.addEventListener("click", (e) => {
+      heroBitBtn.classList.remove("jump");
+      void heroBitBtn.offsetWidth;
+      heroBitBtn.classList.add("jump");
+      const r = heroBitBtn.getBoundingClientRect();
+      burst(r.left + r.width / 2, r.top + 10, 6);
+      if (bubble) {
+        bubble.textContent = root.lang === "ar" ? "هيهي! 🧡" : "Hehe, that tickles!";
+        bubble.classList.remove("swap");
+        void bubble.offsetWidth;
+        bubble.classList.add("swap");
+      }
+    });
+  }
+  document.querySelectorAll(".nav-cta, .contact-panel .contact-row, .btn-primary").forEach((el) => {
+    el.addEventListener("click", (e) => burst(e.clientX || 0, e.clientY || 0, 5));
+  });
+
+  // Timeline dots pop as Bit walks past them
+  const careerItems = Array.from(document.querySelectorAll(".career-item"));
+  if (careerItems.length && railBit) {
+    let q = false;
+    const mark = () => {
+      q = false;
+      const by = railBit.getBoundingClientRect().top + 30;
+      careerItems.forEach((it) => {
+        const node = it.querySelector(".node");
+        if (node) it.classList.toggle("reached", node.getBoundingClientRect().top <= by);
+      });
+    };
+    window.addEventListener("scroll", () => { if (!q) { q = true; requestAnimationFrame(mark); } }, { passive: true });
+    mark();
   }
 })();
