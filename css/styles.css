@@ -831,6 +831,41 @@ em { font-style: normal; }
 .sparkles i:nth-child(4) { left: 26px; top: 0; width: 8px; height: 8px; animation-delay: 3.6s; background: var(--o-300); }
 @keyframes twinkle { 0%, 100% { opacity: 0; transform: scale(0.3) rotate(0deg); } 45% { opacity: 1; transform: scale(1) rotate(45deg); } 70% { opacity: 0.2; transform: scale(0.6) rotate(80deg); } }
 
+
+/* ---------- Intro: falling bomb and character burst ---------- */
+.intro { position: fixed; inset: 0; z-index: 200; pointer-events: none; overflow: hidden; }
+.intro-bomb { position: absolute; left: 50%; top: 0; transform: translate(-50%, -200px); filter: drop-shadow(0 18px 18px rgba(150, 60, 10, 0.3)); will-change: transform; }
+.intro-bomb svg { display: block; width: 100%; height: auto; overflow: visible; }
+.intro-bomb .spark { transform-box: fill-box; transform-origin: 50% 70%; animation: spark 0.16s steps(2) infinite; }
+@keyframes spark { 0% { transform: scale(1) rotate(0deg); } 100% { transform: scale(1.35) rotate(25deg); } }
+.intro-shadow { position: absolute; left: 50%; bottom: 10px; width: 140px; height: 22px; border-radius: 50%; background: radial-gradient(closest-side, rgba(120, 55, 15, 0.38), rgba(120, 55, 15, 0)); transform: translateX(-50%) scale(0.15); opacity: 0; }
+.intro-flash { position: absolute; inset: 0; opacity: 0; }
+.intro-ring { position: absolute; width: 120px; height: 120px; border-radius: 50%; border: 6px solid rgba(255, 178, 122, 0.9); box-shadow: 0 0 24px rgba(242, 113, 28, 0.5), inset 0 0 16px rgba(255, 240, 225, 0.8); opacity: 0; }
+.intro-ring.r2 { border-width: 3px; border-color: rgba(255, 255, 255, 0.9); }
+.intro-char { position: absolute; left: 0; top: 0; opacity: 0; filter: drop-shadow(0 10px 10px rgba(150, 60, 10, 0.28)); will-change: transform; }
+.intro-char svg { display: block; width: 100%; height: 100%; overflow: visible; }
+.intro-confetti { position: absolute; left: 0; top: 0; width: 10px; height: 14px; border-radius: 3px; background: linear-gradient(180deg, var(--o-300), var(--o-500)); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6); will-change: transform; }
+.intro-confetti.w { background: linear-gradient(180deg, #fff, #f6e6d6); width: 8px; height: 8px; border-radius: 50%; }
+
+
+/* ---------- Bit dresses for the theme ---------- */
+.bit .b-shades, .bit .b-nightcap, .bit .b-z, .bit .b-ant, .bit .b-bulb { transition: opacity 0.35s, transform 0.6s var(--spring); }
+.bit .b-shades-bar { fill: none; stroke: #2a1a10; stroke-width: 2.6; stroke-linecap: round; }
+.bit .b-lens { fill: #2a1a10; }
+.bit .b-lens-glint { fill: none; stroke: #fff; stroke-opacity: 0.75; stroke-width: 1.8; stroke-linecap: round; }
+.bit .b-cap { fill: url(#bitScreen); stroke: #e8d4c2; stroke-width: 1; }
+.bit .b-cap-band { fill: var(--o-300); }
+.bit .b-pom { fill: url(#bitBulb); }
+.bit .b-z { font: 800 12px var(--sans); fill: var(--o-300); opacity: 0; }
+.bit .b-nightcap { opacity: 0; transform: translateY(-22px) rotate(-10deg); transform-box: fill-box; transform-origin: 50% 100%; }
+:root[data-theme="dark"] .bit .b-shades { opacity: 0; transform: translateY(-18px) rotate(8deg); }
+:root[data-theme="dark"] .bit .b-nightcap { opacity: 1; transform: none; }
+:root[data-theme="dark"] .bit .b-ant, :root[data-theme="dark"] .bit .b-bulb { opacity: 0; }
+:root[data-theme="dark"] .bit .b-z { animation: snooze 2.6s ease-in-out infinite; }
+:root[data-theme="dark"] .bit .b-z.z2 { animation-delay: 1.3s; }
+.bit .b-shades { transform-box: fill-box; transform-origin: center; }
+@keyframes snooze { 0% { opacity: 0; transform: translate(0, 6px) scale(0.6); } 40% { opacity: 1; } 100% { opacity: 0; transform: translate(6px, -10px) scale(1.1); } }
+
 /* ---------- Responsive ---------- */
 @media (max-width: 1080px) {
   .bento, .hire-grid, .sp-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }

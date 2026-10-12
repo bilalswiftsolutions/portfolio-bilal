@@ -19,6 +19,7 @@
 ## Writing
 
 - [Integrating Moyasar payments with NestJS](https://bilalarshad.pro/blog/moyasar-nestjs-integration/): verification, idempotent webhooks, refunds, reconciliation
+- [ZATCA e-invoicing (Fatoora Phase 2) in NestJS](https://bilalarshad.pro/blog/zatca-e-invoicing-nestjs/): onboarding, invoice chain, clearance vs reporting, credit notes
 
 ## Arabic
 

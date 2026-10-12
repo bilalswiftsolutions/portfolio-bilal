@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>ZATCA E-Invoicing (Fatoora Phase 2) in a Custom NestJS Platform: A Practical Guide</title>
+  <meta name="description" content="How to build ZATCA (Fatoora) Phase 2 e-invoicing into a custom NestJS + PostgreSQL platform: onboarding, the invoice chain, clearance vs reporting, retries, credit notes for refunds and status tracking." />
+  <meta name="author" content="Bilal Arshad" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+  <link rel="canonical" href="https://bilalarshad.pro/blog/zatca-e-invoicing-nestjs/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://bilalarshad.pro/blog/zatca-e-invoicing-nestjs/" />
+  <meta property="og:title" content="ZATCA E-Invoicing (Fatoora Phase 2) in a Custom NestJS Platform: A Practical Guide" />
+  <meta property="og:description" content="How to build ZATCA (Fatoora) Phase 2 e-invoicing into a custom NestJS + PostgreSQL platform: onboarding, the invoice chain, clearance vs reporting, retries, credit notes for refunds and status tracking." />
+  <meta property="og:image" content="https://bilalarshad.pro/assets/og-image.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:site_name" content="Bilal Arshad" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="ZATCA E-Invoicing (Fatoora Phase 2) in a Custom NestJS Platform: A Practical Guide" />
+  <meta name="twitter:description" content="How to build ZATCA (Fatoora) Phase 2 e-invoicing into a custom NestJS + PostgreSQL platform: onboarding, the invoice chain, clearance vs reporting, retries, credit notes for refunds and status tracking." />
+  <meta name="twitter:image" content="https://bilalarshad.pro/assets/og-image.png" />
+  <meta name="theme-color" content="#fbf6f0" />
+  <script>
+    (function () {
+      try {
+        if (localStorage.getItem("theme") === "dark") {
+          document.documentElement.setAttribute("data-theme", "dark");
+          document.querySelector('meta[name="theme-color"]').setAttribute("content", "#17100b");
+        }
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="manifest" href="/site.webmanifest" />
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,300..800&family=Geist+Mono:wght@400..600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/styles.css?v=20261016b" />
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "TechArticle",
+      "@id": "https://bilalarshad.pro/blog/zatca-e-invoicing-nestjs/#article",
+      "headline": "ZATCA E-Invoicing (Fatoora Phase 2) in a Custom NestJS Platform: A Practical Guide",
+      "description": "How to build ZATCA (Fatoora) Phase 2 e-invoicing into a custom NestJS + PostgreSQL platform: onboarding, the invoice chain, clearance vs reporting, retries, credit notes for refunds and status tracking.",
+      "url": "https://bilalarshad.pro/blog/zatca-e-invoicing-nestjs/",
+      "mainEntityOfPage": "https://bilalarshad.pro/blog/zatca-e-invoicing-nestjs/",
+      "inLanguage": "en",
+      "datePublished": "2026-10-13",
+      "dateModified": "2026-10-13",
+      "image": "https://bilalarshad.pro/assets/og-image.png",
+      "author": {
+        "@type": "Person",
+        "@id": "https://bilalarshad.pro/#person",
+        "name": "Bilal Arshad",
+        "url": "https://bilalarshad.pro/"
+      },
+      "publisher": {
+        "@id": "https://bilalarshad.pro/#person"
+      },
+      "about": [
+        "ZATCA",
+        "Fatoora",
+        "E-invoicing",
+        "NestJS",
+        "Saudi Arabia"
+      ],
+      "proficiencyLevel": "Expert",
+      "isPartOf": {
+        "@id": "https://bilalarshad.pro/#website"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://bilalarshad.pro/blog/zatca-e-invoicing-nestjs/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Bilal Arshad",
+          "item": "https://bilalarshad.pro/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "ZATCA e-invoicing developer",
+          "item": "https://bilalarshad.pro/zatca-e-invoicing-developer/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "ZATCA + NestJS guide",
+          "item": "https://bilalarshad.pro/blog/zatca-e-invoicing-nestjs/"
+        }
+      ]
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+  <span id="top" class="page-anchor" aria-hidden="true"></span>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="scroll-progress" aria-hidden="true"></div>
+  <div class="bg-grid" aria-hidden="true"></div>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs><radialGradient id="bitBody" cx="32%" cy="22%" r="85%"><stop offset="0" stop-color="#ffb684"/><stop offset=".45" stop-color="#f7801f"/><stop offset="1" stop-color="#c94f08"/></radialGradient><linearGradient id="bitScreen" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff3e8"/><stop offset=".35" stop-color="#ffffff"/><stop offset="1" stop-color="#ffe9d6"/></linearGradient><radialGradient id="bitBulb" cx="35%" cy="30%" r="70%"><stop offset="0" stop-color="#fff"/><stop offset=".5" stop-color="#ffc79c"/><stop offset="1" stop-color="#f2711c"/></radialGradient><radialGradient id="bitFoot" cx="40%" cy="25%" r="80%"><stop offset="0" stop-color="#e2793a"/><stop offset="1" stop-color="#8f3a07"/></radialGradient></defs></svg>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="/" aria-label="Bilal Arshad">
+        <span class="logo-mark" aria-hidden="true">B<i>A</i></span>
+        <span class="logo-text">Bilal Arshad</span>
+      </a>
+      <nav class="site-nav" id="site-nav" aria-label="Primary">
+        <a href="/#about"><span aria-hidden="true">/</span>About</a>
+        <a href="/#skills"><span aria-hidden="true">/</span>Skills</a>
+        <a href="/#experience"><span aria-hidden="true">/</span>Experience</a>
+        <a href="/#projects"><span aria-hidden="true">/</span>Projects</a>
+        <a href="/#hire"><span aria-hidden="true">/</span>Services</a>
+        <a href="#contact" class="nav-cta">Hire me <span aria-hidden="true">→</span></a>
+      </nav>
+      <div class="header-actions">
+        <button class="theme-toggle" type="button" aria-label="Switch to dark mode" title="Switch to dark mode">
+          <span class="theme-track" aria-hidden="true">
+            <svg class="icon-moon" viewBox="0 0 24 24"><path fill="currentColor" d="M20.7 14.6A8.5 8.5 0 0 1 9.4 3.3a.6.6 0 0 0-.8-.7A9.8 9.8 0 1 0 21.4 15.4a.6.6 0 0 0-.7-.8Z"/></svg>
+            <svg class="icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.5" fill="currentColor"/><g stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></g></svg>
+            <span class="theme-thumb"></span>
+          </span>
+        </button>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+          <span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <article class="sp-hero hero" aria-labelledby="page-title">
+      <div class="container">
+        <nav class="crumbs reveal" aria-label="Breadcrumb"><a href="/">bilalarshad.pro</a> <span aria-hidden="true">/</span> <a href="/zatca-e-invoicing-developer/">zatca-e-invoicing-developer</a> <span aria-hidden="true">/</span> <span aria-current="page">guide</span></nav>
+        <p class="eyebrow reveal">Guide · ZATCA · Fatoora · NestJS</p>
+        <h1 id="page-title" class="sp-title reveal">ZATCA in NestJS <em>e-invoicing without the panic.</em></h1>
+        <p class="byline reveal">By <a href="/">Bilal Arshad</a>, senior full-stack developer · <time datetime="2026-10-13">13 Oct 2026</time> · 10 min read</p>
+        <div class="prose">
+<p class="sp-intro">Most ZATCA guides assume you're plugging an off-the-shelf ERP into Fatoora. If you run your own platform — a marketplace, a SaaS, a booking system — you have to build the e-invoicing layer yourself. This is the structure I use on a NestJS + Prisma + PostgreSQL marketplace for Saudi merchants, where every paid order and every refund has to end up as a valid, traceable e-invoice.</p>
+
+<nav class="toc" aria-label="Contents">
+  <p class="route">Contents</p>
+  <ol>
+    <li><a href="#phases">The two phases, in one paragraph</a></li>
+    <li><a href="#types">Clearance vs reporting</a></li>
+    <li><a href="#onboarding">Onboarding: CSR, OTP and CSIDs</a></li>
+    <li><a href="#chain">The invoice chain: counter, UUID and previous hash</a></li>
+    <li><a href="#pipeline">A submission pipeline that survives outages</a></li>
+    <li><a href="#refunds">Refunds become credit notes</a></li>
+    <li><a href="#admin">Give finance a screen, not a log file</a></li>
+    <li><a href="#checklist">Production checklist</a></li>
+  </ol>
+</nav>
+
+<h2 id="phases">1. The two phases, in one paragraph</h2>
+<p>ZATCA's e-invoicing (Fatoora) rolled out in two phases. <strong>Phase 1 (Generation)</strong> required invoices to be produced electronically in a compliant format. <strong>Phase 2 (Integration)</strong> connects your system directly to ZATCA: invoices are produced as UBL 2.1 XML, cryptographically stamped, chained together, and sent to ZATCA's APIs. Phase 2 was rolled out to taxpayers in waves, so check which wave your client is in and the date they were notified for.</p>
+
+<h2 id="types">2. Clearance vs reporting</h2>
+<p>The single most important distinction is the invoice type, because it decides the flow:</p>
+<ul>
+  <li><strong>Standard tax invoices</strong> (business to business): must be <em>cleared</em> by ZATCA before you share them with the buyer. ZATCA returns the cleared invoice, and that's the version the customer receives.</li>
+  <li><strong>Simplified tax invoices</strong> (business to consumer): you issue them immediately with a QR code, then <em>report</em> them to ZATCA within 24 hours.</li>
+</ul>
+<p>For a consumer marketplace, almost everything is simplified, which is good news: checkout never has to wait on ZATCA. You issue the invoice, show it to the customer, and report it in the background.</p>
+
+<h2 id="onboarding">3. Onboarding: CSR, OTP and CSIDs</h2>
+<p>Each "e-invoicing solution unit" (your system, per taxpayer or branch setup) is onboarded once:</p>
+<ol>
+  <li>Generate a key pair and a certificate signing request (CSR) with the taxpayer's details.</li>
+  <li>The taxpayer logs in to the Fatoora portal and generates an OTP.</li>
+  <li>Your system sends the CSR + OTP and receives a <strong>compliance CSID</strong>.</li>
+  <li>You pass ZATCA's compliance checks by submitting sample invoices of each type you'll issue.</li>
+  <li>You then request the <strong>production CSID</strong>, which is what you sign real invoices with.</li>
+</ol>
+<p>Don't hard-code any of this. On a marketplace the credentials belong to whoever issues the invoice, so I store each connection as a record that admins manage from the dashboard, with the private key encrypted at rest:</p>
+<pre><code>// schema.prisma (excerpt)
+model ZatcaConnection {
+  id              String   @id @default(cuid())
+  environment     ZatcaEnv // SANDBOX | SIMULATION | PRODUCTION
+  vatNumber       String
+  privateKeyEnc   String   // encrypted with a KMS / app key, never plain text
+  complianceCsid  String?
+  productionCsid  String?
+  status          ZatcaConnectionStatus // PENDING_OTP | COMPLIANCE | ACTIVE | DISABLED
+  lastInvoiceHash String?
+  invoiceCounter  Int      @default(0)
+  updatedAt       DateTime @updatedAt
+}</code></pre>
+<p>Switching from simulation to production is then a data change made by a person with the right role — and it's recorded in the audit log.</p>
+
+<h2 id="chain">4. The invoice chain: counter, UUID and previous hash</h2>
+<p>Phase 2 invoices form a chain. Each one carries a UUID, an incrementing invoice counter, and the hash of the previous invoice from the same unit. That makes ordering a correctness problem, not a cosmetic one: two invoices created at the same moment must not get the same counter or point at the same previous hash.</p>
+<p>The fix is to take the next counter and previous hash inside a transaction that locks the connection row:</p>
+<pre><code>// zatca-chain.service.ts
+async allocate(connectionId: string) {
+  return this.prisma.$transaction(async (tx) =&gt; {
+    const [conn] = await tx.$queryRaw&lt;{ invoiceCounter: number; lastInvoiceHash: string | null }[]&gt;`
+      SELECT "invoiceCounter", "lastInvoiceHash"
+      FROM "ZatcaConnection" WHERE id = ${connectionId}
+      FOR UPDATE`;
+
+    const counter = conn.invoiceCounter + 1;
+    const previousHash = conn.lastInvoiceHash ?? INITIAL_PREVIOUS_HASH;
+    const xml = this.builder.build({ counter, previousHash, uuid: randomUUID() /* + invoice data */ });
+    const { signedXml, hash, qr } = this.signer.sign(xml, connectionId);
+
+    await tx.zatcaConnection.update({
+      where: { id: connectionId },
+      data: { invoiceCounter: counter, lastInvoiceHash: hash },
+    });
+    return { counter, signedXml, hash, qr };
+  });
+}</code></pre>
+<p><code>INITIAL_PREVIOUS_HASH</code> is the fixed value ZATCA specifies for the first invoice in a chain — take it from their developer documentation rather than from a blog post (including this one). The signed XML and hash are stored with the invoice so they're never regenerated later with different values.</p>
+
+<h2 id="pipeline">5. A submission pipeline that survives outages</h2>
+<p>Generation and submission are separate steps. Generation happens synchronously when the order is paid (so the customer gets an invoice and QR code immediately). Submission happens in a queue worker, with retries:</p>
+<pre><code>// order paid → invoice issued → queued for ZATCA
+await this.prisma.einvoice.create({
+  data: { orderId, type: "SIMPLIFIED", counter, xml: signedXml, hash, qr, status: "PENDING" },
+});
+await this.queue.add("zatca-report", { orderId }, { attempts: 8, backoff: { type: "exponential", delay: 60_000 } });</code></pre>
+<p>Every invoice has an explicit status — <code>PENDING</code>, <code>REPORTED</code>, <code>CLEARED</code>, <code>REPORTED_WITH_WARNINGS</code>, <code>REJECTED</code> — and the raw ZATCA response is stored next to it. Warnings are not failures, but they deserve a look; rejections stop the line and alert a human, because the next invoice in the chain depends on this one being right.</p>
+<p>Because simplified invoices only need to be reported within 24 hours, a ZATCA outage of a few minutes is a non-event: the queue catches up on its own.</p>
+
+<h2 id="refunds">6. Refunds become credit notes</h2>
+<p>You never edit or delete an issued e-invoice. A refund produces a <strong>credit note</strong> that references the original invoice, goes through the same chain and the same pipeline, and is reported the same way. On a marketplace I tie this to the payment refund, so one action keeps everything consistent:</p>
+<ol>
+  <li>The payment gateway confirms the refund amount.</li>
+  <li>The order and the merchant's wallet are updated in one transaction.</li>
+  <li>A credit note for that amount is issued against the original invoice and queued for ZATCA.</li>
+  <li>The customer and merchant are notified, with the bilingual PDF attached.</li>
+</ol>
+<p>Partial refunds produce partial credit notes; the sum of credit notes can never exceed the original invoice.</p>
+
+<h2 id="admin">7. Give finance a screen, not a log file</h2>
+<p>The thing that makes ZATCA calm in production isn't the XML — it's visibility. Finance and support should be able to answer "was this invoice accepted?" without a developer. The admin screen I build shows, per invoice: type, counter, status, ZATCA warnings or errors in plain language, a link to the PDF, and a "resubmit" action that's only enabled for failed submissions. The same screen lets admins manage connections and switch environments, with every change in the audit log.</p>
+
+<h2 id="checklist">8. Production checklist</h2>
+<ul class="check">
+  <li>Invoice type decided per transaction (standard → clearance, simplified → reporting).</li>
+  <li>CSIDs and private keys stored per connection, encrypted, managed by admins.</li>
+  <li>Counter and previous hash allocated inside a locking transaction.</li>
+  <li>Signed XML, hash and QR stored once and never regenerated.</li>
+  <li>Submission in a queue with retries; status and raw response stored per invoice.</li>
+  <li>Refunds produce credit notes that reference the original invoice.</li>
+  <li>Simulation environment used before production, and switching recorded in the audit log.</li>
+  <li>Bilingual (Arabic/English) PDFs with the QR code for customers.</li>
+</ul>
+<p>ZATCA updates its specifications and tooling, so always check the official <a href="https://zatca.gov.sa/en/E-Invoicing/Pages/default.aspx" target="_blank" rel="noopener noreferrer">ZATCA e-invoicing pages</a> and developer portal for current details before you ship. If you need ZATCA e-invoicing built into your own NestJS or Laravel platform — together with Moyasar payments and merchant settlements — <a href="/#contact">get in touch</a>.</p>
+
+        </div>
+      </div>
+    </article>
+
+    <section id="contact" class="section contact" aria-labelledby="contact-title">
+      <div class="container">
+        <h2 id="contact-title" class="contact-title reveal">Let's build <em>something.</em></h2>
+        <div class="contact-grid">
+          <address class="contact-list reveal">
+            <a class="contact-row" href="mailto:bilalarshad2088@gmail.com"><span class="contact-label">Email</span><span class="contact-val" dir="ltr">bilalarshad2088@gmail.com</span><span class="contact-arrow" aria-hidden="true">→</span></a>
+            <a class="contact-row" href="https://wa.me/966580712710" target="_blank" rel="noopener noreferrer"><span class="contact-label">WhatsApp</span><span class="contact-val" dir="ltr">+966 58 071 2710</span><span class="contact-arrow" aria-hidden="true">↗</span></a>
+            <a class="contact-row" href="https://www.linkedin.com/in/bilalarshadramay/" target="_blank" rel="noopener noreferrer"><span class="contact-label">LinkedIn</span><span class="contact-val" dir="ltr">bilalarshadramay</span><span class="contact-arrow" aria-hidden="true">↗</span></a>
+          </address>
+          <nav class="sp-related reveal" aria-label="Also hire me as">
+            <p class="route">Also hire me as</p>
+            <a href="/zatca-e-invoicing-developer/">ZATCA e-invoicing developer <span aria-hidden="true">→</span></a>
+            <a href="/blog/moyasar-nestjs-integration/">Guide: Moyasar + NestJS <span aria-hidden="true">→</span></a>
+            <a href="/nestjs-developer/">NestJS developer <span aria-hidden="true">→</span></a>
+            <a href="/moyasar-payment-integration/">Moyasar payment integration <span aria-hidden="true">→</span></a>
+          </nav>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p><span class="dot" aria-hidden="true"></span> &copy; <span id="year"></span> Bilal Arshad · Senior Full-Stack Developer</p>
+      <a href="/">bilalarshad.pro ↑</a>
+    </div>
+  </footer>
+
+  <script src="/js/main.js?v=20261016b" defer></script>
+</body>
+</html>
