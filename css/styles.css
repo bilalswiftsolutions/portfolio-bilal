@@ -1212,3 +1212,37 @@ main > section.section { position: relative; }
 :root[data-calm="1"] .roof-bit { display: none !important; }
 .bento { row-gap: 52px; }
 .career { gap: 44px; }
+
+/* ---------- Cat and mouse ---------- */
+.roof-bit.who-mouse { width: 56px; }
+.roof-bit.pose-recline { width: 180px; }
+.roof-bit .c-tail { transform-box: fill-box; transform-origin: 0% 100%; animation: swish 2.4s ease-in-out infinite; }
+.roof-bit .r-tail { transform-origin: 0% 100%; animation-duration: 3.4s; }
+@keyframes swish { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(-14deg); } }
+.roof-bit .r-z { font: 800 11px var(--sans); fill: var(--o-400); opacity: 0; animation: snooze 3s ease-in-out infinite; }
+.roof-bit .r-z.z2 { animation-delay: 1.5s; }
+.roof-bit.shades .r-z { display: none; }
+.roof-bit.pose-sneak .g-pose { animation: sneak 2.8s ease-in-out infinite; }
+.roof-bit.pose-sneak .g-arm { transform: rotate(-60deg); }
+.roof-bit.pose-sneak .g-eyes { animation: peek 2.8s ease-in-out infinite; }
+@keyframes sneak { 0%, 100% { transform: translateX(0) scaleY(0.88) rotate(4deg); } 25% { transform: translateX(-6px) scaleY(0.9) rotate(-2deg); } 50% { transform: translateX(-12px) scaleY(0.86) rotate(4deg); } 75% { transform: translateX(-6px) scaleY(0.9) rotate(-2deg); } }
+@keyframes peek { 0%, 40%, 100% { transform: translateX(0); } 50%, 80% { transform: translateX(-2.5px); } }
+.roof-bit.who-mouse.pose-dance .g-pose { animation-duration: 0.7s; }
+.chase { position: absolute; z-index: 6; left: 0; right: 0; bottom: calc(100% - 3px); height: 70px; pointer-events: none; overflow: visible; }
+.chase .ch-mouse, .chase .ch-cat { position: absolute; bottom: 0; left: 0; display: block; opacity: 0; }
+.chase .ch-mouse { width: 44px; }
+.chase .ch-cat { width: 66px; }
+.chase svg { display: block; width: 100%; height: auto; overflow: visible; filter: drop-shadow(0 6px 6px rgba(150, 60, 10, 0.22)); }
+.work--feature.is-visible .chase .ch-mouse { animation: runacross 7s cubic-bezier(.45,.05,.55,.95) 0.6s infinite; }
+.work--feature.is-visible .chase .ch-cat { animation: runacross 7s cubic-bezier(.45,.05,.55,.95) 1.15s infinite; }
+.work--feature.is-visible .chase svg { animation: hopping 0.28s ease-in-out infinite; }
+.chase .ch-cat .g-arm { transform: rotate(-70deg); }
+.chase .ch-cat .g-drink, .chase .ch-mouse .g-drink, .chase :is(.g-shades, .g-note, .g-flash) { display: none; }
+@keyframes runacross { 0% { transform: translateX(-90px) rotate(-10deg); opacity: 0; } 4% { opacity: 1; } 34% { transform: translateX(calc(var(--cw, 1100px) + 20px)) rotate(-10deg); opacity: 1; } 36%, 100% { transform: translateX(calc(var(--cw, 1100px) + 40px)); opacity: 0; } }
+@keyframes hopping { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-7px); } }
+.roof-bit :is(.g-drink, .g-shades, .g-hip, .g-note, .g-flash) { display: none; }
+.roof-bit.pose-model :is(.g-shades, .g-hip, .g-flash) { display: inline; }
+.roof-bit.pose-dance .g-note { display: inline; }
+:root[data-calm="1"] .chase { display: none !important; }
+@media (max-width: 640px) { .roof-bit.pose-recline { width: 132px; } .chase .ch-cat { width: 50px; } .chase .ch-mouse { width: 34px; } }
+.roof-bit.pose-wave .g-arm { transform-box: fill-box; transform-origin: 15% 90%; animation: wave 1.2s ease-in-out infinite; }

@@ -619,37 +619,83 @@
     setTimeout(update, 300);
   })();
 
-  // Bit relaxes on the roof of cards: lying, dancing, posing, waving
+  // Cat and mouse live on the card rooftops
   (() => {
     const cards = Array.from(document.querySelectorAll(".bento > .work, .career-item"));
     if (!cards.length) return;
-    const recline = '<svg viewBox="0 0 128 70" aria-hidden="true">' +
-      '<ellipse cx="66" cy="67" rx="58" ry="3.5" fill="rgba(120,55,15,.22)"/>' +
-      '<g class="r-legs"><path d="M50 58 C 70 60, 92 58, 112 55" stroke="#c4560a" stroke-width="8" fill="none" stroke-linecap="round"/><path d="M50 63 C 72 64, 94 62, 110 60" stroke="#a9460a" stroke-width="8" fill="none" stroke-linecap="round"/>' +
-      '<rect x="106" y="49" width="16" height="8" rx="4" fill="#8f3a07" transform="rotate(-18 114 53)"/><rect x="105" y="57" width="16" height="8" rx="4" fill="#7a3106" transform="rotate(-4 113 61)"/></g>' +
-      '<path d="M8 66 L12 50 L20 40" stroke="#c4560a" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>' +
-      '<g transform="rotate(-16 34 36)">' +
-      '<line x1="34" y1="11" x2="34" y2="3" stroke="#c4560a" stroke-width="3" stroke-linecap="round"/><circle class="r-bulb" cx="34" cy="3" r="4" fill="#ffb27a" stroke="#c4560a"/>' +
-      '<rect x="10" y="14" width="48" height="44" rx="15" fill="#a9460a"/><rect x="10" y="12" width="48" height="43" rx="15" fill="url(#kBody) #f2711c"/>' +
-      '<ellipse cx="24" cy="16" rx="9" ry="2.6" fill="#fff" opacity=".5" transform="rotate(-10 24 16)"/>' +
-      '<rect x="16" y="20" width="36" height="28" rx="10" fill="#fff"/>' +
-      '<g class="r-shades"><path d="M17 31H51" stroke="#2a1a10" stroke-width="2"/><rect x="18" y="27" width="13" height="8" rx="3.5" fill="#2a1a10"/><rect x="37" y="27" width="13" height="8" rx="3.5" fill="#2a1a10"/><path d="M20.5 29.5h4M39.5 29.5h4" stroke="#fff" stroke-opacity=".7" stroke-width="1.4" stroke-linecap="round"/></g>' +
-      '<g class="r-eyes"><ellipse cx="27" cy="31" rx="2.8" ry="3.8" fill="#2a1a10"/><ellipse cx="41" cy="31" rx="2.8" ry="3.8" fill="#2a1a10"/><circle cx="28" cy="29.6" r="1" fill="#fff"/><circle cx="42" cy="29.6" r="1" fill="#fff"/></g>' +
-      '<circle cx="22" cy="40" r="2.8" fill="#ffb27a"/><circle cx="46" cy="40" r="2.8" fill="#ffb27a"/><path d="M30 41q4 3.6 8 0" stroke="#2a1a10" stroke-width="2" fill="none" stroke-linecap="round"/>' +
+    const O = "url(#kBody) #f2711c", W = "url(#kHeartW) #fff6ee", ink = "#2a1a10";
+    const extras = (sy) => '<g class="g-shades"><path d="M22 ' + (sy + 4) + 'H58" stroke="' + ink + '" stroke-width="2"/><rect x="24" y="' + sy + '" width="14" height="9" rx="4" fill="' + ink + '"/><rect x="42" y="' + sy + '" width="14" height="9" rx="4" fill="' + ink + '"/><path d="M26.5 ' + (sy + 3) + 'h4M44.5 ' + (sy + 3) + 'h4" stroke="#fff" stroke-opacity=".7" stroke-width="1.5" stroke-linecap="round"/></g>' +
+      '<text class="g-note n1" x="-6" y="14">♪</text><text class="g-note n2" x="72" y="2">♫</text><path class="g-flash f1" d="M-6 10l3 7 7 3-7 3-3 7-3-7-7-3 7-3Z"/><path class="g-flash f2" d="M84 56l2.4 5.6 5.6 2.4-5.6 2.4-2.4 5.6-2.4-5.6-5.6-2.4 5.6-2.4Z"/>';
+    const drink = (x, y) => '<g class="g-drink"><path d="M' + x + " " + y + 'h12l-1.8 13h-8.4Z" fill="#fff" opacity=".9" stroke="#d75c0c" stroke-width="1.1"/><path d="M' + (x + 1.4) + " " + (y + 4.5) + 'h9.2l-1.1 7.6h-7Z" fill="#ffb27a"/><line x1="' + (x + 8) + '" y1="' + (y - 7) + '" x2="' + (x + 6) + '" y2="' + (y + 7) + '" stroke="#d75c0c" stroke-width="1.5" stroke-linecap="round"/><circle cx="' + (x + 12.5) + '" cy="' + y + '" r="3" fill="#ffd27a" stroke="#e8902f"/></g>';
+    const whisk = (y) => '<path d="M30 ' + y + 'l-15-2M30 ' + (y + 3) + 'l-15 2M50 ' + y + 'l15-2M50 ' + (y + 3) + 'l15 2" stroke="' + ink + '" stroke-width="1" stroke-linecap="round" opacity=".7"/>';
+
+    const cat = '<svg viewBox="0 0 80 100" aria-hidden="true">' +
+      '<ellipse cx="40" cy="96" rx="20" ry="3.5" fill="rgba(120,55,15,.22)"/>' +
+      '<path class="c-tail" d="M56 82 C78 78 78 52 66 44" stroke="#e0600a" stroke-width="7" fill="none" stroke-linecap="round"/>' +
+      '<ellipse cx="40" cy="72" rx="18" ry="20" fill="' + O + '"/><ellipse cx="40" cy="77" rx="10" ry="13" fill="#fff"/>' +
+      '<ellipse cx="31" cy="92" rx="7.5" ry="4.2" fill="#fff" stroke="#e8cdb5"/><ellipse cx="49" cy="92" rx="7.5" ry="4.2" fill="#fff" stroke="#e8cdb5"/>' +
+      '<g class="g-hip"><path d="M24 64 q-9 6-5 14" stroke="#d75c0c" stroke-width="5.5" fill="none" stroke-linecap="round"/></g>' +
+      '<g class="g-arm"><path d="M56 63 q11-6 10-17" stroke="#d75c0c" stroke-width="5.5" fill="none" stroke-linecap="round"/><circle cx="66" cy="45" r="4.4" fill="#fff" stroke="#e8cdb5"/>' + drink(60, 28) + '</g>' +
+      '<path d="M21 28 L18 5 L37 18 Z" fill="#e0600a"/><path d="M24 23 L22.5 11 L32 18.5 Z" fill="#ffd2b0"/><path d="M59 28 L62 5 L43 18 Z" fill="#e0600a"/><path d="M56 23 L57.5 11 L48 18.5 Z" fill="#ffd2b0"/>' +
+      '<circle cx="40" cy="38" r="22" fill="' + O + '"/><ellipse cx="31" cy="25" rx="8" ry="4" fill="#fff" opacity=".45" transform="rotate(-25 31 25)"/>' +
+      '<path d="M36 17l1.6 6M40 16v6.5M44 17l-1.6 6" stroke="#c24a06" stroke-width="2" stroke-linecap="round"/>' +
+      '<ellipse cx="40" cy="47" rx="11.5" ry="8" fill="#fff"/>' +
+      '<g class="g-eyes"><ellipse cx="32" cy="36" rx="3.6" ry="4.9" fill="' + ink + '"/><ellipse cx="48" cy="36" rx="3.6" ry="4.9" fill="' + ink + '"/><circle cx="33.3" cy="34.2" r="1.3" fill="#fff"/><circle cx="49.3" cy="34.2" r="1.3" fill="#fff"/></g>' +
+      '<path d="M37.4 42.5h5.2l-2.6 3.2Z" fill="#e0600a"/><path d="M40 45.6q-2.6 4-6 2M40 45.6q2.6 4 6 2" stroke="' + ink + '" stroke-width="1.8" fill="none" stroke-linecap="round"/>' + whisk(45) +
+      '<circle cx="25" cy="44" r="3" fill="#ffb27a"/><circle cx="55" cy="44" r="3" fill="#ffb27a"/>' + extras(31) + "</svg>";
+
+    const mouse = '<svg viewBox="0 0 80 100" aria-hidden="true">' +
+      '<ellipse cx="40" cy="96" rx="16" ry="3" fill="rgba(120,55,15,.2)"/>' +
+      '<path class="c-tail" d="M50 86 C72 92 78 72 66 62" stroke="#f0b48a" stroke-width="2.6" fill="none" stroke-linecap="round"/>' +
+      '<ellipse cx="40" cy="76" rx="14" ry="17" fill="' + W + '" stroke="#ead2bd"/>' +
+      '<ellipse cx="33" cy="93" rx="6" ry="3.2" fill="#ffb27a"/><ellipse cx="47" cy="93" rx="6" ry="3.2" fill="#ffb27a"/>' +
+      '<g class="g-hip"><path d="M27 70 q-8 5-5 12" stroke="#ead2bd" stroke-width="4.5" fill="none" stroke-linecap="round"/></g>' +
+      '<g class="g-arm"><path d="M53 70 q10-6 9-17" stroke="#ead2bd" stroke-width="4.5" fill="none" stroke-linecap="round"/><circle cx="62" cy="52" r="3.6" fill="#ffb27a"/>' + drink(57, 36) + '</g>' +
+      '<circle cx="21" cy="24" r="14" fill="' + W + '" stroke="#ead2bd"/><circle cx="21" cy="24" r="8.5" fill="#ffb27a"/><circle cx="59" cy="24" r="14" fill="' + W + '" stroke="#ead2bd"/><circle cx="59" cy="24" r="8.5" fill="#ffb27a"/>' +
+      '<circle cx="40" cy="44" r="19" fill="' + W + '" stroke="#ead2bd"/><ellipse cx="33" cy="33" rx="7" ry="3.5" fill="#fff" transform="rotate(-25 33 33)"/>' +
+      '<g class="g-eyes"><ellipse cx="33" cy="42" rx="4" ry="5.6" fill="' + ink + '"/><ellipse cx="47" cy="42" rx="4" ry="5.6" fill="' + ink + '"/><circle cx="34.5" cy="40" r="1.5" fill="#fff"/><circle cx="48.5" cy="40" r="1.5" fill="#fff"/></g>' +
+      '<circle cx="40" cy="51" r="3.2" fill="#f2711c"/><path d="M36 55q4 3.6 8 0" stroke="' + ink + '" stroke-width="1.8" fill="none" stroke-linecap="round"/><rect x="38.4" y="55.5" width="3.2" height="3" rx=".8" fill="#fff" stroke="' + ink + '" stroke-width=".8"/>' + whisk(51) +
+      '<circle cx="27" cy="50" r="2.8" fill="#ffd2b0"/><circle cx="53" cy="50" r="2.8" fill="#ffd2b0"/>' + extras(37) + "</svg>";
+
+    const lazyCat = '<svg viewBox="0 0 140 72" aria-hidden="true">' +
+      '<ellipse cx="72" cy="69" rx="62" ry="3.5" fill="rgba(120,55,15,.22)"/>' +
+      '<path class="c-tail r-tail" d="M110 58 C130 56 136 36 124 28" stroke="#e0600a" stroke-width="7" fill="none" stroke-linecap="round"/>' +
+      '<ellipse cx="78" cy="55" rx="36" ry="13" fill="' + O + '"/><ellipse cx="76" cy="60" rx="24" ry="7" fill="#fff"/>' +
+      '<path d="M66 45l2 6M78 43l1 6M90 44l-1 6" stroke="#c24a06" stroke-width="2.2" stroke-linecap="round"/>' +
+      '<ellipse class="r-legs" cx="112" cy="64" rx="10" ry="4.5" fill="#fff" stroke="#e8cdb5"/><ellipse cx="100" cy="66" rx="9" ry="4" fill="#fff" stroke="#e8cdb5"/>' +
+      '<path d="M12 67 L16 52 L26 44" stroke="#d75c0c" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>' +
+      '<g transform="rotate(-14 34 32)">' +
+      '<path d="M17 24 L14 3 L32 15 Z" fill="#e0600a"/><path d="M20 20 L18.5 9 L28 15.5 Z" fill="#ffd2b0"/><path d="M51 24 L54 3 L36 15 Z" fill="#e0600a"/><path d="M48 20 L49.5 9 L40 15.5 Z" fill="#ffd2b0"/>' +
+      '<circle cx="34" cy="34" r="20" fill="' + O + '"/><ellipse cx="26" cy="23" rx="7" ry="3.4" fill="#fff" opacity=".45" transform="rotate(-25 26 23)"/>' +
+      '<ellipse cx="34" cy="42" rx="10.5" ry="7.4" fill="#fff"/>' +
+      '<g class="r-shades"><path d="M17 31H51" stroke="' + ink + '" stroke-width="2"/><rect x="18" y="27" width="13" height="8.5" rx="3.8" fill="' + ink + '"/><rect x="37" y="27" width="13" height="8.5" rx="3.8" fill="' + ink + '"/><path d="M20.5 29.5h4M39.5 29.5h4" stroke="#fff" stroke-opacity=".7" stroke-width="1.4" stroke-linecap="round"/></g>' +
+      '<g class="r-eyes"><path d="M23 32q4-3.5 8 0M37 32q4-3.5 8 0" stroke="' + ink + '" stroke-width="2.4" fill="none" stroke-linecap="round"/></g>' +
+      '<path d="M31.6 38h4.8l-2.4 3Z" fill="#e0600a"/><path d="M34 41q-2.4 3.4-5.4 1.8M34 41q2.4 3.4 5.4 1.8" stroke="' + ink + '" stroke-width="1.6" fill="none" stroke-linecap="round"/>' +
+      '<path d="M24 41l-13-1.6M24 44l-13 1.6M44 41l13-1.6M44 44l13 1.6" stroke="' + ink + '" stroke-width=".9" opacity=".7"/>' +
       '</g>' +
-      '<g class="r-arm"><path d="M58 40 q10 2 13 12" stroke="#c4560a" stroke-width="5.5" fill="none" stroke-linecap="round"/><g class="r-drink"><path d="M66 38h12l-1.8 13h-8.4Z" fill="#fff" opacity=".9" stroke="#d75c0c" stroke-width="1.1"/><path d="M67.4 42.5h9.2l-1.1 7.6h-7Z" fill="#ffb27a"/><line x1="74" y1="31" x2="72" y2="45" stroke="#d75c0c" stroke-width="1.5" stroke-linecap="round"/><circle cx="78.5" cy="38" r="3" fill="#ffd27a" stroke="#e8902f"/></g></g>' +
-      '</svg>';
-    const standing = document.querySelector(".guide .g-pose");
-    const stand = standing ? standing.innerHTML : null;
-    const poses = ["recline", "dance", "model", "recline", "wave"];
+      '<g class="r-arm"><path d="M58 46 q10 0 13-10" stroke="#d75c0c" stroke-width="5.5" fill="none" stroke-linecap="round"/><circle cx="71" cy="35" r="4" fill="#fff" stroke="#e8cdb5"/>' + drink(66, 20) + '</g>' +
+      '<text class="r-z" x="58" y="12">z</text><text class="r-z z2" x="66" y="4">z</text>' +
+      "</svg>";
+
+    const plan = [["recline", "cat"], ["dance", "mouse"], ["sneak", "cat"], ["model", "mouse"], ["model", "cat"], ["wave", "mouse"]];
     cards.forEach((card, i) => {
-      const pose = poses[i % poses.length];
-      if (pose !== "recline" && !stand) return;
+      const [pose, who] = plan[i % plan.length];
       const r = document.createElement("span");
-      r.className = "roof-bit pose-" + pose + (i % 2 ? " left" : "") + (pose === "recline" && i % 3 === 0 ? " shades" : "");
+      r.className = "roof-bit pose-" + pose + " who-" + who + (i % 2 ? " left" : "") + (pose === "recline" && i % 4 === 0 ? " shades" : "");
       r.setAttribute("aria-hidden", "true");
-      r.innerHTML = '<span class="g-inner"><span class="g-pose">' + (pose === "recline" ? recline : stand) + "</span></span>";
+      r.innerHTML = '<span class="g-inner"><span class="g-pose">' + (pose === "recline" ? lazyCat : who === "cat" ? cat : mouse) + "</span></span>";
       card.appendChild(r);
     });
+
+    const feature = document.querySelector(".work--feature");
+    if (feature) {
+      const ch = document.createElement("span");
+      ch.className = "chase";
+      ch.setAttribute("aria-hidden", "true");
+      ch.innerHTML = '<span class="ch-mouse">' + mouse + '</span><span class="ch-dust"></span><span class="ch-cat">' + cat + "</span>";
+      feature.appendChild(ch);
+      const setW = () => ch.style.setProperty("--cw", feature.offsetWidth + "px");
+      setW(); window.addEventListener("resize", setW);
+    }
   })();
 })();
