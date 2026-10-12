@@ -27,5 +27,6 @@
 ## Portfolio
 
 - [Portfolio home](https://bilalarshad.pro/)
-- [Résumé](https://bilalarshad.pro/resume/resume.html)
+- [Résumé (PDF)](https://bilalarshad.pro/resume/Bilal_Arshad_Resume.pdf)
+- [Résumé (HTML)](https://bilalarshad.pro/resume/resume.html)
 - [Keeld](https://keeldt.sa/), [CineBot](http://cinebot.bilalarshad.pro/), [Ramay Translation](https://ramaytranslation.com/), [RamayTik](https://ramaytik.org/), [Altadefinizione](https://altadefinizionepremium.net/)

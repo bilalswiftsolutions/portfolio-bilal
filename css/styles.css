@@ -320,6 +320,7 @@ em { font-style: normal; }
     var(--glass);
   border: 1px solid var(--glass-border);
   box-shadow: var(--inner), 0 40px 80px -30px rgba(8, 60, 100, 0.6);
+  overflow: hidden;
 }
 .portal::after { content: ""; position: absolute; inset: -1px; border-radius: inherit; padding: 1.5px; background: var(--rim); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0); pointer-events: none; }
 .halo {
@@ -341,12 +342,13 @@ em { font-style: normal; }
   position: absolute;
   left: 50%;
   bottom: 0;
-  width: 96%;
-  height: auto;
+  width: auto;
+  height: 93%;
+  max-width: none;
   transform: translateX(-50%);
-  -webkit-mask-image: linear-gradient(to bottom, #000 76%, transparent 99%), linear-gradient(to right, transparent 0, #000 12%, #000 88%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, #000 82%, transparent 100%), linear-gradient(to right, transparent 0, #000 9%, #000 91%, transparent 100%);
   -webkit-mask-composite: source-in;
-  mask-image: linear-gradient(to bottom, #000 76%, transparent 99%), linear-gradient(to right, transparent 0, #000 12%, #000 88%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 82%, transparent 100%), linear-gradient(to right, transparent 0, #000 9%, #000 91%, transparent 100%);
   mask-composite: intersect;
 }
 .chip-float {
