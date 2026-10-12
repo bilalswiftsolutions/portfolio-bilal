@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
@@ -39,14 +39,14 @@
   <meta name="twitter:image" content="https://bilalarshad.pro/assets/og-image.png" />
   <meta name="twitter:image:alt" content="Photo of Bilal Arshad — Laravel developer" />
 
-  <meta name="theme-color" content="#05060d" />
+  <meta name="theme-color" content="#fbf6f0" />
   <script>
     /* Apply a saved theme before first paint; dark is the default */
     (function () {
       try {
-        if (localStorage.getItem("theme") === "light") {
-          document.documentElement.setAttribute("data-theme", "light");
-          document.querySelector('meta[name="theme-color"]').setAttribute("content", "#eef1f8");
+        if (localStorage.getItem("theme") === "dark") {
+          document.documentElement.setAttribute("data-theme", "dark");
+          document.querySelector('meta[name="theme-color"]').setAttribute("content", "#17100b");
         }
       } catch (e) {}
     })();
@@ -59,10 +59,10 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Sora:wght@300..800&family=Geist+Mono:wght@400..600&display=swap" as="style" />
-  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300..800&family=Geist+Mono:wght@400..600&display=swap" rel="stylesheet" />
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,300..800&family=Geist+Mono:wght@400..600&display=swap" as="style" />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,300..800&family=Geist+Mono:wght@400..600&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="/css/styles.css?v=20261014f" />
+  <link rel="stylesheet" href="/css/styles.css?v=20261015a" />
 
   <script type="application/ld+json">
   {
@@ -221,7 +221,6 @@
   <a class="skip-link" href="#main">Skip to content</a>
   <div class="scroll-progress" aria-hidden="true"></div>
   <div class="bg-grid" aria-hidden="true"></div>
-  <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="gaugeGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#38bdf8"/><stop offset=".5" stop-color="#22d3ee"/><stop offset="1" stop-color="#34d399"/></linearGradient></defs></svg>
 
   <header class="site-header">
     <div class="container header-inner">
@@ -239,7 +238,7 @@
       </nav>
       <div class="header-actions">
         <a class="lang-switch" href="/ar/" hreflang="ar" lang="ar">عربي</a>
-        <button class="theme-toggle" type="button" aria-label="Switch to light mode" title="Switch to light mode">
+        <button class="theme-toggle" type="button" aria-label="Switch to dark mode" title="Switch to dark mode">
           <span class="theme-track" aria-hidden="true">
             <svg class="icon-moon" viewBox="0 0 24 24"><path fill="currentColor" d="M20.7 14.6A8.5 8.5 0 0 1 9.4 3.3a.6.6 0 0 0-.8-.7A9.8 9.8 0 1 0 21.4 15.4a.6.6 0 0 0-.7-.8Z"/></svg>
             <svg class="icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.5" fill="currentColor"/><g stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></g></svg>
@@ -254,52 +253,66 @@
   </header>
 
   <main id="main">
-    <section class="hero-x" aria-labelledby="hero-title">
-      <div class="container hero-x-grid">
-        <div>
-          <p class="status-pill"><span class="dot" aria-hidden="true"></span> Riyadh, Saudi Arabia · available now</p>
-          <p class="eyebrow">Senior Full-Stack Developer · Laravel · NestJS · Next.js · Vue.js</p>
-          <h1 id="hero-title" >
-            <span class="hero-name">Bilal Arshad</span>
-            <span class="hero-tagline">Full-stack developer building <em>web platforms</em> and <em>scalable APIs</em> that ship in production.</span>
-          </h1>
-          <p class="hero-lead">
-            Senior full-stack developer with 8+ years delivering Laravel, NestJS, Next.js, React and Vue.js
-            applications — marketplaces, payment and e-invoicing integrations, streaming platforms, REST APIs,
-            AI agents and Linux/Docker deployments.
-          </p>
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="#projects">View projects <span aria-hidden="true">↘</span></a>
-            <a class="btn btn-ghost" href="/resume/Bilal_Arshad_Resume.pdf?v=2026-10" download="Bilal_Arshad_Resume.pdf">Download CV <span aria-hidden="true">↓</span></a>
-            <a class="btn btn-link" href="mailto:bilalarshad2088@gmail.com">Email me ↗</a>
+    <section class="hero-w" aria-labelledby="hero-title">
+      <div class="container">
+        <div class="hero-w-grid">
+          <div>
+            <p class="status-pill"><span class="dot" aria-hidden="true"></span> Riyadh, Saudi Arabia · available now</p>
+            <p class="eyebrow">Senior Full-Stack Developer · Laravel · NestJS · Next.js · Vue.js</p>
+            <h1 id="hero-title">
+              <span class="hero-name"><span class="w">Bilal</span> <span class="w">Arshad</span></span>
+              <span class="hero-tagline">Full-stack developer building web platforms and <em>scalable APIs<svg class="squiggle" viewBox="0 0 200 16" preserveAspectRatio="none" aria-hidden="true"><path d="M3 10 C 30 3, 52 14, 80 8 S 130 3, 160 9 S 190 11, 197 6"/></svg></em> that ship in production.</span>
+            </h1>
+            <p class="hero-lead">
+              Senior full-stack developer with 8+ years delivering Laravel, NestJS, Next.js, React and Vue.js
+              applications — marketplaces, payment and e-invoicing integrations, streaming platforms, REST APIs,
+              AI agents and Linux/Docker deployments.
+            </p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#projects">View projects <span aria-hidden="true">↓</span></a>
+              <a class="btn btn-ghost" href="/resume/Bilal_Arshad_Resume.pdf?v=2026-10" download="Bilal_Arshad_Resume.pdf">Download CV</a>
+              <a class="btn btn-link" href="mailto:bilalarshad2088@gmail.com">Email me ↗</a>
+            </div>
+          </div>
+          <div class="stage">
+            <span class="hero-bit"><svg class="bit waving" viewBox="0 0 90 100" aria-hidden="true">
+<ellipse class="b-shadow" cx="45" cy="95" rx="24" ry="4"/>
+<path class="b-limb" d="M30 74 L28 86"/><path class="b-limb" d="M60 74 L62 86"/>
+<rect class="b-foot" x="20" y="84" width="15" height="8" rx="4"/><rect class="b-foot" x="55" y="84" width="15" height="8" rx="4"/>
+<path class="b-limb" d="M16 52 Q6 58 9 68"/>
+<g class="b-arm-r"><path class="b-limb" d="M74 52 Q86 44 84 32"/><circle class="b-shade" cx="84" cy="30" r="4.5"/></g>
+<g class="b-head">
+<line class="b-ant" x1="45" y1="16" x2="45" y2="6"/><circle class="b-bulb" cx="45" cy="5" r="4.5"/>
+<rect class="b-shade" x="12" y="18" width="66" height="60" rx="20"/>
+<rect class="b-body" x="12" y="16" width="66" height="58" rx="20"/>
+<path class="b-shine" d="M22 26 Q30 20 44 20 L40 24 Q28 24 24 32 Z"/>
+<rect class="b-screen" x="21" y="26" width="48" height="36" rx="13"/>
+<rect class="b-eye" x="33" y="35" width="6" height="11" rx="3"/><rect class="b-eye" x="51" y="35" width="6" height="11" rx="3"/>
+<circle class="b-cheek" cx="28" cy="51" r="3.2"/><circle class="b-cheek" cx="62" cy="51" r="3.2"/>
+<path class="b-mouth" d="M40 52 Q45 56.5 50 52"/>
+</g>
+</svg></span>
+            <figure class="pebble" aria-label="Bilal Arshad portrait">
+              <img src="/assets/portrait-cutout.webp?v=2" alt="Bilal Arshad — senior full-stack developer based in Riyadh, Saudi Arabia" width="788" height="1037" fetchpriority="high" decoding="async" />
+            </figure>
+            <div class="note n1"><b>2.4M</b><span>users served</span></div>
+            <div class="note n2"><b>2s → 120ms</b><span>page load, with Redis</span></div>
           </div>
         </div>
-        <div class="portal-wrap">
-          <figure class="portal" aria-label="Bilal Arshad portrait">
-            <span class="halo" aria-hidden="true"></span>
-            <img src="/assets/portrait-cutout.webp?v=2" alt="Bilal Arshad — senior full-stack developer based in Riyadh, Saudi Arabia" width="788" height="1037" fetchpriority="high" decoding="async" />
-          </figure>
-          <div class="chip-float c1" data-depth="14"><span class="orb orb-cyan" aria-hidden="true"></span><div><b>2.4M</b><span>users served</span></div></div>
-          <div class="chip-float c2" data-depth="-18"><span class="orb orb-violet" aria-hidden="true"></span><div><b>120ms</b><span>from 2s load</span></div></div>
-          <div class="chip-float c3" data-depth="20"><span class="orb orb-green" aria-hidden="true"></span><div><b>Moyasar · ZATCA</b><span>payments &amp; e-invoicing</span></div></div>
-          <div class="chip-float c4" data-depth="-12"><span class="orb orb-amber" aria-hidden="true"></span><div><b>AI agents</b><span>LangGraph · 16 tools</span></div></div>
-        </div>
-      </div>
-      <div class="container">
-        <dl class="hero-stats" aria-label="Highlights">
-          <div><dt>8+</dt><dd>Years experience</dd></div>
-          <div><dt>50+</dt><dd>Projects delivered</dd></div>
+        <dl class="panel" aria-label="Highlights">
+          <div><dt>8<small>+</small></dt><dd>Years building</dd></div>
+          <div><dt>50<small>+</small></dt><dd>Projects delivered</dd></div>
           <div><dt>119</dt><dd>Data models in one backend</dd></div>
-          <div><dt>95%</dt><dd>Customer satisfaction</dd></div>
+          <div><dt>95<small>%</small></dt><dd>Customer satisfaction</dd></div>
         </dl>
+        <p class="shipped"><b>shipped →</b><span>Keeld</span><span>Altadefinizione</span><span>CineBot</span><span>Ramay Translation</span><span>RamayTik</span><span>Cafi</span><span>Xdock</span><span>Easy Eats</span></p>
       </div>
-      <div class="marquee" aria-hidden="true"><div class="marquee-track"><span>Keeld</span><i>◆</i><span>Altadefinizione</span><i>◆</i><span>CineBot</span><i>◆</i><span>Ramay Translation</span><i>◆</i><span>RamayTik</span><i>◆</i><span>Cafi</span><i>◆</i><span>Xdock</span><i>◆</i><span>Super 7</span><i>◆</i><span>Easy Eats</span><i>◆</i><span>Siloc</span><i>◆</i><span>Keeld</span><i>◆</i><span>Altadefinizione</span><i>◆</i><span>CineBot</span><i>◆</i><span>Ramay Translation</span><i>◆</i><span>RamayTik</span><i>◆</i><span>Cafi</span><i>◆</i><span>Xdock</span><i>◆</i><span>Super 7</span><i>◆</i><span>Easy Eats</span><i>◆</i><span>Siloc</span><i>◆</i></div></div>
     </section>
 
     <section id="record" class="section" aria-labelledby="record-title">
       <div class="container">
         <header class="section-head">
-          <span class="route reveal"><b>01</b> Impact</span>
+          <span class="route reveal"><b>01</b> impact</span>
           <h2 id="record-title" class="section-title reveal">Measured in <em>production.</em></h2>
         </header>
         <div class="gauges">
@@ -334,7 +347,7 @@
       <link itemprop="image" href="https://bilalarshad.pro/assets/bilal-arshad.jpg" />
       <div class="container">
         <header class="section-head">
-          <span class="route reveal"><b>02</b> About</span>
+          <span class="route reveal"><b>02</b> about</span>
           <h2 id="about-title" class="section-title reveal">About <em>Bilal Arshad</em></h2>
         </header>
         <div class="story-panel reveal">
@@ -380,14 +393,15 @@
     <section id="skills" class="section" aria-labelledby="skills-title">
       <div class="container">
         <header class="section-head">
-          <span class="route reveal"><b>03</b> Stack</span>
+          <span class="route reveal"><b>03</b> stack</span>
           <h2 id="skills-title" class="section-title reveal">Skills</h2>
+          <p class="section-sub reveal">Every key below is something I've used in production. Go on, press one.</p>
         </header>
         <div class="toolkit">
-          <article class="tool reveal"><span class="orb orb-cyan" aria-hidden="true"></span><h3>Backend</h3><ul class="chips"><li>PHP</li><li>Laravel</li><li>Lumen</li><li>Java</li><li>Node.js</li><li>NestJS</li><li>TypeScript</li><li>Python</li><li>FastAPI</li><li>LangGraph</li><li>REST APIs</li><li>Queues</li><li>WebSockets</li><li>MySQL</li><li>PostgreSQL</li><li>Prisma</li><li>Redis</li><li>Elasticsearch</li><li>Meilisearch</li><li>Scout</li></ul></article>
-          <article class="tool reveal"><span class="orb orb-violet" aria-hidden="true"></span><h3>Frontend</h3><ul class="chips"><li>Next.js</li><li>React.js</li><li>TanStack Query</li><li>Vue.js</li><li>Vuex</li><li>Inertia.js</li><li>Vuetify</li><li>Tailwind CSS</li><li>Arabic/RTL UI</li><li>Electron.js</li><li>Ionic</li><li>React Native</li><li>PouchDB (offline-first)</li></ul></article>
-          <article class="tool reveal"><span class="orb orb-green" aria-hidden="true"></span><h3>Payments &amp; Integrations</h3><ul class="chips"><li>Moyasar</li><li>Stripe</li><li>PayPal</li><li>ZATCA</li><li>Fatoora e-invoicing</li><li>Taqnyat SMS</li><li>Firebase push</li><li>OpenAI</li><li>Ollama</li><li>TMDB</li><li>Xero</li><li>Socket.io</li><li>Algolia</li><li>Sentry</li></ul></article>
-          <article class="tool reveal"><span class="orb orb-amber" aria-hidden="true"></span><h3>DevOps &amp; Tools</h3><ul class="chips"><li>Linux</li><li>Docker</li><li>Nginx</li><li>CI/CD</li><li>AWS</li><li>S3</li><li>SES</li><li>Cloudflare</li><li>BunnyCDN</li><li>DNS</li><li>Server deployment</li><li>Git</li><li>Claude Code</li><li>Codex</li><li>Cursor</li></ul></article>
+          <article class="tool reveal"><div class="tool-head"><span class="led" aria-hidden="true"></span><h3>Backend</h3><span class="fn" aria-hidden="true">fn · server</span></div><ul class="chips"><li>PHP</li><li>Laravel</li><li>Lumen</li><li>Java</li><li>Node.js</li><li>NestJS</li><li>TypeScript</li><li>Python</li><li>FastAPI</li><li>LangGraph</li><li>REST APIs</li><li>Queues</li><li>WebSockets</li><li>MySQL</li><li>PostgreSQL</li><li>Prisma</li><li>Redis</li><li>Elasticsearch</li><li>Meilisearch</li><li>Scout</li></ul></article>
+          <article class="tool reveal"><div class="tool-head"><span class="led" aria-hidden="true"></span><h3>Frontend</h3><span class="fn" aria-hidden="true">fn · client</span></div><ul class="chips"><li>Next.js</li><li>React.js</li><li>TanStack Query</li><li>Vue.js</li><li>Vuex</li><li>Inertia.js</li><li>Vuetify</li><li>Tailwind CSS</li><li>Arabic/RTL UI</li><li>Electron.js</li><li>Ionic</li><li>React Native</li><li>PouchDB (offline-first)</li></ul></article>
+          <article class="tool reveal"><div class="tool-head"><span class="led" aria-hidden="true"></span><h3>Payments &amp; Integrations</h3><span class="fn" aria-hidden="true">fn · money</span></div><ul class="chips"><li>Moyasar</li><li>Stripe</li><li>PayPal</li><li>ZATCA</li><li>Fatoora e-invoicing</li><li>Taqnyat SMS</li><li>Firebase push</li><li>OpenAI</li><li>Ollama</li><li>TMDB</li><li>Xero</li><li>Socket.io</li><li>Algolia</li><li>Sentry</li></ul></article>
+          <article class="tool reveal"><div class="tool-head"><span class="led" aria-hidden="true"></span><h3>DevOps &amp; Tools</h3><span class="fn" aria-hidden="true">fn · ship</span></div><ul class="chips"><li>Linux</li><li>Docker</li><li>Nginx</li><li>CI/CD</li><li>AWS</li><li>S3</li><li>SES</li><li>Cloudflare</li><li>BunnyCDN</li><li>DNS</li><li>Server deployment</li><li>Git</li><li>Claude Code</li><li>Codex</li><li>Cursor</li></ul></article>
         </div>
       </div>
     </section>
@@ -395,10 +409,27 @@
     <section id="experience" class="section" aria-labelledby="experience-title">
       <div class="container">
         <header class="section-head">
-          <span class="route reveal"><b>04</b> Career</span>
+          <span class="route reveal"><b>04</b> career</span>
           <h2 id="experience-title" class="section-title reveal">Experience</h2>
         </header>
         <ol class="career">
+          <li class="rail-bit" aria-hidden="true"><svg class="bit" viewBox="0 0 90 100" aria-hidden="true">
+<ellipse class="b-shadow" cx="45" cy="95" rx="24" ry="4"/>
+<path class="b-limb" d="M30 74 L28 86"/><path class="b-limb" d="M60 74 L62 86"/>
+<rect class="b-foot" x="20" y="84" width="15" height="8" rx="4"/><rect class="b-foot" x="55" y="84" width="15" height="8" rx="4"/>
+<path class="b-limb" d="M16 52 Q6 58 9 68"/>
+<g class="b-arm-r"><path class="b-limb" d="M74 52 Q86 44 84 32"/><circle class="b-shade" cx="84" cy="30" r="4.5"/></g>
+<g class="b-head">
+<line class="b-ant" x1="45" y1="16" x2="45" y2="6"/><circle class="b-bulb" cx="45" cy="5" r="4.5"/>
+<rect class="b-shade" x="12" y="18" width="66" height="60" rx="20"/>
+<rect class="b-body" x="12" y="16" width="66" height="58" rx="20"/>
+<path class="b-shine" d="M22 26 Q30 20 44 20 L40 24 Q28 24 24 32 Z"/>
+<rect class="b-screen" x="21" y="26" width="48" height="36" rx="13"/>
+<rect class="b-eye" x="33" y="35" width="6" height="11" rx="3"/><rect class="b-eye" x="51" y="35" width="6" height="11" rx="3"/>
+<circle class="b-cheek" cx="28" cy="51" r="3.2"/><circle class="b-cheek" cx="62" cy="51" r="3.2"/>
+<path class="b-mouth" d="M40 52 Q45 56.5 50 52"/>
+</g>
+</svg></li>
           <li class="career-item reveal">
             <span class="node" aria-hidden="true"></span>
             <div class="career-head"><h3>Senior Full Stack Developer <span>· Tamakan</span><span class="now">Now</span></h3></div>
@@ -471,12 +502,29 @@
     <section id="projects" class="section" aria-labelledby="projects-title">
       <div class="container">
         <header class="section-head">
-          <span class="route reveal"><b>05</b> Work</span>
+          <span class="route reveal"><b>05</b> work</span>
           <h2 id="projects-title" class="section-title reveal">Projects</h2>
           <p class="section-sub reveal">Marketplaces, payment platforms, full-stack web apps, ERP systems, streaming platforms, marketing tools, and SaaS products.</p>
         </header>
         <div class="bento">
           <article id="keeld" class="work work--feature reveal">
+            <span class="peek-bit" aria-hidden="true"><svg class="bit" viewBox="0 0 90 100" aria-hidden="true">
+<ellipse class="b-shadow" cx="45" cy="95" rx="24" ry="4"/>
+<path class="b-limb" d="M30 74 L28 86"/><path class="b-limb" d="M60 74 L62 86"/>
+<rect class="b-foot" x="20" y="84" width="15" height="8" rx="4"/><rect class="b-foot" x="55" y="84" width="15" height="8" rx="4"/>
+<path class="b-limb" d="M16 52 Q6 58 9 68"/>
+<g class="b-arm-r"><path class="b-limb" d="M74 52 Q86 44 84 32"/><circle class="b-shade" cx="84" cy="30" r="4.5"/></g>
+<g class="b-head">
+<line class="b-ant" x1="45" y1="16" x2="45" y2="6"/><circle class="b-bulb" cx="45" cy="5" r="4.5"/>
+<rect class="b-shade" x="12" y="18" width="66" height="60" rx="20"/>
+<rect class="b-body" x="12" y="16" width="66" height="58" rx="20"/>
+<path class="b-shine" d="M22 26 Q30 20 44 20 L40 24 Q28 24 24 32 Z"/>
+<rect class="b-screen" x="21" y="26" width="48" height="36" rx="13"/>
+<rect class="b-eye" x="33" y="35" width="6" height="11" rx="3"/><rect class="b-eye" x="51" y="35" width="6" height="11" rx="3"/>
+<circle class="b-cheek" cx="28" cy="51" r="3.2"/><circle class="b-cheek" cx="62" cy="51" r="3.2"/>
+<path class="b-mouth" d="M40 52 Q45 56.5 50 52"/>
+</g>
+</svg></span>
             <div class="work-top">
               <span class="work-idx">01</span>
               <span class="work-tag">Marketplace · Payments</span>
@@ -759,7 +807,7 @@
     <section id="hire" class="section" aria-labelledby="hire-title">
       <div class="container">
         <header class="section-head">
-          <span class="route reveal"><b>06</b> Services</span>
+          <span class="route reveal"><b>06</b> services</span>
           <h2 id="hire-title" class="section-title reveal">Hire me <em>for</em></h2>
           <p class="section-sub reveal">The work I'm most often hired for, with production proof on each page. Also available <a class="inline-link" href="/ar/" hreflang="ar">بالعربية</a> · Read the <a class="inline-link" href="/blog/moyasar-nestjs-integration/">Moyasar + NestJS integration guide</a>.</p>
         </header>
@@ -776,7 +824,7 @@
     <section id="education" class="section" aria-labelledby="education-title">
       <div class="container">
         <header class="section-head">
-          <span class="route reveal"><b>07</b> Education</span>
+          <span class="route reveal"><b>07</b> education</span>
           <h2 id="education-title" class="section-title reveal">Education</h2>
         </header>
         <div class="edu-grid">
@@ -811,8 +859,24 @@
     <section id="contact" class="section contact" aria-labelledby="contact-title">
       <div class="container">
         <div class="contact-panel reveal">
-          <span class="glow" aria-hidden="true"></span>
-          <header class="section-head"><span class="route"><b>08</b> Contact</span></header>
+          <span class="bye-bit" aria-hidden="true"><svg class="bit waving" viewBox="0 0 90 100" aria-hidden="true">
+<ellipse class="b-shadow" cx="45" cy="95" rx="24" ry="4"/>
+<path class="b-limb" d="M30 74 L28 86"/><path class="b-limb" d="M60 74 L62 86"/>
+<rect class="b-foot" x="20" y="84" width="15" height="8" rx="4"/><rect class="b-foot" x="55" y="84" width="15" height="8" rx="4"/>
+<path class="b-limb" d="M16 52 Q6 58 9 68"/>
+<g class="b-arm-r"><path class="b-limb" d="M74 52 Q86 44 84 32"/><circle class="b-shade" cx="84" cy="30" r="4.5"/></g>
+<g class="b-head">
+<line class="b-ant" x1="45" y1="16" x2="45" y2="6"/><circle class="b-bulb" cx="45" cy="5" r="4.5"/>
+<rect class="b-shade" x="12" y="18" width="66" height="60" rx="20"/>
+<rect class="b-body" x="12" y="16" width="66" height="58" rx="20"/>
+<path class="b-shine" d="M22 26 Q30 20 44 20 L40 24 Q28 24 24 32 Z"/>
+<rect class="b-screen" x="21" y="26" width="48" height="36" rx="13"/>
+<rect class="b-eye" x="33" y="35" width="6" height="11" rx="3"/><rect class="b-eye" x="51" y="35" width="6" height="11" rx="3"/>
+<circle class="b-cheek" cx="28" cy="51" r="3.2"/><circle class="b-cheek" cx="62" cy="51" r="3.2"/>
+<path class="b-mouth" d="M40 52 Q45 56.5 50 52"/>
+</g>
+</svg></span>
+          <header class="section-head"><span class="route"><b>08</b> contact</span></header>
           <h2 id="contact-title" class="contact-title">Let's build <em>something.</em></h2>
           <p class="lead">Open to remote roles, relocation, and freelance projects in full-stack web development — Laravel, NestJS, Next.js and React.</p>
           <div class="contact-grid">
@@ -840,6 +904,6 @@
     </div>
   </footer>
 
-  <script src="/js/main.js?v=20261014f" defer></script>
+  <script src="/js/main.js?v=20261015a" defer></script>
 </body>
 </html>

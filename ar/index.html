@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl" data-theme="dark">
+<html lang="ar" dir="rtl" data-theme="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
@@ -25,13 +25,13 @@
   <meta name="twitter:title" content="بلال أرشد — مطور ويب متكامل | Laravel وNestJS وميسر وزاتكا" />
   <meta name="twitter:description" content="بلال أرشد مطور ويب متكامل أول بخبرة +8 سنوات: Laravel وNestJS وNext.js، ربط بوابة الدفع ميسر، الفوترة الإلكترونية مع هيئة الزكاة (فاتورة)، ووكلاء الذكاء الاصطناعي. مقيم في الرياض، المملكة العربية السعودية." />
   <meta name="twitter:image" content="https://bilalarshad.pro/assets/og-image.png" />
-  <meta name="theme-color" content="#05060d" />
+  <meta name="theme-color" content="#fbf6f0" />
   <script>
     (function () {
       try {
-        if (localStorage.getItem("theme") === "light") {
-          document.documentElement.setAttribute("data-theme", "light");
-          document.querySelector('meta[name="theme-color"]').setAttribute("content", "#eef1f8");
+        if (localStorage.getItem("theme") === "dark") {
+          document.documentElement.setAttribute("data-theme", "dark");
+          document.querySelector('meta[name="theme-color"]').setAttribute("content", "#17100b");
         }
       } catch (e) {}
     })();
@@ -41,8 +41,8 @@
   <link rel="apple-touch-icon" href="/assets/apple-touch-icon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300..800&family=Geist+Mono:wght@400..600&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/css/styles.css?v=20261014f" />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,300..800&family=Geist+Mono:wght@400..600&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/styles.css?v=20261015a" />
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -128,7 +128,7 @@
       </nav>
       <div class="header-actions">
         <a class="lang-switch" href="/" hreflang="en" lang="en">EN</a>
-        <button class="theme-toggle" type="button" aria-label="التبديل إلى الوضع الفاتح" title="التبديل إلى الوضع الفاتح">
+        <button class="theme-toggle" type="button" aria-label="التبديل إلى الوضع الداكن" title="التبديل إلى الوضع الداكن">
           <span class="theme-track" aria-hidden="true">
             <svg class="icon-moon" viewBox="0 0 24 24"><path fill="currentColor" d="M20.7 14.6A8.5 8.5 0 0 1 9.4 3.3a.6.6 0 0 0-.8-.7A9.8 9.8 0 1 0 21.4 15.4a.6.6 0 0 0-.7-.8Z"/></svg>
             <svg class="icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.5" fill="currentColor"/><g stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></g></svg>
@@ -146,7 +146,7 @@
     <section class="hero sp-hero" aria-labelledby="page-title">
       <div class="container">
         <p class="status-pill reveal"><span class="dot" aria-hidden="true"></span> الرياض، السعودية · متاح للعمل الآن</p>
-        <p class="eyebrow reveal">مطور ويب متكامل أول · Laravel · NestJS · Next.js</p>
+        <p class="eyebrow reveal">مطور ويب متكامل أول · Laravel · NestJS · Next.js · Vue.js</p>
         <h1 id="page-title" class="sp-title reveal">بلال أرشد <em>أبني منصات وواجهات API تعمل في الإنتاج.</em></h1>
         <p class="sp-intro reveal">مطور ويب متكامل بخبرة تزيد عن 8 سنوات في Laravel وNestJS وNext.js وReact وVue. أقود حاليًا تطوير منصة كيلد (Keeld)، سوق إلكتروني متعدد البائعين ومنصة مدفوعات ثنائية اللغة للتجار في السعودية، مع تطبيق جوال بـ Flutter، وربط بوابة ميسر، والفوترة الإلكترونية مع هيئة الزكاة (فاتورة)، وتكاملات الشحن. قبل ذلك قدت منصة بث تخدم أكثر من 2.4 مليون مستخدم، وبنيت وكلاء ذكاء اصطناعي للإنتاج.</p>
         <div class="hero-actions reveal">
@@ -189,6 +189,23 @@
           <h2 id="exp-title" class="section-title reveal">الخبرة العملية</h2>
         </header>
         <ol class="career">
+          <li class="rail-bit" aria-hidden="true"><svg class="bit" viewBox="0 0 90 100" aria-hidden="true">
+<ellipse class="b-shadow" cx="45" cy="95" rx="24" ry="4"/>
+<path class="b-limb" d="M30 74 L28 86"/><path class="b-limb" d="M60 74 L62 86"/>
+<rect class="b-foot" x="20" y="84" width="15" height="8" rx="4"/><rect class="b-foot" x="55" y="84" width="15" height="8" rx="4"/>
+<path class="b-limb" d="M16 52 Q6 58 9 68"/>
+<g class="b-arm-r"><path class="b-limb" d="M74 52 Q86 44 84 32"/><circle class="b-shade" cx="84" cy="30" r="4.5"/></g>
+<g class="b-head">
+<line class="b-ant" x1="45" y1="16" x2="45" y2="6"/><circle class="b-bulb" cx="45" cy="5" r="4.5"/>
+<rect class="b-shade" x="12" y="18" width="66" height="60" rx="20"/>
+<rect class="b-body" x="12" y="16" width="66" height="58" rx="20"/>
+<path class="b-shine" d="M22 26 Q30 20 44 20 L40 24 Q28 24 24 32 Z"/>
+<rect class="b-screen" x="21" y="26" width="48" height="36" rx="13"/>
+<rect class="b-eye" x="33" y="35" width="6" height="11" rx="3"/><rect class="b-eye" x="51" y="35" width="6" height="11" rx="3"/>
+<circle class="b-cheek" cx="28" cy="51" r="3.2"/><circle class="b-cheek" cx="62" cy="51" r="3.2"/>
+<path class="b-mouth" d="M40 52 Q45 56.5 50 52"/>
+</g>
+</svg></li>
           <li class="career-item reveal">
             <span class="node" aria-hidden="true"></span>
             <div class="career-head"><h3>مطور ويب متكامل أول <span>· <bdi>Tamakan</bdi></span><span class="now">الآن</span></h3></div>
@@ -229,7 +246,23 @@
           <p class="section-sub reveal">أسواق إلكترونية ومنصات مدفوعات وتطبيقات ويب متكاملة وأنظمة ERP ومنصات بث وأدوات تسويق ومنتجات SaaS.</p>
         </header>
         <div class="bento">
-          <article class="work work--feature reveal">
+          <article class="work work--feature reveal"><span class="peek-bit" aria-hidden="true"><svg class="bit" viewBox="0 0 90 100" aria-hidden="true">
+<ellipse class="b-shadow" cx="45" cy="95" rx="24" ry="4"/>
+<path class="b-limb" d="M30 74 L28 86"/><path class="b-limb" d="M60 74 L62 86"/>
+<rect class="b-foot" x="20" y="84" width="15" height="8" rx="4"/><rect class="b-foot" x="55" y="84" width="15" height="8" rx="4"/>
+<path class="b-limb" d="M16 52 Q6 58 9 68"/>
+<g class="b-arm-r"><path class="b-limb" d="M74 52 Q86 44 84 32"/><circle class="b-shade" cx="84" cy="30" r="4.5"/></g>
+<g class="b-head">
+<line class="b-ant" x1="45" y1="16" x2="45" y2="6"/><circle class="b-bulb" cx="45" cy="5" r="4.5"/>
+<rect class="b-shade" x="12" y="18" width="66" height="60" rx="20"/>
+<rect class="b-body" x="12" y="16" width="66" height="58" rx="20"/>
+<path class="b-shine" d="M22 26 Q30 20 44 20 L40 24 Q28 24 24 32 Z"/>
+<rect class="b-screen" x="21" y="26" width="48" height="36" rx="13"/>
+<rect class="b-eye" x="33" y="35" width="6" height="11" rx="3"/><rect class="b-eye" x="51" y="35" width="6" height="11" rx="3"/>
+<circle class="b-cheek" cx="28" cy="51" r="3.2"/><circle class="b-cheek" cx="62" cy="51" r="3.2"/>
+<path class="b-mouth" d="M40 52 Q45 56.5 50 52"/>
+</g>
+</svg></span>
             <div class="work-top"><span class="work-idx">01</span><span class="work-tag">سوق إلكتروني · مدفوعات</span><a class="work-link" href="https://keeldt.sa/" target="_blank" rel="noopener noreferrer">الموقع <span aria-hidden="true">↖</span></a></div>
             <p class="work-metric"><b>119</b> نموذج بيانات</p>
             <h3>Keeld — سوق متعدد البائعين ومنصة مدفوعات<span class="work-role">(قائد التطوير المتكامل)</span></h3>
@@ -347,6 +380,6 @@
     </div>
   </footer>
 
-  <script src="/js/main.js?v=20261014f" defer></script>
+  <script src="/js/main.js?v=20261015a" defer></script>
 </body>
 </html>
