@@ -542,7 +542,7 @@
       const title = sec.querySelector(".section-title, .contact-title");
       const key = sec.id || "";
       const text = lines[key] || (ar ? "أهلًا! هذا قسم " : "Welcome to ") + (title ? title.textContent.replace(/\s+/g, " ").trim().replace(/\.$/, "") : "");
-      const poses = ["lounge", "dance", "model", "wave"];
+      const poses = ["wave"];
       g.classList.add("pose-" + poses[i % poses.length]);
       g.innerHTML = '<span class="g-bubble">' + text.replace(/</g, "&lt;") + '</span><span class="g-inner"><span class="g-pose">' + chars[i % chars.length] + "</span></span>";
       sec.appendChild(g);
@@ -617,5 +617,39 @@
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onScroll);
     setTimeout(update, 300);
+  })();
+
+  // Bit relaxes on the roof of cards: lying, dancing, posing, waving
+  (() => {
+    const cards = Array.from(document.querySelectorAll(".bento > .work, .career-item"));
+    if (!cards.length) return;
+    const recline = '<svg viewBox="0 0 128 70" aria-hidden="true">' +
+      '<ellipse cx="66" cy="67" rx="58" ry="3.5" fill="rgba(120,55,15,.22)"/>' +
+      '<g class="r-legs"><path d="M50 58 C 70 60, 92 58, 112 55" stroke="#c4560a" stroke-width="8" fill="none" stroke-linecap="round"/><path d="M50 63 C 72 64, 94 62, 110 60" stroke="#a9460a" stroke-width="8" fill="none" stroke-linecap="round"/>' +
+      '<rect x="106" y="49" width="16" height="8" rx="4" fill="#8f3a07" transform="rotate(-18 114 53)"/><rect x="105" y="57" width="16" height="8" rx="4" fill="#7a3106" transform="rotate(-4 113 61)"/></g>' +
+      '<path d="M8 66 L12 50 L20 40" stroke="#c4560a" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>' +
+      '<g transform="rotate(-16 34 36)">' +
+      '<line x1="34" y1="11" x2="34" y2="3" stroke="#c4560a" stroke-width="3" stroke-linecap="round"/><circle class="r-bulb" cx="34" cy="3" r="4" fill="#ffb27a" stroke="#c4560a"/>' +
+      '<rect x="10" y="14" width="48" height="44" rx="15" fill="#a9460a"/><rect x="10" y="12" width="48" height="43" rx="15" fill="url(#kBody) #f2711c"/>' +
+      '<ellipse cx="24" cy="16" rx="9" ry="2.6" fill="#fff" opacity=".5" transform="rotate(-10 24 16)"/>' +
+      '<rect x="16" y="20" width="36" height="28" rx="10" fill="#fff"/>' +
+      '<g class="r-shades"><path d="M17 31H51" stroke="#2a1a10" stroke-width="2"/><rect x="18" y="27" width="13" height="8" rx="3.5" fill="#2a1a10"/><rect x="37" y="27" width="13" height="8" rx="3.5" fill="#2a1a10"/><path d="M20.5 29.5h4M39.5 29.5h4" stroke="#fff" stroke-opacity=".7" stroke-width="1.4" stroke-linecap="round"/></g>' +
+      '<g class="r-eyes"><ellipse cx="27" cy="31" rx="2.8" ry="3.8" fill="#2a1a10"/><ellipse cx="41" cy="31" rx="2.8" ry="3.8" fill="#2a1a10"/><circle cx="28" cy="29.6" r="1" fill="#fff"/><circle cx="42" cy="29.6" r="1" fill="#fff"/></g>' +
+      '<circle cx="22" cy="40" r="2.8" fill="#ffb27a"/><circle cx="46" cy="40" r="2.8" fill="#ffb27a"/><path d="M30 41q4 3.6 8 0" stroke="#2a1a10" stroke-width="2" fill="none" stroke-linecap="round"/>' +
+      '</g>' +
+      '<g class="r-arm"><path d="M58 40 q10 2 13 12" stroke="#c4560a" stroke-width="5.5" fill="none" stroke-linecap="round"/><g class="r-drink"><path d="M66 38h12l-1.8 13h-8.4Z" fill="#fff" opacity=".9" stroke="#d75c0c" stroke-width="1.1"/><path d="M67.4 42.5h9.2l-1.1 7.6h-7Z" fill="#ffb27a"/><line x1="74" y1="31" x2="72" y2="45" stroke="#d75c0c" stroke-width="1.5" stroke-linecap="round"/><circle cx="78.5" cy="38" r="3" fill="#ffd27a" stroke="#e8902f"/></g></g>' +
+      '</svg>';
+    const standing = document.querySelector(".guide .g-pose");
+    const stand = standing ? standing.innerHTML : null;
+    const poses = ["recline", "dance", "model", "recline", "wave"];
+    cards.forEach((card, i) => {
+      const pose = poses[i % poses.length];
+      if (pose !== "recline" && !stand) return;
+      const r = document.createElement("span");
+      r.className = "roof-bit pose-" + pose + (i % 2 ? " left" : "") + (pose === "recline" && i % 3 === 0 ? " shades" : "");
+      r.setAttribute("aria-hidden", "true");
+      r.innerHTML = '<span class="g-inner"><span class="g-pose">' + (pose === "recline" ? recline : stand) + "</span></span>";
+      card.appendChild(r);
+    });
   })();
 })();

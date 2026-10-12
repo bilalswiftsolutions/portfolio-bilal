@@ -1146,38 +1146,69 @@ main > section.section { position: relative; }
 :root[data-calm="1"] .work:hover .work-shot img { transform: none; }
 
 /* ---------- Bit's poses per section ---------- */
-.guide .g-pose { display: block; transform-origin: 50% 90%; }
-.guide :is(.g-drink, .g-shades, .g-hip, .g-note, .g-flash) { display: none; }
-.guide .g-note { font: 700 16px var(--sans); fill: var(--o-500); }
-.guide .g-flash { fill: #ffd27a; }
+:is(.guide, .roof-bit) .g-pose { display: block; transform-origin: 50% 90%; }
+:is(.guide, .roof-bit) :is(.g-drink, .g-shades, .g-hip, .g-note, .g-flash) { display: none; }
+:is(.guide, .roof-bit) .g-note { font: 700 16px var(--sans); fill: var(--o-500); }
+:is(.guide, .roof-bit) .g-flash { fill: #ffd27a; }
 /* lounging, sunglasses, sipping */
-.guide.pose-lounge .g-pose { transform: rotate(-24deg) translate(6px, 4px); }
-.guide.pose-lounge :is(.g-drink, .g-shades) { display: inline; }
-.guide.pose-lounge .g-eyes { display: none; }
-.guide.pose-lounge .g-arm { animation: sip 3.2s ease-in-out infinite; }
-.guide.pose-lounge.wave .g-arm { animation: sip 3.2s ease-in-out infinite; }
-.guide.pose-lounge .g-inner::after { content: ""; position: absolute; left: -14px; right: -8px; bottom: 10px; height: 9px; border-radius: 6px; background: repeating-linear-gradient(90deg, var(--o-400) 0 9px, #fff 9px 18px); box-shadow: 0 3px 0 var(--o-700), 0 8px 12px -6px rgba(120, 60, 20, 0.4); transform: rotate(-14deg); z-index: -1; }
-.guide.pose-lounge .g-inner::before { content: ""; position: absolute; left: 2px; bottom: -2px; width: 4px; height: 20px; border-radius: 2px; background: var(--o-700); box-shadow: 54px -6px 0 var(--o-700); z-index: -2; }
-.guide .g-inner { position: relative; }
+:is(.guide, .roof-bit).pose-lounge .g-pose { transform: rotate(-24deg) translate(6px, 4px); }
+:is(.guide, .roof-bit).pose-lounge :is(.g-drink, .g-shades) { display: inline; }
+:is(.guide, .roof-bit).pose-lounge .g-eyes { display: none; }
+:is(.guide, .roof-bit).pose-lounge .g-arm { animation: sip 3.2s ease-in-out infinite; }
+:is(.guide, .roof-bit).pose-lounge.wave .g-arm { animation: sip 3.2s ease-in-out infinite; }
+:is(.guide, .roof-bit).pose-lounge .g-inner::after { content: ""; position: absolute; left: -14px; right: -8px; bottom: 10px; height: 9px; border-radius: 6px; background: repeating-linear-gradient(90deg, var(--o-400) 0 9px, #fff 9px 18px); box-shadow: 0 3px 0 var(--o-700), 0 8px 12px -6px rgba(120, 60, 20, 0.4); transform: rotate(-14deg); z-index: -1; }
+:is(.guide, .roof-bit).pose-lounge .g-inner::before { content: ""; position: absolute; left: 2px; bottom: -2px; width: 4px; height: 20px; border-radius: 2px; background: var(--o-700); box-shadow: 54px -6px 0 var(--o-700); z-index: -2; }
+:is(.guide, .roof-bit) .g-inner { position: relative; }
 @keyframes sip { 0%, 60%, 100% { transform: rotate(0deg); } 72%, 88% { transform: rotate(-38deg); } }
 /* dancing with music notes */
-.guide.pose-dance .g-pose { animation: dance 0.9s ease-in-out infinite; }
-.guide.pose-dance .g-arm { animation: wave 0.9s ease-in-out infinite; }
-.guide.pose-dance .g-note { display: inline; animation: note 1.8s ease-in-out infinite; transform-box: fill-box; }
-.guide.pose-dance .g-note.n2 { animation-delay: 0.9s; }
+:is(.guide, .roof-bit).pose-dance .g-pose { animation: dance 0.9s ease-in-out infinite; }
+:is(.guide, .roof-bit).pose-dance .g-arm { animation: wave 0.9s ease-in-out infinite; }
+:is(.guide, .roof-bit).pose-dance .g-note { display: inline; animation: note 1.8s ease-in-out infinite; transform-box: fill-box; }
+:is(.guide, .roof-bit).pose-dance .g-note.n2 { animation-delay: 0.9s; }
 @keyframes dance { 0%, 100% { transform: rotate(-10deg) translateY(0); } 25% { transform: rotate(0deg) translateY(-8px); } 50% { transform: rotate(10deg) translateY(0); } 75% { transform: rotate(0deg) translateY(-8px); } }
 @keyframes note { 0% { opacity: 0; transform: translate(0, 8px) rotate(-10deg); } 30% { opacity: 1; } 100% { opacity: 0; transform: translate(6px, -14px) rotate(15deg); } }
 /* model pose: shades, hand on hip, camera flashes */
-.guide.pose-model .g-pose { transform: rotate(-8deg) scale(1.04); }
-.guide.pose-model :is(.g-shades, .g-hip, .g-flash) { display: inline; }
-.guide.pose-model .g-shades { transform: translateY(-1px); }
-.guide.pose-model .g-arm { transform: rotate(-36deg); }
-.guide.pose-model .g-flash { animation: flash 1.6s ease-out infinite; transform-box: fill-box; transform-origin: center; }
-.guide.pose-model .g-flash.f2 { animation-delay: 0.7s; }
-.guide.pose-model .g-inner::before { content: ""; position: absolute; inset: -14px; border-radius: 50%; background: radial-gradient(closest-side, rgba(255, 230, 200, 0.9), transparent); opacity: 0; animation: camflash 2.2s ease-out infinite; z-index: -1; }
+:is(.guide, .roof-bit).pose-model .g-pose { transform: rotate(-8deg) scale(1.04); }
+:is(.guide, .roof-bit).pose-model :is(.g-shades, .g-hip, .g-flash) { display: inline; }
+:is(.guide, .roof-bit).pose-model .g-shades { transform: translateY(-1px); }
+:is(.guide, .roof-bit).pose-model .g-arm { transform: rotate(-36deg); }
+:is(.guide, .roof-bit).pose-model .g-flash { animation: flash 1.6s ease-out infinite; transform-box: fill-box; transform-origin: center; }
+:is(.guide, .roof-bit).pose-model .g-flash.f2 { animation-delay: 0.7s; }
+:is(.guide, .roof-bit).pose-model .g-inner::before { content: ""; position: absolute; inset: -14px; border-radius: 50%; background: radial-gradient(closest-side, rgba(255, 230, 200, 0.9), transparent); opacity: 0; animation: camflash 2.2s ease-out infinite; z-index: -1; }
 @keyframes flash { 0%, 100% { opacity: 0; transform: scale(0.3) rotate(0deg); } 12% { opacity: 1; transform: scale(1.3) rotate(30deg); } 40% { opacity: 0; transform: scale(0.8) rotate(60deg); } }
 @keyframes camflash { 0%, 70%, 100% { opacity: 0; } 76% { opacity: 1; } 86% { opacity: 0.2; } }
 .guide.walking .g-pose svg { animation: none; }
 .guide.walking .g-pose { animation: waddle 0.36s ease-in-out infinite; }
-.guide.pose-lounge.walking .g-pose { animation: none; }
+:is(.guide, .roof-bit).pose-lounge.walking .g-pose { animation: none; }
 
+
+/* ---------- Bit on the roof of cards ---------- */
+.career-item, .work { overflow: visible; }
+.roof-bit { position: absolute; z-index: 5; right: 30px; bottom: calc(100% - 4px); width: 64px; pointer-events: none; }
+.roof-bit.left { right: auto; left: 30px; }
+.roof-bit.pose-recline { width: 170px; bottom: calc(100% - 9px); }
+.roof-bit .g-inner { display: block; opacity: 0; transform: translateY(14px) scale(0.6); transform-origin: 50% 100%; transition: opacity 0.4s var(--ease) 0.25s, transform 0.7s var(--spring) 0.25s; filter: drop-shadow(0 6px 6px rgba(150, 60, 10, 0.22)); }
+.is-visible > .roof-bit .g-inner, .roof-bit.show .g-inner { opacity: 1; transform: none; }
+.roof-bit svg { display: block; width: 100%; height: auto; overflow: visible; }
+.roof-bit.pose-recline :is(.r-shades) { display: none; }
+.roof-bit.pose-recline.shades .r-shades { display: inline; }
+.roof-bit.pose-recline.shades .r-eyes { display: none; }
+.roof-bit .r-arm { transform-box: fill-box; transform-origin: 0% 20%; animation: rsip 4s ease-in-out infinite; }
+.roof-bit.left .r-arm { animation-delay: 1.4s; }
+.roof-bit .r-legs { transform-box: fill-box; transform-origin: 0% 50%; animation: rkick 3.2s ease-in-out infinite; }
+.roof-bit .r-bulb { animation: glow 2.4s ease-in-out infinite; }
+.roof-bit .r-eyes { transform-box: fill-box; transform-origin: center; animation: blink 4.4s infinite; }
+@keyframes rsip { 0%, 55%, 100% { transform: rotate(0deg); } 68%, 86% { transform: rotate(-58deg) translate(-4px, -2px); } }
+@keyframes rkick { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(-4deg); } }
+.roof-bit.pose-lounge .g-pose { transform: none; }
+.roof-bit.pose-dance .g-pose, .roof-bit.pose-model .g-pose { transform-origin: 50% 100%; }
+.work--feature > .roof-bit { right: 60px; }
+.work:hover > .roof-bit .g-pose { animation: none; }
+.work:hover > .roof-bit.pose-recline .r-arm { animation: wave 0.9s var(--ease) 2; }
+[dir="rtl"] .roof-bit { right: auto; left: 30px; }
+[dir="rtl"] .roof-bit.left { left: auto; right: 30px; }
+[dir="rtl"] .roof-bit.pose-recline svg { transform: scaleX(-1); }
+@media (max-width: 640px) { .roof-bit { width: 50px; right: 16px; } .roof-bit.left { left: 16px; } .roof-bit.pose-recline { width: 124px; } .career-item { margin-top: 26px; } }
+:root[data-calm="1"] .roof-bit { display: none !important; }
+.bento { row-gap: 52px; }
+.career { gap: 44px; }
