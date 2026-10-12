@@ -484,4 +484,104 @@
       setTimeout(() => { k.remove(); active--; }, 1850);
     });
   }
+
+  // Section guides: a character welcomes you to each section, walks down with you, and hands over to the next one
+  (() => {
+    const sections = Array.from(document.querySelectorAll("main > section.section")).filter((s) => s.querySelector(".section-head, .section-title, .contact-title"));
+    if (!sections.length) return;
+    const ar = root.lang === "ar";
+    const lines = ar
+      ? { record: "أهلًا! هذه الأرقام", about: "تعرّف على بلال!", skills: "اضغط أي مفتاح!", experience: "لنمشِ معًا في مسيرته", projects: "تفضّل! أفضل أعماله", hire: "تحتاج شيئًا يُبنى؟", education: "من هنا بدأ كل شيء", contact: "قل مرحبًا لبلال!", services: "هذه خدماته", experience_ar: "" }
+      : { record: "Hi! Here's the impact.", about: "Meet Bilal!", skills: "Press a key, any key!", experience: "Let's walk through his career!", projects: "Ta-da! His best work.", hire: "Need something built?", education: "Where it all started.", contact: "Say hi to Bilal!", services: "Here's what he does." };
+    const fill = (id, fb) => 'url(#' + id + ') ' + fb;
+    const eyes = '<g class="g-eyes"><ellipse cx="32" cy="46" rx="3.6" ry="4.8" fill="#2a1a10"/><ellipse cx="48" cy="46" rx="3.6" ry="4.8" fill="#2a1a10"/><circle cx="33.3" cy="44.2" r="1.3" fill="#fff"/><circle cx="49.3" cy="44.2" r="1.3" fill="#fff"/></g>';
+    const face = eyes + '<circle cx="24" cy="54" r="3.6" fill="#ffb27a"/><circle cx="56" cy="54" r="3.6" fill="#ffb27a"/><path d="M35 55q5 4.5 10 0" fill="none" stroke="#2a1a10" stroke-width="2.4" stroke-linecap="round"/>';
+    const chars = [
+      '<svg viewBox="0 0 80 92"><ellipse cx="40" cy="88" rx="20" ry="3.5" fill="rgba(120,55,15,.22)"/><path d="M28 74v8M52 74v8" stroke="#c4560a" stroke-width="4.5" stroke-linecap="round"/><rect x="20" y="80" width="13" height="7" rx="3.5" fill="#8f3a07"/><rect x="47" y="80" width="13" height="7" rx="3.5" fill="#8f3a07"/><line x1="40" y1="16" x2="40" y2="7" stroke="#c4560a" stroke-width="3" stroke-linecap="round"/><circle class="g-bulb" cx="40" cy="6" r="4.4" fill="#ffb27a" stroke="#c4560a"/><rect x="10" y="18" width="60" height="58" rx="19" fill="#a9460a"/><rect x="10" y="16" width="60" height="56" rx="19" fill="' + fill("kBody", "#f2711c") + '"/><ellipse cx="26" cy="21" rx="10" ry="3" fill="#fff" opacity=".5" transform="rotate(-10 26 21)"/><rect x="17" y="27" width="46" height="36" rx="12" fill="#fff"/>' + face + '<path d="M11 50q-9 6-5 15" stroke="#c4560a" stroke-width="5" fill="none" stroke-linecap="round"/><g class="g-arm"><path d="M69 50q11-8 9-20" stroke="#c4560a" stroke-width="5" fill="none" stroke-linecap="round"/><circle cx="78" cy="28" r="4.6" fill="#a9460a"/></g></svg>',
+      '<svg viewBox="0 0 80 92"><ellipse cx="40" cy="88" rx="22" ry="3.5" fill="rgba(120,55,15,.22)"/><circle cx="40" cy="52" r="32" fill="' + fill("kBody", "#f2711c") + '"/><ellipse cx="27" cy="33" rx="10" ry="5" fill="#fff" opacity=".5" transform="rotate(-28 27 33)"/>' + face + '<ellipse cx="11" cy="64" rx="6" ry="8" fill="#d75c0c" transform="rotate(25 11 64)"/><g class="g-arm"><ellipse cx="71" cy="46" rx="6" ry="9" fill="#d75c0c" transform="rotate(-35 71 46)"/></g></svg>',
+      '<svg viewBox="0 0 80 92"><ellipse cx="40" cy="88" rx="22" ry="3.5" fill="rgba(120,55,15,.2)"/><circle cx="40" cy="52" r="32" fill="' + fill("kHeartW", "#fff6ee") + '" stroke="#f3d2b6" stroke-width="1"/><ellipse cx="27" cy="33" rx="10" ry="5" fill="#fff" opacity=".95" transform="rotate(-28 27 33)"/><path d="M28 46q4-4 8 0M44 46q4-4 8 0" fill="none" stroke="#2a1a10" stroke-width="2.6" stroke-linecap="round"/><circle cx="24" cy="54" r="3.8" fill="#ffb27a"/><circle cx="56" cy="54" r="3.8" fill="#ffb27a"/><path d="M35 55q5 4.5 10 0" fill="none" stroke="#2a1a10" stroke-width="2.4" stroke-linecap="round"/><ellipse cx="11" cy="64" rx="6" ry="8" fill="#f6e2d0" transform="rotate(25 11 64)"/><g class="g-arm"><ellipse cx="71" cy="46" rx="6" ry="9" fill="#f6e2d0" transform="rotate(-35 71 46)"/></g></svg>',
+      '<svg viewBox="0 0 80 92"><ellipse cx="40" cy="88" rx="20" ry="3.5" fill="rgba(120,55,15,.22)"/><g class="g-arm"><path d="M40 8l9.2 20.4 22.3 2.4-16.7 15 4.7 21.9L40 56.4 20.5 67.7l4.7-21.9-16.7-15 22.3-2.4Z" fill="' + fill("kHeart", "#f7801f") + '" stroke="#d75c0c" stroke-width="1.6" stroke-linejoin="round"/></g><ellipse cx="31" cy="27" rx="5" ry="2.6" fill="#fff" opacity=".6" transform="rotate(-30 31 27)"/><ellipse cx="34" cy="40" rx="2.6" ry="3.4" fill="#2a1a10"/><ellipse cx="46" cy="40" rx="2.6" ry="3.4" fill="#2a1a10"/><circle cx="35" cy="38.8" r="1" fill="#fff"/><circle cx="47" cy="38.8" r="1" fill="#fff"/><circle cx="29" cy="46" r="2.6" fill="#ffd2b0"/><circle cx="51" cy="46" r="2.6" fill="#ffd2b0"/><path d="M37 47q3 2.8 6 0" fill="none" stroke="#2a1a10" stroke-width="2" stroke-linecap="round"/><path d="M32 66v14M48 66v14" stroke="#c4560a" stroke-width="4" stroke-linecap="round"/><rect x="25" y="79" width="12" height="6" rx="3" fill="#8f3a07"/><rect x="43" y="79" width="12" height="6" rx="3" fill="#8f3a07"/></svg>'
+    ];
+
+    const guides = sections.map((sec, i) => {
+      const g = document.createElement("div");
+      g.className = "guide";
+      g.setAttribute("aria-hidden", "true");
+      const title = sec.querySelector(".section-title, .contact-title");
+      const key = sec.id || "";
+      const text = lines[key] || (ar ? "أهلًا! هذا قسم " : "Welcome to ") + (title ? title.textContent.replace(/\s+/g, " ").trim().replace(/\.$/, "") : "");
+      g.innerHTML = '<span class="g-bubble">' + text.replace(/</g, "&lt;") + '</span><span class="g-inner">' + chars[i % chars.length] + "</span>";
+      sec.appendChild(g);
+      return { sec, g, greeted: false, handed: false };
+    });
+
+    const greet = (o) => {
+      if (o.greeted) return;
+      o.greeted = true;
+      o.g.classList.add("in", "wave", "talk");
+      setTimeout(() => o.g.classList.remove("wave"), 2000);
+      setTimeout(() => o.g.classList.remove("talk"), 3200);
+    };
+    if (reduceMotion) {
+      guides.forEach((o) => o.g.classList.add("in"));
+      return;
+    }
+
+    const travel = () => window.innerWidth >= 1340;
+    const handOff = (o, next) => {
+      o.handed = true;
+      o.g.classList.add("toss");
+      setTimeout(() => o.g.classList.remove("toss"), 600);
+      if (!next) return;
+      const a = o.g.getBoundingClientRect();
+      const b = next.g.getBoundingClientRect();
+      const sx = a.left + a.width / 2, sy = a.top + 20, ex = b.left + b.width / 2, ey = b.top + 20;
+      const h = document.createElement("span");
+      h.className = "kiss-heart";
+      h.style.width = h.style.height = "26px";
+      h.innerHTML = '<svg viewBox="0 0 24 24"><use href="#kh" fill="url(#kHeart) #f2711c"/></svg>';
+      document.body.appendChild(h);
+      const midX = (sx + ex) / 2 + (ex > sx ? 60 : -60), midY = Math.min(sy, ey) - 80;
+      h.animate([
+        { transform: "translate(" + (sx - 13) + "px," + (sy - 13) + "px) scale(.5) rotate(0deg)" },
+        { transform: "translate(" + (midX - 13) + "px," + (midY - 13) + "px) scale(1.3) rotate(200deg)", offset: 0.5 },
+        { transform: "translate(" + (ex - 13) + "px," + (ey - 13) + "px) scale(.9) rotate(360deg)" }
+      ], { duration: 900, easing: "cubic-bezier(.35,.1,.3,1)", fill: "forwards" });
+      setTimeout(() => {
+        h.remove();
+        next.greeted = false;
+        greet(next);
+        next.g.classList.add("catch");
+        setTimeout(() => next.g.classList.remove("catch"), 600);
+      }, 900);
+    };
+
+    let queued = false;
+    const walkTimers = new WeakMap();
+    const update = () => {
+      queued = false;
+      const vh = window.innerHeight;
+      const canTravel = travel();
+      guides.forEach((o, i) => {
+        const r = o.sec.getBoundingClientRect();
+        if (r.top < vh * 0.82 && r.bottom > vh * 0.15) greet(o);
+        if (!canTravel) { o.g.style.setProperty("--gy", "0px"); return; }
+        const span = Math.max(r.height - 260, 0);
+        const p = Math.min(Math.max((vh * 0.35 - r.top) / Math.max(r.height - vh * 0.35, 1), 0), 1);
+        const y = (p * span).toFixed(1);
+        if (o.g.style.getPropertyValue("--gy") !== y + "px") {
+          o.g.style.setProperty("--gy", y + "px");
+          o.g.classList.add("walking");
+          clearTimeout(walkTimers.get(o.g));
+          walkTimers.set(o.g, setTimeout(() => o.g.classList.remove("walking"), 240));
+        }
+        if (!o.handed && p > 0.9 && o.greeted) handOff(o, guides[i + 1]);
+        if (o.handed && p < 0.6) o.handed = false;
+      });
+    };
+    const onScroll = () => { if (!queued) { queued = true; requestAnimationFrame(update); } };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    setTimeout(update, 300);
+  })();
 })();
