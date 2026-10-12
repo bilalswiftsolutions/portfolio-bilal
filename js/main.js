@@ -20,7 +20,7 @@
       themeBtn.setAttribute("aria-label", label);
       themeBtn.setAttribute("title", label);
     }
-    if (themeMeta) themeMeta.setAttribute("content", isLight() ? "#f2efe7" : "#0c0c0d");
+    if (themeMeta) themeMeta.setAttribute("content", isLight() ? "#f3eee3" : "#0d0b09");
   };
   syncThemeUi();
   if (themeBtn) {
@@ -87,7 +87,7 @@
   }
 
   // Stagger reveal delays among siblings
-  document.querySelectorAll(".bento, .stack, .gitlog, .hero-copy, .about-copy, .hire-grid, .sp-grid").forEach((group) => {
+  document.querySelectorAll(".bento, .hire-grid, .sp-grid, .record, .toolkit, .career, .sp-proof, .sp-faq").forEach((group) => {
     Array.from(group.children).forEach((child, i) => {
       if (child.classList.contains("reveal")) child.style.setProperty("--i", String(i % 6));
     });
@@ -155,6 +155,30 @@
   } else {
     document.querySelectorAll(".reveal").forEach((el) => el.classList.add("is-visible"));
     runTrace();
+  }
+
+
+  // Count-up numbers in the record section
+  const counters = document.querySelectorAll("[data-count-to]");
+  if (counters.length && "IntersectionObserver" in window && !reduceMotion) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        io.unobserve(entry.target);
+        const el = entry.target;
+        const target = Number(el.dataset.countTo);
+        const suffix = el.textContent.replace(/[0-9.,]/g, "");
+        const start = performance.now();
+        const step = (now) => {
+          const t = Math.min((now - start) / 1600, 1);
+          const eased = 1 - Math.pow(1 - t, 3);
+          el.textContent = Math.round(target * eased) + suffix;
+          if (t < 1) requestAnimationFrame(step);
+        };
+        requestAnimationFrame(step);
+      });
+    }, { threshold: 0.6 });
+    counters.forEach((el) => io.observe(el));
   }
 
   // Scroll progress + header state
