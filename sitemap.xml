@@ -3,23 +3,54 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://bilalarshad.pro/</loc>
-    <lastmod>2026-10-09</lastmod>
-    <changefreq>weekly</changefreq>
+    <lastmod>2026-10-12</lastmod>
     <priority>1.0</priority>
     <image:image>
       <image:loc>https://bilalarshad.pro/assets/bilal-arshad.jpg</image:loc>
-      <image:title>Bilal Arshad — Laravel developer</image:title>
-      <image:caption>Official photo of Bilal Arshad, Laravel developer and full-stack software engineer</image:caption>
-    </image:image>
-    <image:image>
-      <image:loc>https://bilalarshad.pro/assets/og-image.jpg</image:loc>
-      <image:title>Bilal Arshad Laravel Developer portfolio cover</image:title>
-      <image:caption>Bilal Arshad — Laravel developer, full-stack PHP engineer</image:caption>
+      <image:title>Bilal Arshad — senior full-stack developer</image:title>
     </image:image>
     <image:image>
       <image:loc>https://bilalarshad.pro/assets/profile.jpg</image:loc>
       <image:title>Bilal Arshad profile photo</image:title>
-      <image:caption>Profile photo of Bilal Arshad</image:caption>
     </image:image>
+    <image:image>
+      <image:loc>https://bilalarshad.pro/assets/og-image.jpg</image:loc>
+      <image:title>Bilal Arshad portfolio cover</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://bilalarshad.pro/laravel-developer/</loc>
+    <lastmod>2026-10-12</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://bilalarshad.pro/nestjs-developer/</loc>
+    <lastmod>2026-10-12</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://bilalarshad.pro/nextjs-react-developer/</loc>
+    <lastmod>2026-10-12</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://bilalarshad.pro/zatca-e-invoicing-developer/</loc>
+    <lastmod>2026-10-12</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://bilalarshad.pro/moyasar-payment-integration/</loc>
+    <lastmod>2026-10-12</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://bilalarshad.pro/ai-agent-developer/</loc>
+    <lastmod>2026-10-12</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://bilalarshad.pro/resume/resume.html</loc>
+    <lastmod>2026-10-12</lastmod>
+    <priority>0.5</priority>
   </url>
 </urlset>

@@ -1,0 +1,23 @@
+# Bilal Arshad — Senior Full-Stack Developer
+
+> Bilal Arshad is a senior full-stack developer with 8+ years of experience in PHP/Laravel, Node.js/NestJS, Next.js, React and Vue.js. He builds multi-vendor marketplaces, payment integrations (Moyasar, Stripe, PayPal), ZATCA (Fatoora) e-invoicing for Saudi Arabia, high-traffic streaming platforms, and production AI agents with LangGraph and FastAPI. Based in Pakistan, working remotely for Saudi Arabia, open to relocation.
+
+- Current role: Senior Full Stack Developer at Tamakan (Jun 2026 – present), leading the Keeld marketplace and payments platform (NestJS, Next.js, Prisma, PostgreSQL, Flutter APIs).
+- Previous: Lead Software Developer at Altadefinizione (2024–2026) — Laravel/Vue streaming platform serving 2.4M+ users; Redis caching cut load time from 2s to 120ms.
+- Education: BS Software Engineering, COMSATS University Islamabad (Lahore campus), 2020.
+- Contact: bilalarshad2088@gmail.com · WhatsApp +966 58 071 2710 · https://www.linkedin.com/in/bilalarshadramay/
+
+## Services
+
+- [Laravel developer](https://bilalarshad.pro/laravel-developer/): Laravel APIs, Vue/Inertia apps, Redis caching, queues, Scout search
+- [NestJS developer](https://bilalarshad.pro/nestjs-developer/): NestJS + Prisma + PostgreSQL backends, payments, settlements
+- [Next.js & React developer](https://bilalarshad.pro/nextjs-react-developer/): dashboards, marketplaces, Arabic/RTL web apps
+- [ZATCA e-invoicing developer](https://bilalarshad.pro/zatca-e-invoicing-developer/): Fatoora integration in custom platforms
+- [Moyasar payment integration](https://bilalarshad.pro/moyasar-payment-integration/): cards, STC Pay, webhooks, refunds, reconciliation
+- [AI agent developer](https://bilalarshad.pro/ai-agent-developer/): LangGraph, FastAPI and OpenAI tool-calling agents
+
+## Portfolio
+
+- [Portfolio home](https://bilalarshad.pro/)
+- [Résumé](https://bilalarshad.pro/resume/resume.html)
+- [Keeld](https://keeldt.sa/), [CineBot](http://cinebot.bilalarshad.pro/), [Ramay Translation](https://ramaytranslation.com/), [RamayTik](https://ramaytik.org/), [Altadefinizione](https://altadefinizionepremium.net/)

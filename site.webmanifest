@@ -4,8 +4,8 @@
   "description": "Bilal Arshad — Laravel developer and full-stack PHP engineer. Hire for remote Laravel, Vue.js, and React projects.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#0a0f14",
-  "theme_color": "#0a0f14",
+  "background_color": "#0c0c0d",
+  "theme_color": "#0c0c0d",
   "icons": [
     {
       "src": "/assets/apple-touch-icon.svg",
