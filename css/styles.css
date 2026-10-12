@@ -1,4 +1,4 @@
-/* Bilal Arshad — liquid glass portfolio. Static, no framework, CSS-only effects. */
+/* Bilal Arshad — liquid glass portfolio (ocean palette). Static, no framework, CSS-only effects. */
 
 :root {
   --bg: #05060d;
@@ -15,19 +15,19 @@
   --sheen: rgba(255, 255, 255, 0.1);
   --shadow: 0 24px 60px -24px rgba(0, 0, 0, 0.75);
   --inner: inset 0 1px 0 rgba(255, 255, 255, 0.18), inset 0 -1px 0 rgba(255, 255, 255, 0.03);
-  --accent: #8b7bff;
-  --accent-ink: #a99dff;
-  --accent-soft: rgba(139, 123, 255, 0.14);
+  --accent: #22d3ee;
+  --accent-ink: #67e8f9;
+  --accent-soft: rgba(34, 211, 238, 0.14);
   --on-accent: #ffffff;
-  --cyan: #7cf7ff;
-  --pink: #ff8ad8;
+  --cyan: #38bdf8;
+  --pink: #34d399;
   --amber: #ffd27a;
   --k-ok: #4ade80;
-  --grad: linear-gradient(120deg, #7cf7ff 0%, #8b7bff 48%, #ff8ad8 100%);
+  --grad: linear-gradient(120deg, #38bdf8 0%, #22d3ee 48%, #34d399 100%);
   --blob-1: rgba(64, 92, 255, 0.55);
-  --blob-2: rgba(139, 92, 246, 0.5);
+  --blob-2: rgba(14, 165, 233, 0.42);
   --blob-3: rgba(0, 212, 200, 0.32);
-  --blob-4: rgba(255, 106, 213, 0.28);
+  --blob-4: rgba(251, 191, 36, 0.16);
   --header-glass: rgba(14, 17, 34, 0.55);
   --container: min(1200px, calc(100% - 40px));
   --sans: "Sora", "Segoe UI", system-ui, -apple-system, sans-serif;
@@ -54,18 +54,18 @@
   --sheen: rgba(255, 255, 255, 0.55);
   --shadow: 0 24px 50px -26px rgba(40, 52, 120, 0.35);
   --inner: inset 0 1px 0 rgba(255, 255, 255, 0.95), inset 0 -1px 0 rgba(13, 18, 38, 0.04);
-  --accent: #5b4bff;
-  --accent-ink: #4936e8;
-  --accent-soft: rgba(91, 75, 255, 0.1);
+  --accent: #0891b2;
+  --accent-ink: #0e7490;
+  --accent-soft: rgba(8, 145, 178, 0.1);
   --cyan: #0891b2;
-  --pink: #db2777;
+  --pink: #059669;
   --amber: #b7791f;
   --k-ok: #16a34a;
-  --grad: linear-gradient(120deg, #0891b2 0%, #5b4bff 48%, #db2777 100%);
+  --grad: linear-gradient(120deg, #0369a1 0%, #0891b2 48%, #059669 100%);
   --blob-1: rgba(120, 160, 255, 0.55);
-  --blob-2: rgba(190, 160, 255, 0.5);
+  --blob-2: rgba(150, 210, 255, 0.5);
   --blob-3: rgba(120, 230, 220, 0.45);
-  --blob-4: rgba(255, 170, 220, 0.45);
+  --blob-4: rgba(255, 214, 150, 0.42);
   --header-glass: rgba(255, 255, 255, 0.55);
   color-scheme: light;
 }
@@ -184,14 +184,14 @@ em { font-style: normal; }
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: radial-gradient(circle at 32% 28%, #ffffff 0, #c9c2ff 18%, #7c6bff 52%, #3a2bb8 100%);
-  box-shadow: inset 0 -4px 8px rgba(20, 10, 80, 0.45), inset 0 2px 3px rgba(255, 255, 255, 0.8), 0 6px 16px -4px rgba(91, 75, 255, 0.7);
+  background: radial-gradient(circle at 32% 28%, #ffffff 0, #a5f3fc 18%, #06b6d4 52%, #0e5a73 100%);
+  box-shadow: inset 0 -4px 8px rgba(5, 40, 60, 0.45), inset 0 2px 3px rgba(255, 255, 255, 0.8), 0 6px 16px -4px rgba(8, 145, 178, 0.7);
   color: #fff;
   font-size: 14px;
   font-weight: 800;
   letter-spacing: -0.03em;
   white-space: nowrap;
-  text-shadow: 0 1px 2px rgba(20, 10, 80, 0.5);
+  text-shadow: 0 1px 2px rgba(5, 40, 60, 0.5);
 }
 .logo-mark i { font-style: normal; font-weight: 500; opacity: 0.85; }
 .logo-text { font-size: 15px; font-weight: 700; letter-spacing: -0.01em; }
@@ -229,11 +229,11 @@ em { font-style: normal; }
   width: 28px;
   height: 28px;
   border-radius: 50%;
-  background: radial-gradient(circle at 35% 30%, #fff 0, #e7e3ff 25%, #9d8fff 70%, #6a58f5 100%);
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.45), inset 0 -3px 5px rgba(60, 40, 180, 0.35), inset 0 2px 2px rgba(255, 255, 255, 0.9);
+  background: radial-gradient(circle at 35% 30%, #fff 0, #cffafe 25%, #22d3ee 70%, #0891b2 100%);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.45), inset 0 -3px 5px rgba(8, 80, 110, 0.35), inset 0 2px 2px rgba(255, 255, 255, 0.9);
   transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
-.theme-track .icon-moon { color: #3a2bb8; }
+.theme-track .icon-moon { color: #0e5a73; }
 .theme-track .icon-sun { color: var(--muted); }
 :root[data-theme="light"] .theme-thumb { transform: translateX(30px); background: radial-gradient(circle at 35% 30%, #fff 0, #fff4d6 25%, #ffc65c 70%, #f59e0b 100%); box-shadow: 0 3px 8px rgba(120, 80, 0, 0.35), inset 0 -3px 5px rgba(180, 100, 0, 0.3), inset 0 2px 2px #fff; }
 :root[data-theme="light"] .theme-track .icon-moon { color: var(--muted); }
@@ -267,11 +267,11 @@ em { font-style: normal; }
 .btn:active, .site-nav .nav-cta:active { transform: translateY(1px) scale(0.98); }
 .btn-primary, .site-nav .nav-cta {
   color: #fff;
-  background: linear-gradient(180deg, #a08fff 0%, #6b55ff 55%, #5640f0 100%);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6), inset 0 -3px 8px rgba(30, 10, 120, 0.4), 0 12px 28px -10px rgba(107, 85, 255, 0.85);
+  background: linear-gradient(180deg, #67e8f9 0%, #06b6d4 55%, #0e7490 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6), inset 0 -3px 8px rgba(8, 60, 90, 0.4), 0 12px 28px -10px rgba(6, 182, 212, 0.85);
 }
 .site-nav .nav-cta { height: 42px; padding: 0 18px; margin-left: 8px; font-size: 13.5px; }
-.site-nav .nav-cta:hover, .site-nav .nav-cta.is-active { color: #fff; background: linear-gradient(180deg, #a08fff 0%, #6b55ff 55%, #5640f0 100%); }
+.site-nav .nav-cta:hover, .site-nav .nav-cta.is-active { color: #fff; background: linear-gradient(180deg, #67e8f9 0%, #06b6d4 55%, #0e7490 100%); }
 .btn-ghost { color: var(--text); background: var(--glass); border-color: var(--glass-border); box-shadow: var(--inner), 0 10px 24px -14px rgba(0, 0, 0, 0.5); }
 .btn-ghost::after { background: linear-gradient(180deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0)); }
 .btn-link { padding: 0 8px; height: auto; color: var(--muted); }
@@ -316,10 +316,10 @@ em { font-style: normal; }
   border-radius: 46px;
   background:
     radial-gradient(circle at 50% 38%, rgba(124, 247, 255, 0.32), transparent 55%),
-    radial-gradient(circle at 70% 80%, rgba(255, 138, 216, 0.28), transparent 55%),
+    radial-gradient(circle at 70% 80%, rgba(52, 211, 153, 0.28), transparent 55%),
     var(--glass);
   border: 1px solid var(--glass-border);
-  box-shadow: var(--inner), 0 40px 80px -30px rgba(40, 30, 140, 0.6);
+  box-shadow: var(--inner), 0 40px 80px -30px rgba(8, 60, 100, 0.6);
 }
 .portal::after { content: ""; position: absolute; inset: -1px; border-radius: inherit; padding: 1.5px; background: var(--rim); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0); pointer-events: none; }
 .halo {
@@ -374,7 +374,7 @@ em { font-style: normal; }
 @keyframes bob { 0%, 100% { transform: translate3d(var(--px, 0), calc(var(--py, 0px) + 0px), 0); } 50% { transform: translate3d(var(--px, 0), calc(var(--py, 0px) - 10px), 0); } }
 .orb { flex: none; display: grid; place-items: center; width: 38px; height: 38px; border-radius: 50%; font-size: 16px; color: #fff; box-shadow: inset 0 -4px 8px rgba(0, 0, 0, 0.3), inset 0 2px 3px rgba(255, 255, 255, 0.75), 0 6px 14px -6px rgba(0, 0, 0, 0.6); }
 .orb-cyan { background: radial-gradient(circle at 32% 28%, #fff 0, #b9fbff 20%, #22c3d6 65%, #0e7490 100%); }
-.orb-violet { background: radial-gradient(circle at 32% 28%, #fff 0, #d9d2ff 20%, #7c6bff 65%, #3a2bb8 100%); }
+.orb-violet { background: radial-gradient(circle at 32% 28%, #fff 0, #bfdbfe 20%, #3b82f6 65%, #1e3a8a 100%); }
 .orb-pink { background: radial-gradient(circle at 32% 28%, #fff 0, #ffd3f1 20%, #f062c0 65%, #9d1773 100%); }
 .orb-amber { background: radial-gradient(circle at 32% 28%, #fff 0, #fff0c7 20%, #f5b234 65%, #a8650a 100%); }
 .orb-green { background: radial-gradient(circle at 32% 28%, #fff 0, #d1fae5 20%, #34d399 65%, #047857 100%); }
@@ -395,7 +395,7 @@ em { font-style: normal; }
 .section { padding: clamp(80px, 10vw, 130px) 0 0; }
 .section-head { margin-bottom: clamp(32px, 4vw, 52px); }
 .route { display: inline-flex; align-items: center; gap: 10px; padding: 6px 14px 6px 6px; border-radius: 999px; background: var(--glass); border: 1px solid var(--glass-border); box-shadow: var(--inner); font-family: var(--mono); font-size: 12px; color: var(--text-2); }
-.route b { display: inline-grid; place-items: center; min-width: 26px; height: 26px; padding: 0 6px; border-radius: 999px; background: linear-gradient(180deg, #a08fff, #5640f0); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5); color: #fff; font-weight: 600; font-size: 11.5px; }
+.route b { display: inline-grid; place-items: center; min-width: 26px; height: 26px; padding: 0 6px; border-radius: 999px; background: linear-gradient(180deg, #67e8f9, #0e7490); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5); color: #fff; font-weight: 600; font-size: 11.5px; }
 .section-title { margin: 18px 0 0; font-size: clamp(40px, 5.6vw, 76px); line-height: 1.02; font-weight: 700; letter-spacing: -0.04em; }
 .section-title em { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .section-sub { margin: 16px 0 0; max-width: 62ch; color: var(--muted); }
@@ -408,7 +408,7 @@ em { font-style: normal; }
 :root[data-theme="light"] .dial { background: radial-gradient(circle at 50% 35%, #fff, #e3e7f3 72%); box-shadow: inset 0 3px 10px rgba(30, 40, 90, 0.18), inset 0 -2px 2px #fff, 0 1px 0 #fff; }
 .dial svg { position: absolute; inset: 0; width: 100%; height: 100%; transform: rotate(-90deg); }
 .dial .track { fill: none; stroke: var(--line); stroke-width: 9; }
-.dial .val { fill: none; stroke: url(#gaugeGrad); stroke-width: 9; stroke-linecap: round; stroke-dasharray: 302; stroke-dashoffset: 302; transition: stroke-dashoffset 1.6s var(--ease); filter: drop-shadow(0 0 6px rgba(139, 123, 255, 0.6)); }
+.dial .val { fill: none; stroke: url(#gaugeGrad); stroke-width: 9; stroke-linecap: round; stroke-dasharray: 302; stroke-dashoffset: 302; transition: stroke-dashoffset 1.6s var(--ease); filter: drop-shadow(0 0 6px rgba(34, 211, 238, 0.6)); }
 .gauge.is-visible .val { stroke-dashoffset: calc(302 - 302 * var(--p, 0.75)); }
 .dial-num { position: absolute; inset: 0; display: grid; place-content: center; text-align: center; }
 .dial-num b { font-size: 30px; line-height: 1; font-weight: 700; letter-spacing: -0.03em; }
@@ -440,7 +440,7 @@ em { font-style: normal; }
 .career { list-style: none; margin: 0; padding: 0 0 0 34px; position: relative; display: grid; gap: 18px; }
 .career::before { content: ""; position: absolute; left: 10px; top: 14px; bottom: 14px; width: 2px; border-radius: 2px; background: linear-gradient(var(--cyan), var(--accent), var(--pink)); opacity: 0.7; }
 .career-item { padding: 26px 28px; }
-.career-item > .node { position: absolute; left: -32px; top: 30px; width: 18px; height: 18px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #fff, #a99dff 45%, #5640f0); box-shadow: 0 0 0 5px var(--accent-soft), 0 0 16px rgba(139, 123, 255, 0.7); }
+.career-item > .node { position: absolute; left: -32px; top: 30px; width: 18px; height: 18px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #fff, #67e8f9 45%, #0e7490); box-shadow: 0 0 0 5px var(--accent-soft), 0 0 16px rgba(34, 211, 238, 0.7); }
 .career-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 6px 16px; }
 .career-item h3 { margin: 0; font-size: clamp(20px, 2vw, 25px); font-weight: 600; letter-spacing: -0.02em; }
 .career-item h3 span { color: var(--accent-ink); }
@@ -517,7 +517,7 @@ em { font-style: normal; }
 /* Contact */
 .contact { padding-bottom: clamp(70px, 9vw, 110px); }
 .contact-panel { padding: clamp(28px, 4vw, 56px); overflow: hidden; }
-.contact-panel .glow { position: absolute; z-index: -2; right: -10%; top: -40%; width: 60%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle, rgba(139, 123, 255, 0.45), transparent 65%); pointer-events: none; }
+.contact-panel .glow { position: absolute; z-index: -2; right: -10%; top: -40%; width: 60%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle, rgba(34, 211, 238, 0.45), transparent 65%); pointer-events: none; }
 .contact .section-head { margin-bottom: 0; }
 .contact-title { margin: 16px 0 16px; font-size: clamp(44px, 7vw, 96px); line-height: 1; font-weight: 800; letter-spacing: -0.045em; }
 .contact-title em { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
