@@ -271,6 +271,7 @@
           const k = Math.min(d / 160, 1) * 3.2;
           b.style.setProperty("--ex", ((dx / d) * k).toFixed(2) + "px");
           b.style.setProperty("--ey", ((dy / d) * k).toFixed(2) + "px");
+          b.style.setProperty("--hr", (Math.max(Math.min(dx / 60, 1), -1) * 6).toFixed(1) + "deg");
         });
       });
     }, { passive: true });
@@ -326,5 +327,26 @@
     };
     window.addEventListener("scroll", () => { if (!q) { q = true; requestAnimationFrame(mark); } }, { passive: true });
     mark();
+  }
+
+  // Apple TV style tilt with a moving reflection
+  if (finePointer && !reduceMotion) {
+    document.querySelectorAll(".work, .hire-link, .sp-card, .gauge, .edu-card, .sp-proof-row").forEach((card) => {
+      card.classList.add("tilt");
+      const max = card.classList.contains("work--feature") ? 4 : 8;
+      card.addEventListener("pointermove", (e) => {
+        const r = card.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width;
+        const y = (e.clientY - r.top) / r.height;
+        card.classList.add("tilting");
+        card.style.transform = "perspective(900px) rotateX(" + ((0.5 - y) * max).toFixed(2) + "deg) rotateY(" + ((x - 0.5) * max).toFixed(2) + "deg) translateY(-4px) scale(1.015)";
+        card.style.setProperty("--gx", (x * 100).toFixed(1) + "%");
+        card.style.setProperty("--gy", (y * 100).toFixed(1) + "%");
+      });
+      card.addEventListener("pointerleave", () => {
+        card.classList.remove("tilting");
+        card.style.transform = "";
+      });
+    });
   }
 })();
