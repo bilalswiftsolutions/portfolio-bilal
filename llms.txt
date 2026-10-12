@@ -1,6 +1,6 @@
 # Bilal Arshad — Senior Full-Stack Developer
 
-> Bilal Arshad is a senior full-stack developer with 8+ years of experience in PHP/Laravel, Node.js/NestJS, Next.js, React and Vue.js. He builds multi-vendor marketplaces, payment integrations (Moyasar, Stripe, PayPal), ZATCA (Fatoora) e-invoicing for Saudi Arabia, high-traffic streaming platforms, and production AI agents with LangGraph and FastAPI. Based in Pakistan, working remotely for Saudi Arabia, open to relocation.
+> Bilal Arshad is a senior full-stack developer with 8+ years of experience in PHP/Laravel, Node.js/NestJS, Next.js, React and Vue.js. He builds multi-vendor marketplaces, payment integrations (Moyasar, Stripe, PayPal), ZATCA (Fatoora) e-invoicing for Saudi Arabia, high-traffic streaming platforms, and production AI agents with LangGraph and FastAPI. Based in Riyadh, Saudi Arabia; open to relocation.
 
 - Current role: Senior Full Stack Developer at Tamakan (Jun 2026 – present), leading the Keeld marketplace and payments platform (NestJS, Next.js, Prisma, PostgreSQL, Flutter APIs).
 - Previous: Lead Software Developer at Altadefinizione (2024–2026) — Laravel/Vue streaming platform serving 2.4M+ users; Redis caching cut load time from 2s to 120ms.
@@ -15,6 +15,14 @@
 - [ZATCA e-invoicing developer](https://bilalarshad.pro/zatca-e-invoicing-developer/): Fatoora integration in custom platforms
 - [Moyasar payment integration](https://bilalarshad.pro/moyasar-payment-integration/): cards, STC Pay, webhooks, refunds, reconciliation
 - [AI agent developer](https://bilalarshad.pro/ai-agent-developer/): LangGraph, FastAPI and OpenAI tool-calling agents
+
+## Writing
+
+- [Integrating Moyasar payments with NestJS](https://bilalarshad.pro/blog/moyasar-nestjs-integration/): verification, idempotent webhooks, refunds, reconciliation
+
+## Arabic
+
+- [الصفحة العربية](https://bilalarshad.pro/ar/): خدمات بلال أرشد بالعربية — Laravel وNestJS وميسر وزاتكا
 
 ## Portfolio
 

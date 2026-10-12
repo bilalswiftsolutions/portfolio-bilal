@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>مطور وكلاء ذكاء اصطناعي — LangGraph وFastAPI وOpenAI | بلال أرشد</title>
+  <meta name="description" content="بلال أرشد يبني وكلاء ذكاء اصطناعي للإنتاج بـ Python وLangGraph وFastAPI وOpenAI: وكلاء يستدعون أدوات على بيانات حية، واجهات محادثة، ونشر بـ Docker. جرّب CineBot." />
+  <meta name="author" content="Bilal Arshad" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+  <link rel="canonical" href="https://bilalarshad.pro/ar/ai-agent-developer/" />
+  <link rel="alternate" hreflang="en" href="https://bilalarshad.pro/ai-agent-developer/" />
+  <link rel="alternate" hreflang="ar" href="https://bilalarshad.pro/ar/ai-agent-developer/" />
+  <link rel="alternate" hreflang="x-default" href="https://bilalarshad.pro/ai-agent-developer/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://bilalarshad.pro/ar/ai-agent-developer/" />
+  <meta property="og:title" content="مطور وكلاء ذكاء اصطناعي — LangGraph وFastAPI وOpenAI | بلال أرشد" />
+  <meta property="og:description" content="بلال أرشد يبني وكلاء ذكاء اصطناعي للإنتاج بـ Python وLangGraph وFastAPI وOpenAI: وكلاء يستدعون أدوات على بيانات حية، واجهات محادثة، ونشر بـ Docker. جرّب CineBot." />
+  <meta property="og:image" content="https://bilalarshad.pro/assets/og-image.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="ar_SA" />
+  <meta property="og:site_name" content="Bilal Arshad" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="مطور وكلاء ذكاء اصطناعي — LangGraph وFastAPI وOpenAI | بلال أرشد" />
+  <meta name="twitter:description" content="بلال أرشد يبني وكلاء ذكاء اصطناعي للإنتاج بـ Python وLangGraph وFastAPI وOpenAI: وكلاء يستدعون أدوات على بيانات حية، واجهات محادثة، ونشر بـ Docker. جرّب CineBot." />
+  <meta name="twitter:image" content="https://bilalarshad.pro/assets/og-image.png" />
+  <meta name="theme-color" content="#0c0c0d" />
+  <script>
+    (function () {
+      try {
+        if (localStorage.getItem("theme") === "light") {
+          document.documentElement.setAttribute("data-theme", "light");
+          document.querySelector('meta[name="theme-color"]').setAttribute("content", "#f2efe7");
+        }
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="manifest" href="/site.webmanifest" />
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@400..600&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/styles.css?v=20261013a" />
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://bilalarshad.pro/ar/ai-agent-developer/#webpage",
+      "url": "https://bilalarshad.pro/ar/ai-agent-developer/",
+      "name": "مطور وكلاء ذكاء اصطناعي — LangGraph وFastAPI وOpenAI | بلال أرشد",
+      "description": "بلال أرشد يبني وكلاء ذكاء اصطناعي للإنتاج بـ Python وLangGraph وFastAPI وOpenAI: وكلاء يستدعون أدوات على بيانات حية، واجهات محادثة، ونشر بـ Docker. جرّب CineBot.",
+      "inLanguage": "ar",
+      "isPartOf": {
+        "@id": "https://bilalarshad.pro/#website"
+      },
+      "about": {
+        "@id": "https://bilalarshad.pro/#person"
+      },
+      "primaryImageOfPage": {
+        "@id": "https://bilalarshad.pro/#photo"
+      },
+      "breadcrumb": {
+        "@id": "https://bilalarshad.pro/ar/ai-agent-developer/#breadcrumb"
+      },
+      "dateModified": "2026-10-13"
+    },
+    {
+      "@type": "Service",
+      "@id": "https://bilalarshad.pro/ar/ai-agent-developer/#service",
+      "name": "مطور وكلاء الذكاء الاصطناعي",
+      "serviceType": "مطور وكلاء الذكاء الاصطناعي",
+      "description": "بلال أرشد يبني وكلاء ذكاء اصطناعي للإنتاج بـ Python وLangGraph وFastAPI وOpenAI: وكلاء يستدعون أدوات على بيانات حية، واجهات محادثة، ونشر بـ Docker. جرّب CineBot.",
+      "provider": {
+        "@type": "Person",
+        "@id": "https://bilalarshad.pro/#person",
+        "name": "Bilal Arshad",
+        "url": "https://bilalarshad.pro/"
+      },
+      "areaServed": [
+        "Saudi Arabia",
+        "Riyadh",
+        "Worldwide"
+      ],
+      "availableLanguage": [
+        "en",
+        "ar",
+        "ur"
+      ],
+      "url": "https://bilalarshad.pro/ar/ai-agent-developer/"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://bilalarshad.pro/ar/ai-agent-developer/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "بلال أرشد",
+          "item": "https://bilalarshad.pro/ar/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "مطور وكلاء الذكاء الاصطناعي",
+          "item": "https://bilalarshad.pro/ar/ai-agent-developer/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://bilalarshad.pro/ar/ai-agent-developer/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "هل يمكنك إضافة وكيل ذكاء اصطناعي لتطبيقي؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "نعم. عادةً أشغّل الوكيل كخدمة FastAPI مستقلة وأربطه بواجهة Laravel أو NestJS عبر الأدوات."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "هل تستخدم نماذج محلية؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "عملت مع OpenAI ومع نماذج محلية عبر Ollama حسب التكلفة والخصوصية."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "هل يمكنني تجربة أحد وكلائك؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "نعم، CineBot متاح على cinebot.bilalarshad.pro."
+          }
+        }
+      ]
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+  <span id="top" class="page-anchor" aria-hidden="true"></span>
+  <a class="skip-link" href="#main">انتقل إلى المحتوى</a>
+  <div class="scroll-progress" aria-hidden="true"></div>
+  <div class="bg-grid" aria-hidden="true"></div>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="/ar/" aria-label="بلال أرشد">
+        <span class="logo-mark" aria-hidden="true">ba<i>/</i></span>
+        <span class="logo-text">بلال أرشد</span>
+      </a>
+      <nav class="site-nav" id="site-nav" aria-label="Primary">
+        <a href="/ar/#services"><span aria-hidden="true">/</span>الخدمات</a>
+        <a href="/#projects"><span aria-hidden="true">/</span>المشاريع</a>
+        <a href="/#experience"><span aria-hidden="true">/</span>الخبرة</a>
+        <a href="/"><span aria-hidden="true">/</span>English</a>
+        <a href="#contact" class="nav-cta">تواصل معي <span aria-hidden="true">←</span></a>
+      </nav>
+      <div class="header-actions">
+        <a class="lang-switch" href="/ai-agent-developer/" hreflang="en" lang="en">EN</a>
+        <button class="theme-toggle" type="button" aria-label="التبديل إلى الوضع الفاتح" title="التبديل إلى الوضع الفاتح">
+          <span class="theme-track" aria-hidden="true">
+            <svg class="icon-moon" viewBox="0 0 24 24"><path fill="currentColor" d="M20.7 14.6A8.5 8.5 0 0 1 9.4 3.3a.6.6 0 0 0-.8-.7A9.8 9.8 0 1 0 21.4 15.4a.6.6 0 0 0-.7-.8Z"/></svg>
+            <svg class="icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.5" fill="currentColor"/><g stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></g></svg>
+            <span class="theme-thumb"></span>
+          </span>
+        </button>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="فتح القائمة">
+          <span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero sp-hero" aria-labelledby="page-title">
+      <div class="container">
+        <nav class="crumbs reveal" aria-label="Breadcrumb"><a href="/ar/">bilalarshad.pro</a> <span aria-hidden="true">/</span> <span aria-current="page">مطور وكلاء الذكاء الاصطناعي</span></nav>
+        <p class="status-pill reveal"><span class="dot" aria-hidden="true"></span> الرياض، السعودية · متاح للعمل الآن</p>
+        <p class="eyebrow reveal">Python · LangGraph · FastAPI · OpenAI</p>
+        <h1 id="page-title" class="sp-title reveal">وكلاء الذكاء الاصطناعي <em>وكلاء يستدعون أدوات حقيقية.</em></h1>
+        <p class="sp-intro reveal">أبني وكلاء ذكاء اصطناعي يجيبون من بيانات حية لا من نصوص ثابتة، وأطلقهم كمنتجات حقيقية بواجهة خلفية وواجهة استخدام ونشر. CineBot وكيل LangGraph من نوع ReAct مع 16 أداة من TMDB يجيب عن الأفلام والمسلسلات والممثلين والحلقات والتقييمات والإعلانات، عبر FastAPI ويعمل بـ Docker على خادم Linux.</p>
+        <div class="hero-actions reveal">
+          <a class="btn btn-primary" href="#contact">وظّف بلال <span aria-hidden="true">←</span></a>
+          <a class="btn btn-ghost" href="https://wa.me/966580712710" target="_blank" rel="noopener noreferrer">واتساب</a>
+          <a class="btn btn-link" href="/#projects">كل المشاريع <span aria-hidden="true">↖</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section sp-section" aria-labelledby="build-title">
+      <div class="container">
+        <header class="section-head reveal">
+          <span class="route" dir="ltr"><b>01</b> GET /ai-agent-developer/build</span>
+          <h2 id="build-title" class="section-title">ماذا أبني</h2>
+        </header>
+        <div class="sp-grid">
+          <article class="sp-card reveal"><span class="work-idx">01</span><h3>وكلاء يستدعون الأدوات</h3><p>وكلاء LangGraph من نوع ReAct مع أدوات مُعرّفة فوق واجهاتك وقواعد بياناتك.</p></article>
+          <article class="sp-card reveal"><span class="work-idx">02</span><h3>واجهات خلفية للوكلاء</h3><p>خدمات FastAPI مع سجل لكل جلسة وتحكم بالتزامن ومهلات قابلة للضبط.</p></article>
+          <article class="sp-card reveal"><span class="work-idx">03</span><h3>واجهات المحادثة</h3><p>واجهات محادثة متجاوبة مع محتوى غني مثل إعلانات YouTube.</p></article>
+          <article class="sp-card reveal"><span class="work-idx">04</span><h3>الذكاء الاصطناعي داخل منتجك</h3><p>نماذج OpenAI أو نماذج محلية عبر Ollama داخل منتجات Laravel أو NestJS.</p></article>
+          <article class="sp-card reveal"><span class="work-idx">05</span><h3>النشر</h3><p>Docker على Linux خلف Nginx مع Cloudflare.</p></article>
+          <article class="sp-card reveal"><span class="work-idx">06</span><h3>محتوى SEO مولّد آليًا</h3><p>رؤى لغوية ومحتوى SEO لكل لغة على نطاق واسع، كما في Ramay Translation.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section sp-section" aria-labelledby="proof-title">
+      <div class="container">
+        <header class="section-head reveal">
+          <span class="route" dir="ltr"><b>02</b> GET /ai-agent-developer/proof</span>
+          <h2 id="proof-title" class="section-title">من بيئة الإنتاج</h2>
+        </header>
+        <div class="sp-proof">
+          <a class="sp-proof-row reveal" href="http://cinebot.bilalarshad.pro/" target="_blank" rel="noopener noreferrer"><h3>CineBot — وكيل أفلام ومسلسلات</h3><p>وكيل LangGraph وFastAPI وOpenAI مع 16 أداة TMDB وواجهة ويب عامة.</p><span class="contact-arrow" aria-hidden="true">↖</span></a>
+          <a class="sp-proof-row reveal" href="/#experience"><h3>وكلاء محادثة في Altadefinizione</h3><p>بناء وكلاء محادثة للإنتاج بـ Python وLangGraph وFastAPI وDocker.</p><span class="contact-arrow" aria-hidden="true">←</span></a>
+        </div>
+        <ul class="chips sp-chips reveal" aria-label="Stack" dir="ltr">
+          <li>Python</li>
+          <li>LangGraph</li>
+          <li>FastAPI</li>
+          <li>OpenAI</li>
+          <li>Ollama</li>
+          <li>Docker</li>
+          <li>Nginx</li>
+          <li>TMDB</li>
+          <li>Laravel</li>
+          <li>NestJS</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section sp-section" aria-labelledby="faq-title">
+      <div class="container">
+        <header class="section-head reveal">
+          <span class="route" dir="ltr"><b>03</b> GET /ai-agent-developer/faq</span>
+          <h2 id="faq-title" class="section-title">أسئلة شائعة</h2>
+        </header>
+        <div class="sp-faq">
+          <details class="sp-q reveal"><summary>هل يمكنك إضافة وكيل ذكاء اصطناعي لتطبيقي؟</summary><p>نعم. عادةً أشغّل الوكيل كخدمة FastAPI مستقلة وأربطه بواجهة Laravel أو NestJS عبر الأدوات.</p></details>
+          <details class="sp-q reveal"><summary>هل تستخدم نماذج محلية؟</summary><p>عملت مع OpenAI ومع نماذج محلية عبر Ollama حسب التكلفة والخصوصية.</p></details>
+          <details class="sp-q reveal"><summary>هل يمكنني تجربة أحد وكلائك؟</summary><p>نعم، CineBot متاح على cinebot.bilalarshad.pro.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section contact" aria-labelledby="contact-title">
+      <div class="container">
+        <h2 id="contact-title" class="contact-title reveal">لنبنِ <em>شيئًا معًا.</em></h2>
+        <div class="contact-grid">
+          <address class="contact-list reveal">
+            <a class="contact-row" href="mailto:bilalarshad2088@gmail.com"><span class="contact-label">البريد</span><span class="contact-val" dir="ltr">bilalarshad2088@gmail.com</span><span class="contact-arrow" aria-hidden="true">←</span></a>
+            <a class="contact-row" href="https://wa.me/966580712710" target="_blank" rel="noopener noreferrer"><span class="contact-label">واتساب</span><span class="contact-val" dir="ltr">+966 58 071 2710</span><span class="contact-arrow" aria-hidden="true">↖</span></a>
+            <a class="contact-row" href="https://www.linkedin.com/in/bilalarshadramay/" target="_blank" rel="noopener noreferrer"><span class="contact-label">LinkedIn</span><span class="contact-val" dir="ltr">bilalarshadramay</span><span class="contact-arrow" aria-hidden="true">↖</span></a>
+          </address>
+          <nav class="sp-related reveal" aria-label="خدمات أخرى">
+            <p class="route">خدمات أخرى</p>
+            <a href="/ar/laravel-developer/">مطور Laravel <span aria-hidden="true">←</span></a>
+            <a href="/ar/nestjs-developer/">مطور NestJS <span aria-hidden="true">←</span></a>
+            <a href="/ar/nextjs-react-developer/">مطور Next.js وReact <span aria-hidden="true">←</span></a>
+            <a href="/ar/zatca-e-invoicing-developer/">ربط الفاتورة الإلكترونية (زاتكا) <span aria-hidden="true">←</span></a>
+            <a href="/ar/moyasar-payment-integration/">ربط بوابة الدفع ميسر <span aria-hidden="true">←</span></a>
+          </nav>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p><span class="dot" aria-hidden="true"></span> &copy; <span id="year"></span> بلال أرشد · مطور متكامل أول</p>
+      <a href="/ar/">bilalarshad.pro ↑</a>
+    </div>
+  </footer>
+
+  <script src="/js/main.js?v=20261013a" defer></script>
+</body>
+</html>

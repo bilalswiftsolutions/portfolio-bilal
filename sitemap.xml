@@ -1,56 +1,130 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://bilalarshad.pro/</loc>
-    <lastmod>2026-10-12</lastmod>
+    <lastmod>2026-10-13</lastmod>
     <priority>1.0</priority>
-    <image:image>
-      <image:loc>https://bilalarshad.pro/assets/bilal-arshad.jpg</image:loc>
-      <image:title>Bilal Arshad — senior full-stack developer</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://bilalarshad.pro/assets/profile.jpg</image:loc>
-      <image:title>Bilal Arshad profile photo</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://bilalarshad.pro/assets/og-image.jpg</image:loc>
-      <image:title>Bilal Arshad portfolio cover</image:title>
-    </image:image>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bilalarshad.pro/" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://bilalarshad.pro/ar/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://bilalarshad.pro/" />
+    <image:image><image:loc>https://bilalarshad.pro/assets/bilal-arshad.jpg</image:loc><image:title>Bilal Arshad — senior full-stack developer</image:title></image:image>
+    <image:image><image:loc>https://bilalarshad.pro/assets/profile.jpg</image:loc><image:title>Bilal Arshad profile photo</image:title></image:image>
+    <image:image><image:loc>https://bilalarshad.pro/assets/og-image.png</image:loc><image:title>Bilal Arshad portfolio cover</image:title></image:image>
+  </url>
+  <url>
+    <loc>https://bilalarshad.pro/ar/</loc>
+    <lastmod>2026-10-13</lastmod>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bilalarshad.pro/" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://bilalarshad.pro/ar/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://bilalarshad.pro/" />
   </url>
   <url>
     <loc>https://bilalarshad.pro/laravel-developer/</loc>
-    <lastmod>2026-10-12</lastmod>
+    <lastmod>2026-10-13</lastmod>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bilalarshad.pro/laravel-developer/" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://bilalarshad.pro/ar/laravel-developer/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://bilalarshad.pro/laravel-developer/" />
   </url>
   <url>
     <loc>https://bilalarshad.pro/nestjs-developer/</loc>
-    <lastmod>2026-10-12</lastmod>
+    <lastmod>2026-10-13</lastmod>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bilalarshad.pro/nestjs-developer/" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://bilalarshad.pro/ar/nestjs-developer/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://bilalarshad.pro/nestjs-developer/" />
   </url>
   <url>
     <loc>https://bilalarshad.pro/nextjs-react-developer/</loc>
-    <lastmod>2026-10-12</lastmod>
+    <lastmod>2026-10-13</lastmod>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bilalarshad.pro/nextjs-react-developer/" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://bilalarshad.pro/ar/nextjs-react-developer/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://bilalarshad.pro/nextjs-react-developer/" />
   </url>
   <url>
     <loc>https://bilalarshad.pro/zatca-e-invoicing-developer/</loc>
-    <lastmod>2026-10-12</lastmod>
+    <lastmod>2026-10-13</lastmod>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bilalarshad.pro/zatca-e-invoicing-developer/" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://bilalarshad.pro/ar/zatca-e-invoicing-developer/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://bilalarshad.pro/zatca-e-invoicing-developer/" />
   </url>
   <url>
     <loc>https://bilalarshad.pro/moyasar-payment-integration/</loc>
-    <lastmod>2026-10-12</lastmod>
+    <lastmod>2026-10-13</lastmod>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bilalarshad.pro/moyasar-payment-integration/" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://bilalarshad.pro/ar/moyasar-payment-integration/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://bilalarshad.pro/moyasar-payment-integration/" />
   </url>
   <url>
     <loc>https://bilalarshad.pro/ai-agent-developer/</loc>
-    <lastmod>2026-10-12</lastmod>
+    <lastmod>2026-10-13</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bilalarshad.pro/ai-agent-developer/" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://bilalarshad.pro/ar/ai-agent-developer/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://bilalarshad.pro/ai-agent-developer/" />
+  </url>
+  <url>
+    <loc>https://bilalarshad.pro/ar/laravel-developer/</loc>
+    <lastmod>2026-10-13</lastmod>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bilalarshad.pro/laravel-developer/" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://bilalarshad.pro/ar/laravel-developer/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://bilalarshad.pro/laravel-developer/" />
+  </url>
+  <url>
+    <loc>https://bilalarshad.pro/ar/nestjs-developer/</loc>
+    <lastmod>2026-10-13</lastmod>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bilalarshad.pro/nestjs-developer/" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://bilalarshad.pro/ar/nestjs-developer/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://bilalarshad.pro/nestjs-developer/" />
+  </url>
+  <url>
+    <loc>https://bilalarshad.pro/ar/nextjs-react-developer/</loc>
+    <lastmod>2026-10-13</lastmod>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bilalarshad.pro/nextjs-react-developer/" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://bilalarshad.pro/ar/nextjs-react-developer/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://bilalarshad.pro/nextjs-react-developer/" />
+  </url>
+  <url>
+    <loc>https://bilalarshad.pro/ar/zatca-e-invoicing-developer/</loc>
+    <lastmod>2026-10-13</lastmod>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bilalarshad.pro/zatca-e-invoicing-developer/" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://bilalarshad.pro/ar/zatca-e-invoicing-developer/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://bilalarshad.pro/zatca-e-invoicing-developer/" />
+  </url>
+  <url>
+    <loc>https://bilalarshad.pro/ar/moyasar-payment-integration/</loc>
+    <lastmod>2026-10-13</lastmod>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bilalarshad.pro/moyasar-payment-integration/" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://bilalarshad.pro/ar/moyasar-payment-integration/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://bilalarshad.pro/moyasar-payment-integration/" />
+  </url>
+  <url>
+    <loc>https://bilalarshad.pro/ar/ai-agent-developer/</loc>
+    <lastmod>2026-10-13</lastmod>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bilalarshad.pro/ai-agent-developer/" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://bilalarshad.pro/ar/ai-agent-developer/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://bilalarshad.pro/ai-agent-developer/" />
+  </url>
+  <url>
+    <loc>https://bilalarshad.pro/blog/moyasar-nestjs-integration/</loc>
+    <lastmod>2026-10-13</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://bilalarshad.pro/resume/resume.html</loc>
-    <lastmod>2026-10-12</lastmod>
+    <lastmod>2026-10-13</lastmod>
     <priority>0.5</priority>
   </url>
 </urlset>

@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Integrating Moyasar Payments with NestJS: Webhooks, Refunds &amp; Reconciliation</title>
+  <meta name="description" content="A production guide to integrating the Moyasar payment gateway with NestJS: secure payment verification, idempotent webhooks, refunds that keep orders and wallets in sync, and daily reconciliation." />
+  <meta name="author" content="Bilal Arshad" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+  <link rel="canonical" href="https://bilalarshad.pro/blog/moyasar-nestjs-integration/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://bilalarshad.pro/blog/moyasar-nestjs-integration/" />
+  <meta property="og:title" content="Integrating Moyasar Payments with NestJS: Webhooks, Refunds &amp; Reconciliation" />
+  <meta property="og:description" content="A production guide to integrating the Moyasar payment gateway with NestJS: secure payment verification, idempotent webhooks, refunds that keep orders and wallets in sync, and daily reconciliation." />
+  <meta property="og:image" content="https://bilalarshad.pro/assets/og-image.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:site_name" content="Bilal Arshad" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Integrating Moyasar Payments with NestJS: Webhooks, Refunds &amp; Reconciliation" />
+  <meta name="twitter:description" content="A production guide to integrating the Moyasar payment gateway with NestJS: secure payment verification, idempotent webhooks, refunds that keep orders and wallets in sync, and daily reconciliation." />
+  <meta name="twitter:image" content="https://bilalarshad.pro/assets/og-image.png" />
+  <meta name="theme-color" content="#0c0c0d" />
+  <script>
+    (function () {
+      try {
+        if (localStorage.getItem("theme") === "light") {
+          document.documentElement.setAttribute("data-theme", "light");
+          document.querySelector('meta[name="theme-color"]').setAttribute("content", "#f2efe7");
+        }
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="manifest" href="/site.webmanifest" />
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@400..600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/styles.css?v=20261013a" />
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "TechArticle",
+      "@id": "https://bilalarshad.pro/blog/moyasar-nestjs-integration/#article",
+      "headline": "Integrating Moyasar Payments with NestJS: Webhooks, Refunds & Reconciliation",
+      "description": "A production guide to integrating the Moyasar payment gateway with NestJS: secure payment verification, idempotent webhooks, refunds that keep orders and wallets in sync, and daily reconciliation.",
+      "url": "https://bilalarshad.pro/blog/moyasar-nestjs-integration/",
+      "mainEntityOfPage": "https://bilalarshad.pro/blog/moyasar-nestjs-integration/",
+      "inLanguage": "en",
+      "datePublished": "2026-10-13",
+      "dateModified": "2026-10-13",
+      "image": "https://bilalarshad.pro/assets/og-image.png",
+      "author": {
+        "@type": "Person",
+        "@id": "https://bilalarshad.pro/#person",
+        "name": "Bilal Arshad",
+        "url": "https://bilalarshad.pro/"
+      },
+      "publisher": {
+        "@id": "https://bilalarshad.pro/#person"
+      },
+      "about": [
+        "Moyasar",
+        "NestJS",
+        "Payment gateway integration",
+        "Webhooks"
+      ],
+      "proficiencyLevel": "Expert",
+      "isPartOf": {
+        "@id": "https://bilalarshad.pro/#website"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://bilalarshad.pro/blog/moyasar-nestjs-integration/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Bilal Arshad",
+          "item": "https://bilalarshad.pro/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Moyasar payment integration",
+          "item": "https://bilalarshad.pro/moyasar-payment-integration/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Moyasar + NestJS guide",
+          "item": "https://bilalarshad.pro/blog/moyasar-nestjs-integration/"
+        }
+      ]
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+  <span id="top" class="page-anchor" aria-hidden="true"></span>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="scroll-progress" aria-hidden="true"></div>
+  <div class="bg-grid" aria-hidden="true"></div>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="/" aria-label="Bilal Arshad">
+        <span class="logo-mark" aria-hidden="true">ba<i>/</i></span>
+        <span class="logo-text">Bilal Arshad</span>
+      </a>
+      <nav class="site-nav" id="site-nav" aria-label="Primary">
+        <a href="/#about"><span aria-hidden="true">/</span>about</a>
+        <a href="/#skills"><span aria-hidden="true">/</span>stack</a>
+        <a href="/#experience"><span aria-hidden="true">/</span>log</a>
+        <a href="/#projects"><span aria-hidden="true">/</span>work</a>
+        <a href="/#hire"><span aria-hidden="true">/</span>services</a>
+        <a href="#contact" class="nav-cta">Hire me <span aria-hidden="true">→</span></a>
+      </nav>
+      <div class="header-actions">
+        <button class="theme-toggle" type="button" aria-label="Switch to light mode" title="Switch to light mode">
+          <span class="theme-track" aria-hidden="true">
+            <svg class="icon-moon" viewBox="0 0 24 24"><path fill="currentColor" d="M20.7 14.6A8.5 8.5 0 0 1 9.4 3.3a.6.6 0 0 0-.8-.7A9.8 9.8 0 1 0 21.4 15.4a.6.6 0 0 0-.7-.8Z"/></svg>
+            <svg class="icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.5" fill="currentColor"/><g stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></g></svg>
+            <span class="theme-thumb"></span>
+          </span>
+        </button>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+          <span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <article class="sp-hero hero" aria-labelledby="page-title">
+      <div class="container">
+        <nav class="crumbs reveal" aria-label="Breadcrumb"><a href="/">bilalarshad.pro</a> <span aria-hidden="true">/</span> <a href="/moyasar-payment-integration/">moyasar-payment-integration</a> <span aria-hidden="true">/</span> <span aria-current="page">guide</span></nav>
+        <p class="eyebrow reveal">Guide · NestJS · Moyasar · TypeScript</p>
+        <h1 id="page-title" class="sp-title reveal">Moyasar + NestJS <em>payments you can reconcile.</em></h1>
+        <p class="byline reveal">By <a href="/">Bilal Arshad</a>, senior full-stack developer · <time datetime="2026-10-13">13 Oct 2026</time> · 9 min read</p>
+        <div class="prose">
+<p class="sp-intro">There's no official NestJS module for Moyasar, and most examples online stop at "show the payment form". In production you also need to verify payments on your server, handle webhooks that arrive more than once, refund safely and reconcile every halala. This guide is the approach I use on a NestJS + Prisma + PostgreSQL marketplace that takes card and STC Pay payments through Moyasar.</p>
+
+<nav class="toc" aria-label="Contents">
+  <p class="route">Contents</p>
+  <ol>
+    <li><a href="#architecture">The architecture: card data never touches your server</a></li>
+    <li><a href="#client">A small Moyasar client in NestJS</a></li>
+    <li><a href="#verify">Verifying a payment after the callback</a></li>
+    <li><a href="#webhooks">Webhooks: fast, verified and idempotent</a></li>
+    <li><a href="#refunds">Refunds that keep orders and wallets in sync</a></li>
+    <li><a href="#reconcile">Reconciliation</a></li>
+    <li><a href="#checklist">Production checklist</a></li>
+  </ol>
+</nav>
+
+<h2 id="architecture">1. The architecture: card data never touches your server</h2>
+<p>Moyasar gives you two kinds of keys. The <strong>publishable key</strong> (<code>pk_test_…</code> / <code>pk_live_…</code>) can only create payments and is safe to ship in a browser or mobile app. The <strong>secret key</strong> (<code>sk_…</code>) can do everything and must only live on your backend.</p>
+<p>That split decides the flow:</p>
+<ol>
+  <li>Your NestJS API creates an <em>order</em> and stores the amount it expects, in halalas.</li>
+  <li>The frontend renders the Moyasar payment form with the publishable key, the same amount, and your order ID in <code>metadata</code>. The customer pays by card, mada, STC Pay or Apple Pay directly with Moyasar.</li>
+  <li>Moyasar redirects the customer to your <code>callback_url</code> with the payment <code>id</code>.</li>
+  <li>Your API fetches that payment <strong>with the secret key</strong> and only marks the order paid if the status, amount, currency and order ID all match.</li>
+  <li>A webhook confirms the same thing in the background, which covers customers who close the tab before the redirect.</li>
+</ol>
+<p>Never trust the query string on the callback by itself. It only tells you which payment to look up.</p>
+
+<h2 id="client">2. A small Moyasar client in NestJS</h2>
+<p>Moyasar's API is at <code>https://api.moyasar.com/v1</code> and uses HTTP Basic auth: the secret key is the username and the password is empty. A thin injectable service is all you need:</p>
+<pre><code>// moyasar.service.ts
+import { Injectable, Logger } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
+
+export interface MoyasarPayment {
+  id: string;
+  status: 'initiated' | 'paid' | 'failed' | 'authorized' | 'captured' | 'refunded' | 'voided' | 'verified';
+  amount: number;
+  currency: string;
+  refunded: number;
+  metadata?: Record&lt;string, string&gt;;
+  source?: { type: string };
+}
+
+@Injectable()
+export class MoyasarService {
+  private readonly logger = new Logger(MoyasarService.name);
+  private readonly baseUrl = 'https://api.moyasar.com/v1';
+  private readonly auth: string;
+
+  constructor(config: ConfigService) {
+    const key = config.getOrThrow&lt;string&gt;('MOYASAR_SECRET_KEY');
+    this.auth = 'Basic ' + Buffer.from(`${key}:`).toString('base64');
+  }
+
+  private async request&lt;T&gt;(path: string, init: RequestInit = {}): Promise&lt;T&gt; {
+    const res = await fetch(`${this.baseUrl}${path}`, {
+      ...init,
+      headers: { Authorization: this.auth, 'Content-Type': 'application/json', ...init.headers },
+      signal: AbortSignal.timeout(15_000),
+    });
+    if (!res.ok) {
+      const body = await res.text();
+      this.logger.error(`Moyasar ${init.method ?? 'GET'} ${path} failed: ${res.status} ${body}`);
+      throw new Error(`Moyasar request failed with ${res.status}`);
+    }
+    return res.json() as Promise&lt;T&gt;;
+  }
+
+  getPayment(id: string) {
+    return this.request&lt;MoyasarPayment&gt;(`/payments/${encodeURIComponent(id)}`);
+  }
+
+  refund(id: string, amount?: number) {
+    return this.request&lt;MoyasarPayment&gt;(`/payments/${encodeURIComponent(id)}/refund`, {
+      method: 'POST',
+      body: JSON.stringify(amount ? { amount } : {}),
+    });
+  }
+}</code></pre>
+<p>Keep amounts as integers in the smallest unit (halalas: 100 = 1 SAR) everywhere: in the database, in DTOs and in the form. Floating-point riyals are where reconciliation bugs come from.</p>
+
+<h2 id="verify">3. Verifying a payment after the callback</h2>
+<p>The callback endpoint looks up the payment and compares it with what <em>you</em> stored, not with anything the client sent:</p>
+<pre><code>// payments.service.ts
+async confirmPayment(paymentId: string) {
+  const payment = await this.moyasar.getPayment(paymentId);
+  const orderId = payment.metadata?.order_id;
+  if (!orderId) throw new BadRequestException('Payment is not linked to an order');
+
+  const order = await this.prisma.order.findUniqueOrThrow({ where: { id: orderId } });
+
+  const matches =
+    payment.status === 'paid' &amp;&amp;
+    payment.amount === order.totalHalalas &amp;&amp;
+    payment.currency === 'SAR';
+
+  if (!matches) {
+    await this.prisma.order.update({ where: { id: order.id }, data: { paymentStatus: 'FAILED' } });
+    return { ok: false };
+  }
+
+  await this.markOrderPaid(order.id, payment.id);
+  return { ok: true };
+}</code></pre>
+<p><code>markOrderPaid</code> must be safe to call twice, because the webhook will call it too. Do the update with a condition on the current status, inside a transaction, and record the Moyasar payment ID on a unique column:</p>
+<pre><code>async markOrderPaid(orderId: string, paymentId: string) {
+  await this.prisma.$transaction(async (tx) =&gt; {
+    const { count } = await tx.order.updateMany({
+      where: { id: orderId, paymentStatus: { not: 'PAID' } },
+      data: { paymentStatus: 'PAID', moyasarPaymentId: paymentId, paidAt: new Date() },
+    });
+    if (count === 0) return;
+    // first time only: credit merchant wallets, queue the e-invoice, notify the customer
+  });
+}</code></pre>
+
+<h2 id="webhooks">4. Webhooks: fast, verified and idempotent</h2>
+<p>Each webhook delivery has an event <code>id</code>, a <code>type</code>, a <code>live</code> flag, the payment in <code>data</code>, and the <code>secret_token</code> you set when registering the endpoint in the Moyasar dashboard. Moyasar expects a quick 2xx; if it doesn't get one, it retries five more times over roughly the next few hours. So the controller should check the token, store the event, return immediately and do the work afterwards.</p>
+<pre><code>// moyasar-webhook.controller.ts
+import { timingSafeEqual } from 'node:crypto';
+
+@Controller('webhooks/moyasar')
+export class MoyasarWebhookController {
+  constructor(private readonly config: ConfigService, private readonly prisma: PrismaService, private readonly queue: PaymentsQueue) {}
+
+  @Post()
+  @HttpCode(200)
+  async handle(@Body() event: MoyasarWebhookEvent) {
+    const expected = Buffer.from(this.config.getOrThrow&lt;string&gt;('MOYASAR_WEBHOOK_SECRET'));
+    const received = Buffer.from(String(event.secret_token ?? ''));
+    if (expected.length !== received.length || !timingSafeEqual(expected, received)) {
+      throw new UnauthorizedException();
+    }
+
+    const created = await this.prisma.webhookEvent.createMany({
+      data: [{ id: event.id, type: event.type, payload: event as any }],
+      skipDuplicates: true,
+    });
+    if (created.count === 1) await this.queue.add('moyasar-event', { eventId: event.id });
+
+    return { received: true };
+  }
+}</code></pre>
+<p>The unique <code>id</code> on <code>webhookEvent</code> makes retries harmless: a repeated delivery is stored once and processed once. The worker then routes by type:</p>
+<pre><code>switch (event.type) {
+  case 'payment_paid':
+    // re-fetch with getPayment() and run the same checks as the callback
+    return this.payments.confirmPayment(event.data.id);
+  case 'payment_failed':
+  case 'payment_faild': // spelling used in Moyasar's webhook reference
+    return this.payments.markFailed(event.data.id);
+  case 'payment_refunded':
+    return this.payments.syncRefund(event.data.id);
+  case 'payment_voided':
+    return this.payments.syncVoid(event.data.id);
+}</code></pre>
+<p>Re-fetching the payment inside the worker means you act on Moyasar's current state, even if events arrive out of order. Also reject events whose <code>live</code> flag doesn't match the environment, so a test webhook can never mark a production order paid.</p>
+
+<h2 id="refunds">5. Refunds that keep orders and wallets in sync</h2>
+<p>A refund touches several things at once: the payment at Moyasar, the order, the merchant's wallet or pending settlement, the tax invoice (a credit note if you issue ZATCA e-invoices) and the customer notification. Call Moyasar first, then apply everything else in one database transaction based on what Moyasar returned:</p>
+<pre><code>async refundOrder(orderId: string, amountHalalas: number, actorId: string) {
+  const order = await this.prisma.order.findUniqueOrThrow({ where: { id: orderId } });
+  if (amountHalalas &lt;= 0 || amountHalalas &gt; order.totalHalalas - order.refundedHalalas) {
+    throw new BadRequestException('Invalid refund amount');
+  }
+
+  const payment = await this.moyasar.refund(order.moyasarPaymentId!, amountHalalas);
+
+  await this.prisma.$transaction([
+    this.prisma.order.update({
+      where: { id: order.id },
+      data: { refundedHalalas: payment.refunded, paymentStatus: payment.refunded === payment.amount ? 'REFUNDED' : 'PARTIALLY_REFUNDED' },
+    }),
+    this.prisma.walletEntry.create({ data: { merchantId: order.merchantId, orderId: order.id, amountHalalas: -amountHalalas, reason: 'REFUND' } }),
+    this.prisma.auditLog.create({ data: { actorId, action: 'ORDER_REFUNDED', entityId: order.id, meta: { amountHalalas } } }),
+  ]);
+}</code></pre>
+<p>Using <code>payment.refunded</code> from Moyasar's response as the source of truth means partial refunds can never drift from what was actually returned to the card. For very recent payments, Moyasar also supports voiding instead of refunding, which avoids the refund waiting period for the customer.</p>
+
+<h2 id="reconcile">6. Reconciliation</h2>
+<p>Even with callbacks and webhooks, run a daily job that lists the previous day's payments from <code>GET /v1/payments</code> and compares each one with your orders: status, amount, refunded amount and fees. Anything that doesn't match goes to a finance report instead of being "fixed" silently. On a marketplace this is also where settlement statements come from: each merchant's paid orders, minus refunds, minus commission per payment method, equals the payout.</p>
+
+<h2 id="checklist">7. Production checklist</h2>
+<ul class="check">
+  <li>Secret key only on the server; publishable key only in clients.</li>
+  <li>Amounts stored and compared as integer halalas.</li>
+  <li>Order ID in <code>metadata</code>; never trust callback query parameters alone.</li>
+  <li>Webhook <code>secret_token</code> checked with a constant-time comparison.</li>
+  <li>Webhook events stored by unique ID and processed asynchronously.</li>
+  <li><code>live</code> flag checked against the environment.</li>
+  <li>"Mark paid" and "refund" are idempotent and run in transactions.</li>
+  <li>Daily reconciliation against Moyasar, with mismatches reported to finance.</li>
+</ul>
+<p>Check Moyasar's <a href="https://docs.moyasar.com/" target="_blank" rel="noopener noreferrer">official documentation</a> for the current field names and event list before you ship. If you'd like this built into your NestJS or Laravel platform, along with ZATCA e-invoicing and merchant settlements, <a href="/#contact">get in touch</a>.</p>
+
+        </div>
+      </div>
+    </article>
+
+    <section id="contact" class="section contact" aria-labelledby="contact-title">
+      <div class="container">
+        <h2 id="contact-title" class="contact-title reveal">Let's build <em>something.</em></h2>
+        <div class="contact-grid">
+          <address class="contact-list reveal">
+            <a class="contact-row" href="mailto:bilalarshad2088@gmail.com"><span class="contact-label">Email</span><span class="contact-val" dir="ltr">bilalarshad2088@gmail.com</span><span class="contact-arrow" aria-hidden="true">→</span></a>
+            <a class="contact-row" href="https://wa.me/966580712710" target="_blank" rel="noopener noreferrer"><span class="contact-label">WhatsApp</span><span class="contact-val" dir="ltr">+966 58 071 2710</span><span class="contact-arrow" aria-hidden="true">↗</span></a>
+            <a class="contact-row" href="https://www.linkedin.com/in/bilalarshadramay/" target="_blank" rel="noopener noreferrer"><span class="contact-label">LinkedIn</span><span class="contact-val" dir="ltr">bilalarshadramay</span><span class="contact-arrow" aria-hidden="true">↗</span></a>
+          </address>
+          <nav class="sp-related reveal" aria-label="Also hire me as">
+            <p class="route">Also hire me as</p>
+            <a href="/moyasar-payment-integration/">Moyasar payment integration <span aria-hidden="true">→</span></a>
+            <a href="/nestjs-developer/">NestJS developer <span aria-hidden="true">→</span></a>
+            <a href="/zatca-e-invoicing-developer/">ZATCA e-invoicing developer <span aria-hidden="true">→</span></a>
+            <a href="/laravel-developer/">Laravel developer <span aria-hidden="true">→</span></a>
+          </nav>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p><span class="dot" aria-hidden="true"></span> &copy; <span id="year"></span> Bilal Arshad · Senior Full-Stack Developer</p>
+      <a href="/">bilalarshad.pro ↑</a>
+    </div>
+  </footer>
+
+  <script src="/js/main.js?v=20261013a" defer></script>
+</body>
+</html>
