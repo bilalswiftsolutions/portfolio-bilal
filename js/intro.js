@@ -59,13 +59,13 @@
   const finish = () => {
     if (done) return;
     done = true;
-    ["pointerdown", "keydown", "wheel", "touchstart"].forEach((t) => window.removeEventListener(t, skip));
+    ["keydown"].forEach((t) => window.removeEventListener(t, skip));
     ov.style.transition = "opacity 0.26s ease";
     ov.style.opacity = "0";
     setTimeout(() => { anims.forEach((x) => x.cancel()); ov.remove(); }, 300);
   };
   const skip = () => { anims.forEach((a) => a.cancel()); finish(); };
-  ["pointerdown", "keydown", "wheel", "touchstart"].forEach((t) => window.addEventListener(t, skip, { passive: true, once: true }));
+  ["keydown"].forEach((t) => window.addEventListener(t, skip, { passive: true, once: true }));
 
   const fall = 2900;
   track(bomb.animate([
