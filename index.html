@@ -44,6 +44,7 @@
     /* Apply a saved theme before first paint; dark is the default */
     (function () {
       try {
+        if (localStorage.getItem("calm") === "1") document.documentElement.setAttribute("data-calm", "1");
         if (localStorage.getItem("theme") === "dark") {
           document.documentElement.setAttribute("data-theme", "dark");
           document.querySelector('meta[name="theme-color"]').setAttribute("content", "#17100b");
@@ -62,7 +63,7 @@
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,300..800&family=Geist+Mono:wght@400..600&display=swap" as="style" />
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,300..800&family=Geist+Mono:wght@400..600&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="/css/styles.css?v=20261017h" />
+  <link rel="stylesheet" href="/css/styles.css?v=20261018a" />
 
   <script type="application/ld+json">
   {
@@ -239,6 +240,7 @@
       </nav>
       <div class="header-actions">
         <a class="lang-switch" href="/ar/" hreflang="ar" lang="ar">عربي</a>
+        <button class="calm-toggle" type="button" aria-pressed="false" title="Calm mode: turn animations off"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="c-on" d="M8 5v14M16 5v14" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/><path class="c-off" d="M8 5.5v13l11-6.5Z" fill="currentColor"/></svg><span class="calm-label">Calm</span></button>
         <button class="theme-toggle" type="button" aria-label="Switch to dark mode" title="Switch to dark mode">
           <span class="theme-track" aria-hidden="true">
             <svg class="icon-moon" viewBox="0 0 24 24"><path fill="currentColor" d="M20.7 14.6A8.5 8.5 0 0 1 9.4 3.3a.6.6 0 0 0-.8-.7A9.8 9.8 0 1 0 21.4 15.4a.6.6 0 0 0-.7-.8Z"/></svg>
@@ -265,6 +267,7 @@
               <span class="hero-name"><span class="w">Bilal</span> <span class="w">Arshad</span></span>
               <span class="hero-tagline">Full-stack developer building web platforms and <em>scalable APIs<svg class="squiggle" viewBox="0 0 200 16" preserveAspectRatio="none" aria-hidden="true"><path d="M3 10 C 30 3, 52 14, 80 8 S 130 3, 160 9 S 190 11, 197 6"/></svg></em> that ship in production.</span>
             </h1>
+            <p class="pitch"><span class="pitch-tag">Hire me</span> I build payment-ready platforms for Saudi businesses — <b>Moyasar</b>, <b>ZATCA</b>, <b>Arabic-first</b>.</p>
             <p class="hero-lead">
               Senior full-stack developer with 8+ years delivering Laravel, NestJS, Next.js, React and Vue.js
               applications — marketplaces, payment and e-invoicing integrations, streaming platforms, REST APIs,
@@ -920,7 +923,7 @@
     </div>
   </footer>
 
-  <script src="/js/intro.js?v=20261017g" defer></script>
-  <script src="/js/main.js?v=20261017c" defer></script>
+  <script src="/js/intro.js?v=20261018a" defer></script>
+  <script src="/js/main.js?v=20261018a" defer></script>
 </body>
 </html>

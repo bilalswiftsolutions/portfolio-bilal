@@ -29,6 +29,7 @@
   <script>
     (function () {
       try {
+        if (localStorage.getItem("calm") === "1") document.documentElement.setAttribute("data-calm", "1");
         if (localStorage.getItem("theme") === "dark") {
           document.documentElement.setAttribute("data-theme", "dark");
           document.querySelector('meta[name="theme-color"]').setAttribute("content", "#17100b");
@@ -42,7 +43,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,300..800&family=Geist+Mono:wght@400..600&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/css/styles.css?v=20261017h" />
+  <link rel="stylesheet" href="/css/styles.css?v=20261018a" />
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -165,6 +166,7 @@
       </nav>
       <div class="header-actions">
         <a class="lang-switch" href="/laravel-developer/" hreflang="en" lang="en">EN</a>
+        <button class="calm-toggle" type="button" aria-pressed="false" title="Calm mode: turn animations off"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="c-on" d="M8 5v14M16 5v14" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/><path class="c-off" d="M8 5.5v13l11-6.5Z" fill="currentColor"/></svg><span class="calm-label">Calm</span></button>
         <button class="theme-toggle" type="button" aria-label="التبديل إلى الوضع الداكن" title="التبديل إلى الوضع الداكن">
           <span class="theme-track" aria-hidden="true">
             <svg class="icon-moon" viewBox="0 0 24 24"><path fill="currentColor" d="M20.7 14.6A8.5 8.5 0 0 1 9.4 3.3a.6.6 0 0 0-.8-.7A9.8 9.8 0 1 0 21.4 15.4a.6.6 0 0 0-.7-.8Z"/></svg>
@@ -287,6 +289,6 @@
     </div>
   </footer>
 
-  <script src="/js/main.js?v=20261017c" defer></script>
+  <script src="/js/main.js?v=20261018a" defer></script>
 </body>
 </html>

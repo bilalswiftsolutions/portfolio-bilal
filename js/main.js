@@ -5,7 +5,26 @@
   const header = document.querySelector(".site-header");
   const progress = document.querySelector(".scroll-progress");
   const year = document.getElementById("year");
-  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const calm = document.documentElement.getAttribute("data-calm") === "1";
+  const reduceMotion = calm || window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const calmBtn = document.querySelector(".calm-toggle");
+  if (calmBtn) {
+    const ar0 = document.documentElement.lang === "ar";
+    const lbl = calmBtn.querySelector(".calm-label");
+    const sync = (on) => {
+      calmBtn.setAttribute("aria-pressed", on ? "true" : "false");
+      const t = on ? (ar0 ? "تشغيل الحركة" : "Turn animations on") : (ar0 ? "الوضع الهادئ: إيقاف الحركة" : "Calm mode: turn animations off");
+      calmBtn.title = t; calmBtn.setAttribute("aria-label", t);
+      if (lbl) lbl.textContent = ar0 ? "هادئ" : "Calm";
+    };
+    sync(calm);
+    calmBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const on = document.documentElement.getAttribute("data-calm") !== "1";
+      try { localStorage.setItem("calm", on ? "1" : "0"); } catch (err) {}
+      location.reload();
+    });
+  }
   const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
 
   if (year) year.textContent = String(new Date().getFullYear());
@@ -402,7 +421,7 @@
       '<rect x="16" y="23" width="48" height="36" rx="13" fill="#fff"/>' +
       '<path d="M25 37q4.5-4.5 9 0M46 37q4.5-4.5 9 0" stroke="#2a1a10" stroke-width="2.8" fill="none" stroke-linecap="round"/>' +
       '<circle cx="23" cy="47" r="3.8" fill="#ffb27a"/><circle cx="57" cy="47" r="3.8" fill="#ffb27a"/>' +
-      '<path d="M37.5 45.5c2.5-1.6 5 0 3.2 1.8 2.6.4 1.6 3.8-1.4 3.4" stroke="#2a1a10" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>' +
+      '<path d="M33 46q7 7 14 0" stroke="#2a1a10" stroke-width="2.6" fill="none" stroke-linecap="round"/>' +
       '<g class="k-hand"><path d="M72 58q12-2 9-16" stroke="#c4560a" stroke-width="5.5" fill="none" stroke-linecap="round"/><circle cx="81" cy="41" r="5" fill="#a9460a"/></g>' +
       "</svg>";
     const heart = (x, y, size, white) => {
@@ -433,6 +452,13 @@
     let active = 0;
     document.addEventListener("click", (e) => {
       if (e.target.closest && e.target.closest(".hero-bit")) return;
+      const special = e.target.closest && e.target.closest(".nav-cta, .btn-primary, a[href*='wa.me'], a[download], .rail-bit, .peek-bit, .guide, .contact-row");
+      if (!special) {
+        let px = e.clientX, py = e.clientY;
+        if (!px && !py && e.target.getBoundingClientRect) { const r = e.target.getBoundingClientRect(); px = r.left + r.width / 2; py = r.top + r.height / 2; }
+        shower(px, py, 5, py < 220);
+        return;
+      }
       let x = e.clientX, y = e.clientY;
       if (!x && !y && e.target.getBoundingClientRect) { const r = e.target.getBoundingClientRect(); x = r.left + r.width / 2; y = r.top + r.height / 2; }
       if (active >= 4) { shower(x, y, 8); return; }
@@ -456,9 +482,11 @@
       hand.style.transformOrigin = "0% 100%";
       hand.animate([
         { transform: "rotate(0deg)" },
-        { transform: "rotate(-62deg) translate(-6px,4px)", offset: 0.35 },
-        { transform: "rotate(-62deg) translate(-6px,4px)", offset: 0.55 },
-        { transform: "rotate(25deg)" }
+        { transform: "rotate(-28deg)", offset: 0.2 },
+        { transform: "rotate(18deg)", offset: 0.4 },
+        { transform: "rotate(-28deg)", offset: 0.6 },
+        { transform: "rotate(18deg)", offset: 0.8 },
+        { transform: "rotate(0deg)" }
       ], { duration: 900, delay: 300, easing: "ease-in-out", fill: "forwards" });
       setTimeout(() => {
         const sx = x + 20 * flip, sy = down ? y + 58 : y - 36;
@@ -499,13 +527,14 @@
     const fill = (id, fb) => 'url(#' + id + ') ' + fb;
     const eyes = '<g class="g-eyes"><ellipse cx="32" cy="46" rx="3.6" ry="4.8" fill="#2a1a10"/><ellipse cx="48" cy="46" rx="3.6" ry="4.8" fill="#2a1a10"/><circle cx="33.3" cy="44.2" r="1.3" fill="#fff"/><circle cx="49.3" cy="44.2" r="1.3" fill="#fff"/></g>';
     const face = eyes + '<circle cx="24" cy="54" r="3.6" fill="#ffb27a"/><circle cx="56" cy="54" r="3.6" fill="#ffb27a"/><path d="M35 55q5 4.5 10 0" fill="none" stroke="#2a1a10" stroke-width="2.4" stroke-linecap="round"/>';
-    const chars = [
+    const charsAll = [
       '<svg viewBox="0 0 80 92"><ellipse cx="40" cy="88" rx="20" ry="3.5" fill="rgba(120,55,15,.22)"/><path d="M28 74v8M52 74v8" stroke="#c4560a" stroke-width="4.5" stroke-linecap="round"/><rect x="20" y="80" width="13" height="7" rx="3.5" fill="#8f3a07"/><rect x="47" y="80" width="13" height="7" rx="3.5" fill="#8f3a07"/><line x1="40" y1="16" x2="40" y2="7" stroke="#c4560a" stroke-width="3" stroke-linecap="round"/><circle class="g-bulb" cx="40" cy="6" r="4.4" fill="#ffb27a" stroke="#c4560a"/><rect x="10" y="18" width="60" height="58" rx="19" fill="#a9460a"/><rect x="10" y="16" width="60" height="56" rx="19" fill="' + fill("kBody", "#f2711c") + '"/><ellipse cx="26" cy="21" rx="10" ry="3" fill="#fff" opacity=".5" transform="rotate(-10 26 21)"/><rect x="17" y="27" width="46" height="36" rx="12" fill="#fff"/>' + face + '<path d="M11 50q-9 6-5 15" stroke="#c4560a" stroke-width="5" fill="none" stroke-linecap="round"/><g class="g-arm"><path d="M69 50q11-8 9-20" stroke="#c4560a" stroke-width="5" fill="none" stroke-linecap="round"/><circle cx="78" cy="28" r="4.6" fill="#a9460a"/></g></svg>',
       '<svg viewBox="0 0 80 92"><ellipse cx="40" cy="88" rx="22" ry="3.5" fill="rgba(120,55,15,.22)"/><circle cx="40" cy="52" r="32" fill="' + fill("kBody", "#f2711c") + '"/><ellipse cx="27" cy="33" rx="10" ry="5" fill="#fff" opacity=".5" transform="rotate(-28 27 33)"/>' + face + '<ellipse cx="11" cy="64" rx="6" ry="8" fill="#d75c0c" transform="rotate(25 11 64)"/><g class="g-arm"><ellipse cx="71" cy="46" rx="6" ry="9" fill="#d75c0c" transform="rotate(-35 71 46)"/></g></svg>',
       '<svg viewBox="0 0 80 92"><ellipse cx="40" cy="88" rx="22" ry="3.5" fill="rgba(120,55,15,.2)"/><circle cx="40" cy="52" r="32" fill="' + fill("kHeartW", "#fff6ee") + '" stroke="#f3d2b6" stroke-width="1"/><ellipse cx="27" cy="33" rx="10" ry="5" fill="#fff" opacity=".95" transform="rotate(-28 27 33)"/><path d="M28 46q4-4 8 0M44 46q4-4 8 0" fill="none" stroke="#2a1a10" stroke-width="2.6" stroke-linecap="round"/><circle cx="24" cy="54" r="3.8" fill="#ffb27a"/><circle cx="56" cy="54" r="3.8" fill="#ffb27a"/><path d="M35 55q5 4.5 10 0" fill="none" stroke="#2a1a10" stroke-width="2.4" stroke-linecap="round"/><ellipse cx="11" cy="64" rx="6" ry="8" fill="#f6e2d0" transform="rotate(25 11 64)"/><g class="g-arm"><ellipse cx="71" cy="46" rx="6" ry="9" fill="#f6e2d0" transform="rotate(-35 71 46)"/></g></svg>',
       '<svg viewBox="0 0 80 92"><ellipse cx="40" cy="88" rx="20" ry="3.5" fill="rgba(120,55,15,.22)"/><g class="g-arm"><path d="M40 8l9.2 20.4 22.3 2.4-16.7 15 4.7 21.9L40 56.4 20.5 67.7l4.7-21.9-16.7-15 22.3-2.4Z" fill="' + fill("kHeart", "#f7801f") + '" stroke="#d75c0c" stroke-width="1.6" stroke-linejoin="round"/></g><ellipse cx="31" cy="27" rx="5" ry="2.6" fill="#fff" opacity=".6" transform="rotate(-30 31 27)"/><ellipse cx="34" cy="40" rx="2.6" ry="3.4" fill="#2a1a10"/><ellipse cx="46" cy="40" rx="2.6" ry="3.4" fill="#2a1a10"/><circle cx="35" cy="38.8" r="1" fill="#fff"/><circle cx="47" cy="38.8" r="1" fill="#fff"/><circle cx="29" cy="46" r="2.6" fill="#ffd2b0"/><circle cx="51" cy="46" r="2.6" fill="#ffd2b0"/><path d="M37 47q3 2.8 6 0" fill="none" stroke="#2a1a10" stroke-width="2" stroke-linecap="round"/><path d="M32 66v14M48 66v14" stroke="#c4560a" stroke-width="4" stroke-linecap="round"/><rect x="25" y="79" width="12" height="6" rx="3" fill="#8f3a07"/><rect x="43" y="79" width="12" height="6" rx="3" fill="#8f3a07"/></svg>'
     ];
 
+    const chars = [charsAll[0]];
     const guides = sections.map((sec, i) => {
       const g = document.createElement("div");
       g.className = "guide";

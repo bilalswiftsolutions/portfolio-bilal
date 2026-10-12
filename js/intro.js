@@ -1,6 +1,7 @@
 (function () {
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
   if (!document.querySelector(".hero-w")) return;
+  if (document.documentElement.getAttribute("data-calm") === "1") return;
   if (location.hash) return;
 
 
@@ -70,7 +71,7 @@
   const skip = (e) => { if (e && e.key !== "Escape") return; anims.forEach((a) => a.cancel()); finish(); };
   ["keydown"].forEach((t) => window.addEventListener(t, skip, { passive: true }));
 
-  const fall = 2900;
+  const fall = 1100;
   track(bomb.animate([
     { transform: `translate(-50%, ${-size * 1.6}px) rotate(-24deg)` },
     { transform: `translate(-50%, ${groundY * 0.55}px) rotate(8deg)`, offset: 0.62 },
@@ -87,7 +88,7 @@
       { transform: `translate(-50%, ${groundY}px) scale(1, 1)` },
       { transform: `translate(-50%, ${groundY + size * 0.12}px) scale(1.22, 0.76)`, offset: 0.55 },
       { transform: `translate(-50%, ${groundY - size * 0.05}px) scale(0.9, 1.12)` }
-    ], { duration: 520, easing: "ease-out", fill: "forwards" }));
+    ], { duration: 240, easing: "ease-out", fill: "forwards" }));
   }, fall);
 
   setTimeout(() => {
@@ -95,23 +96,23 @@
     track(bomb.animate([
       { transform: `translate(-50%, ${groundY}px) scale(1)`, opacity: 1 },
       { transform: `translate(-50%, ${groundY - size * 0.2}px) scale(1.7)`, opacity: 0 }
-    ], { duration: 380, easing: "ease-out", fill: "forwards" }));
-    track(shadow.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 380, fill: "forwards" }));
+    ], { duration: 220, easing: "ease-out", fill: "forwards" }));
+    track(shadow.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 220, fill: "forwards" }));
     flash.style.background = `radial-gradient(circle at ${cx}px ${cy}px, rgba(255,252,246,.95) 0, rgba(255,214,176,.6) 20%, rgba(255,178,122,.25) 42%, rgba(242,113,28,0) 70%)`;
-    track(flash.animate([{ opacity: 0 }, { opacity: 1, offset: 0.15 }, { opacity: 0 }], { duration: 1500, easing: "ease-out", fill: "forwards" }));
+    track(flash.animate([{ opacity: 0 }, { opacity: 1, offset: 0.15 }, { opacity: 0 }], { duration: 700, easing: "ease-out", fill: "forwards" }));
     rings.forEach((r, i) => {
       r.style.left = cx + "px";
       r.style.top = cy + "px";
       track(r.animate([
         { transform: "translate(-50%,-50%) scale(0.2)", opacity: 0.95 },
         { transform: `translate(-50%,-50%) scale(${i ? 9 : 6})`, opacity: 0 }
-      ], { duration: i ? 2100 : 1500, delay: i * 220, easing: "cubic-bezier(.2,.7,.3,1)", fill: "forwards" }));
+      ], { duration: i ? 900 : 700, delay: i * 90, easing: "cubic-bezier(.2,.7,.3,1)", fill: "forwards" }));
     });
     burst();
-  }, fall + 520);
+  }, fall + 240);
 
   function burst() {
-    const kinds = ["c-bit", "c-blob", "c-white", "c-heart", "c-star", "c-blob", "c-white", "c-bit", "c-star", "c-heart"];
+    const kinds = ["c-bit", "c-heart", "c-bit", "c-heart", "c-bit"];
     const count = W < 640 ? 16 : 32;
     let maxEnd = 0;
     for (let i = 0; i < count; i++) {
@@ -128,8 +129,8 @@
       const peak = Math.min(ty, cy) - 60 - Math.random() * 90;
       const midX = (cx - s / 2 + tx) / 2;
       const rot = Math.random() * 60 - 30;
-      const fly = 2100 + Math.random() * 600;
-      const stay = 1900 + Math.random() * 600;
+      const fly = 650 + Math.random() * 200;
+      const stay = 450 + Math.random() * 250;
       track(el.animate([
         { transform: `translate(${cx - s / 2}px, ${cy - s / 2}px) scale(0.2) rotate(0deg)`, opacity: 0 },
         { transform: `translate(${midX}px, ${peak}px) scale(1.15) rotate(${rot * 2}deg)`, opacity: 1, offset: 0.45 },
@@ -140,14 +141,14 @@
         { transform: `translate(${tx}px, ${ty - 6}px) scale(1) rotate(${rot}deg)` },
         { transform: `translate(${tx}px, ${ty - 16}px) scale(1.05) rotate(${-rot}deg)` },
         { transform: `translate(${tx}px, ${ty - 6}px) scale(1) rotate(${rot}deg)` }
-      ], { duration: 1100, delay: fly, iterations: 1, easing: "ease-in-out", fill: "forwards" }));
+      ], { duration: 400, delay: fly, iterations: 1, easing: "ease-in-out", fill: "forwards" }));
       const out = fly + stay;
       track(el.animate([
         { transform: `translate(${tx}px, ${ty - 6}px) scale(1) rotate(${rot}deg)`, opacity: 1 },
         { transform: `translate(${tx}px, ${ty - 14}px) scale(1.25) rotate(${rot}deg)`, opacity: 1, offset: 0.35 },
         { transform: `translate(${tx}px, ${ty - 20}px) scale(0) rotate(${rot}deg)`, opacity: 0 }
-      ], { duration: 700, delay: out, easing: "cubic-bezier(.5,0,.75,0)", fill: "forwards" }));
-      maxEnd = Math.max(maxEnd, out + 700);
+      ], { duration: 300, delay: out, easing: "cubic-bezier(.5,0,.75,0)", fill: "forwards" }));
+      maxEnd = Math.max(maxEnd, out + 300);
     }
     const bits = W < 640 ? 26 : 46;
     for (let i = 0; i < bits; i++) {
@@ -159,7 +160,7 @@
       track(c.animate([
         { transform: `translate(${cx}px, ${cy}px) rotate(0deg) scale(1)`, opacity: 1 },
         { transform: `translate(${cx + Math.cos(a) * d}px, ${cy + Math.sin(a) * d + 160}px) rotate(${Math.random() * 720}deg) scale(0.6)`, opacity: 0 }
-      ], { duration: 2600 + Math.random() * 1000, easing: "cubic-bezier(.2,.7,.4,1)", fill: "forwards" }));
+      ], { duration: 1000 + Math.random() * 400, easing: "cubic-bezier(.2,.7,.4,1)", fill: "forwards" }));
     }
     setTimeout(finish, maxEnd + 40);
   }
