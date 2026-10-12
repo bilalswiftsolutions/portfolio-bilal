@@ -42,7 +42,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300..800&family=Geist+Mono:wght@400..600&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/css/styles.css?v=20261014d" />
+  <link rel="stylesheet" href="/css/styles.css?v=20261014f" />
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -121,8 +121,8 @@
       </a>
       <nav class="site-nav" id="site-nav" aria-label="Primary">
         <a href="/ar/#services"><span aria-hidden="true">/</span>الخدمات</a>
-        <a href="/#projects"><span aria-hidden="true">/</span>المشاريع</a>
-        <a href="/#experience"><span aria-hidden="true">/</span>الخبرة</a>
+        <a href="/ar/#experience"><span aria-hidden="true">/</span>الخبرة</a>
+        <a href="/ar/#projects"><span aria-hidden="true">/</span>المشاريع</a>
         <a href="/"><span aria-hidden="true">/</span>English</a>
         <a href="#contact" class="nav-cta">تواصل معي <span aria-hidden="true">←</span></a>
       </nav>
@@ -146,7 +146,7 @@
     <section class="hero sp-hero" aria-labelledby="page-title">
       <div class="container">
         <p class="status-pill reveal"><span class="dot" aria-hidden="true"></span> الرياض، السعودية · متاح للعمل الآن</p>
-        <p class="eyebrow reveal">مطور ويب متكامل أول · Laravel · NestJS · Next.js · Vue.js</p>
+        <p class="eyebrow reveal">مطور ويب متكامل أول · Laravel · NestJS · Next.js</p>
         <h1 id="page-title" class="sp-title reveal">بلال أرشد <em>أبني منصات وواجهات API تعمل في الإنتاج.</em></h1>
         <p class="sp-intro reveal">مطور ويب متكامل بخبرة تزيد عن 8 سنوات في Laravel وNestJS وNext.js وReact وVue. أقود حاليًا تطوير منصة كيلد (Keeld)، سوق إلكتروني متعدد البائعين ومنصة مدفوعات ثنائية اللغة للتجار في السعودية، مع تطبيق جوال بـ Flutter، وربط بوابة ميسر، والفوترة الإلكترونية مع هيئة الزكاة (فاتورة)، وتكاملات الشحن. قبل ذلك قدت منصة بث تخدم أكثر من 2.4 مليون مستخدم، وبنيت وكلاء ذكاء اصطناعي للإنتاج.</p>
         <div class="hero-actions reveal">
@@ -181,6 +181,146 @@
       </div>
     </section>
 
+
+    <section id="experience" class="section" aria-labelledby="exp-title">
+      <div class="container">
+        <header class="section-head">
+          <span class="route reveal"><b>02</b> المسيرة المهنية</span>
+          <h2 id="exp-title" class="section-title reveal">الخبرة العملية</h2>
+        </header>
+        <ol class="career">
+          <li class="career-item reveal">
+            <span class="node" aria-hidden="true"></span>
+            <div class="career-head"><h3>مطور ويب متكامل أول <span>· <bdi>Tamakan</bdi></span><span class="now">الآن</span></h3></div>
+            <p class="career-meta">يونيو 2026 — حتى الآن · الرياض · السعودية</p>
+            <p>أقود التطوير المتكامل لمنصة كيلد (Keeld)، سوق إلكتروني متعدد البائعين ومنصة مدفوعات ثنائية اللغة (عربي/إنجليزي) للتجار في السعودية، مع تطبيق الجوال بـ Flutter. أبني الواجهة الخلفية بـ NestJS وتطبيق الويب بـ Next.js وواجهات API التي يستخدمها تطبيق الجوال، وأتولى تكاملات الدفع والفوترة الإلكترونية والشحن والتسويات المالية والنشر في بيئة الإنتاج بـ Docker.</p>
+            <ul class="commit-list"><li>صممت وبنيت الواجهة الخلفية بـ NestJS وPrisma وPostgreSQL: 23 وحدة و119 نموذج بيانات تغطي الطلبات والمحافظ والتسويات والاسترجاع والعقود والعروض والدعم والتقييمات وعمولات الوكلاء.</li><li>ربطت الفوترة الإلكترونية مع هيئة الزكاة (فاتورة) مع اتصالات تُدار من لوحة المدير، وإرسال آلي للفواتير، وتحقق وتتبع للحالة وفق الأنظمة الضريبية السعودية.</li><li>ربطت بوابة الدفع ميسر (البطاقات وSTC Pay) مع webhooks ومطابقة وتفاصيل التسويات واسترجاع بخطوة واحدة يحدّث الطلبات ومحافظ التجار والإشعارات معًا.</li><li>بنيت محرك تسويات التجار: دفعات أسبوعية، وعمولات قابلة للضبط حسب طريقة الدفع، وتقسيم الشحن والرسوم لكل متجر في الطلبات متعددة المتاجر، وكشوفات تسوية Excel وPDF.</li><li>ربطت واجهة الشحن Mapit مع تسعير قابل للضبط لشركات الشحن، ومحاكي لتعبئة الصناديق، وإنشاء بوالص الشحن PDF، والتعافي عند انتهاء مهلة شركة الشحن.</li><li>بنيت واجهات REST لتطبيق Flutter تعيد استخدام منطق الدفع والحسابات من الويب، مع ترقيم الصفحات والفلاتر من جهة الخادم والفهارس واستعادة كلمة المرور برمز عبر البريد وصلاحيات للعملاء والتجار والفروع.</li><li>أعددت إشعارات Firebase تصل لكل جهاز باللغة التي اختارها المستخدم، مع رموز تحقق SMS وروابط دفع تُرسل للعملاء برسائل نصية.</li><li>أضفت صلاحيات حسب الدور، وسجل تدقيق مع فلتر للإجراءات الحساسة، وقواعد إيقاف التجار، وحماية الوصول للمستندات الخاصة، وتوقيع العقود الرقمية للتجار.</li><li>حسّنت أداء الويب بتحميل الصفحات عند النقر فقط بدل التحميل المسبق لكل رابط، وتحميل الصور عند الحاجة، وتحويل الصور إلى WebP، ودمج الطلبات المتطابقة، مما ألغى حتى 47 طلبًا خلفيًا في كل زيارة للوحة التحكم.</li><li>أكملت دعم العربية واتجاه RTL في المنصة بالكامل، بما في ذلك الأرقام والتواريخ العربية، ومنتقي تاريخ مخصص، ورسائل بريد وفواتير وملفات PDF ثنائية اللغة، والوضع الداكن.</li><li>بنيت مستويات التجار الآلية، واستيراد وتصدير المنتجات، وتنبيهات توفر المنتج، ومقارنة المنتجات، وحظر العملاء لكل تاجر.</li></ul>
+          </li>
+          <li class="career-item reveal">
+            <span class="node" aria-hidden="true"></span>
+            <div class="career-head"><h3>قائد تطوير البرمجيات <span>· <bdi>Altadefinizione</bdi></span></h3></div>
+            <p class="career-meta">أكتوبر 2024 — يونيو 2026 · عن بُعد · إيطاليا</p>
+            <p>طوّرت وصنت نظامًا تسويقيًا ولوحات تحكم ومنصات بث، في الواجهة الأمامية والخلفية بـ PHP وLaravel وVue.js وInertia.js وReact.js. أدرت قواعد بيانات MySQL وبنيت أدوات استخراج بيانات، وحافظت على اختبار التطبيقات ونسخها احتياطيًا.</p>
+            <ul class="commit-list"><li>أنجزت أكثر من 50 مشروع PHP وLaravel بنسبة رضا عملاء 95%.</li><li>رفعت أداء النظام 30% عبر تحسين قواعد البيانات.</li><li>استخدمت Redis والتخزين المؤقت لرفع أداء الموقع 60%، فانخفض زمن التحميل من ثانيتين إلى 120 جزءًا من الثانية.</li><li>طبّقت عملية نسخ احتياطي آمنة لقاعدة البيانات خفّضت حوادث فقدان البيانات 40%.</li><li>قدت تطوير منصة بث حسّنت دقة تقارير المبيعات 24%.</li><li>بنيت وكلاء محادثة ذكاء اصطناعي للإنتاج بـ Python وLangGraph وFastAPI وDocker.</li><li>بنيت وطوّرت منصة Altadefinizione (النسخة القديمة وv3) بـ Laravel وVue وInertia وBunnyCDN وScout وTMDB.</li><li>صممت وكلاء يستدعون أدوات TMDB، وواجهات ويب، ومسارات نشر على خوادم VPS.</li></ul>
+          </li>
+          <li class="career-item reveal">
+            <span class="node" aria-hidden="true"></span>
+            <div class="career-head"><h3>مطور برمجيات <span>· <bdi>ColdXpress</bdi></span></h3></div>
+            <p class="career-meta">يوليو 2023 — أغسطس 2024 · لاهور · باكستان</p>
+            <p>بنيت وحدات الفوترة بـ PHP وLaravel وBlade وVue.js. يحسب النظام فواتير أسبوعية لكل عميل حسب الموقع والمسافة والحي والطلبات والأسعار المحددة، ويرفعها إلى Xero ويرسلها للعملاء آليًا.</p>
+            <ul class="commit-list"><li>بفضل دقة الفواتير وسهولة الحصول عليها أسبوعيًا، استقطبت الشركة 25% عملاء إضافيين.</li><li>كتبت كود Laravel محسّنًا قلّل زمن الاستعلامات ورفع سرعة تحميل الصفحات 30%.</li><li>قدت مشروع توحيد قاعدة البيانات الذي قلّل تكرار البيانات 40%.</li></ul>
+          </li>
+          <li class="career-item reveal">
+            <span class="node" aria-hidden="true"></span>
+            <div class="career-head"><h3>مطور برمجيات <span>· <bdi>Devy</bdi></span></h3></div>
+            <p class="career-meta">فبراير 2020 — يونيو 2023 · عمل حر · المكسيك</p>
+            <p>طوّرت تطبيق ويب بـ React.js وElectron.js وتطبيق جوال بـ Ionic، يعمل كلاهما مع الاتصال ودونه باستخدام PouchDB.</p>
+            <ul class="commit-list"><li>ميزة العمل دون اتصال حلّت المشكلة الأساسية في المنطقة وزادت العملاء 20%.</li><li>ربطت Socket.io للتتبع المباشر على خرائط Google للسائقين والمديرين، مما رفع رضا العملاء 29% حسب سجلات الشركة.</li><li>عملت مع الفرق الميدانية لتعزيز ثقتهم بالنظام، فحققت الشركة إيرادات أعلى 20% من منافسيها.</li></ul>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="projects" class="section" aria-labelledby="proj-title">
+      <div class="container">
+        <header class="section-head">
+          <span class="route reveal"><b>03</b> الأعمال</span>
+          <h2 id="proj-title" class="section-title reveal">المشاريع</h2>
+          <p class="section-sub reveal">أسواق إلكترونية ومنصات مدفوعات وتطبيقات ويب متكاملة وأنظمة ERP ومنصات بث وأدوات تسويق ومنتجات SaaS.</p>
+        </header>
+        <div class="bento">
+          <article class="work work--feature reveal">
+            <div class="work-top"><span class="work-idx">01</span><span class="work-tag">سوق إلكتروني · مدفوعات</span><a class="work-link" href="https://keeldt.sa/" target="_blank" rel="noopener noreferrer">الموقع <span aria-hidden="true">↖</span></a></div>
+            <p class="work-metric"><b>119</b> نموذج بيانات</p>
+            <h3>Keeld — سوق متعدد البائعين ومنصة مدفوعات<span class="work-role">(قائد التطوير المتكامل)</span></h3>
+            <p>سوق إلكتروني ومنصة مدفوعات ثنائية اللغة للتجار في السعودية، مبنية في Tamakan — تطبيق ويب مع تطبيق Flutter على Android وiOS.</p>
+            <details class="work-more" open><summary>التفاصيل</summary><ul><li>سوق بمناطق منفصلة للمدير والتاجر والفرع والوكيل والعميل، على الويب وAndroid/iOS.</li><li>روابط دفع وصفحات دفع واسترجاع ومحافظ، مع مطابقة كل مبلغ مع ميسر وفواتير متوافقة مع زاتكا.</li><li>فواتير وبوالص شحن وكشوفات تسوية PDF ثنائية اللغة، مع تصدير Excel لفرق المالية.</li><li>نشر بـ Docker Compose خلف Caddy مع نسخ احتياطي للقاعدة وترحيلات.</li></ul></details>
+            <p class="work-stack" dir="ltr">NestJS · Next.js 16 · React 19 · TypeScript · Prisma · PostgreSQL · TanStack Query · Tailwind CSS · Flutter · Firebase · Moyasar · ZATCA · Docker · Caddy · Puppeteer · Playwright</p>
+          </article>
+          <article class="work work--wide reveal">
+            <div class="work-top"><span class="work-idx">02</span><span class="work-tag">بث</span><a class="work-link" href="https://altadefinizionepremium.net/" target="_blank" rel="noopener noreferrer">الموقع <span aria-hidden="true">↖</span></a><a class="work-link" href="https://v3.altadefinizionepremium.net/" target="_blank" rel="noopener noreferrer">v3 <span aria-hidden="true">↖</span></a></div>
+            <p class="work-metric"><b>2.4M</b> مستخدم</p>
+            <h3>منصة بث Altadefinizione<span class="work-role">(قائد تقني)</span></h3>
+            <p>منصة بث أفلام عالية الزيارات — واجهات API قابلة للتوسع، وتخزين مؤقت بـ Redis، وتوصيل عبر CDN، وبنية إنتاج على Linux.</p>
+            <details class="work-more"><summary>التفاصيل</summary><ul><li>قدت تطوير وصيانة منصة بث تخدم أكثر من 2.4 مليون مستخدم.</li><li>بنيت واجهات API ولوحات تحكم وأدوات إدارة المحتوى.</li><li>حسّنت الاستعلامات وطبّقت Redis فانخفض زمن التحميل من ثانيتين إلى 120ms.</li><li>ربطت CDN وتوصيل الوسائط والبحث والمراقبة لرفع الموثوقية والأداء.</li><li>أدرت خوادم Linux والنشر والنسخ الاحتياطي وبنية الإنتاج.</li><li>كتالوج مربوط بـ TMDB مع Inertia.js SSR وصفحات أفلام ومسلسلات مُحسّنة لمحركات البحث.</li><li>توصيل وسائط عبر BunnyCDN مع طوابير Laravel للمعالجة الخلفية وبحث Scout.</li><li>سلّمت النسخة القديمة والجيل الجديد (v3) ببنية Laravel/Vue مشتركة.</li></ul></details>
+            <p class="work-stack" dir="ltr">PHP · Laravel · Vue.js · React.js · Node.js · Inertia.js · Redis · MySQL · Nginx · Cloudflare · Linux · Hetzner · BunnyCDN · Scout · TMDB</p>
+          </article>
+          <article class="work reveal">
+            <div class="work-top"><span class="work-idx">03</span><span class="work-tag">ذكاء اصطناعي · LangGraph</span><a class="work-link" href="http://cinebot.bilalarshad.pro/" target="_blank" rel="noopener noreferrer">الموقع <span aria-hidden="true">↖</span></a></div>
+            <p class="work-metric"><b>16</b> أداة TMDB</p>
+            <h3>CineBot — وكيل ذكاء اصطناعي للأفلام والمسلسلات</h3>
+            <p>مساعد محادثة يجيب عن الأفلام والمسلسلات والممثلين والحلقات والتقييمات والإعلانات من بيانات TMDB الحية، كمنتج جاهز للإنتاج بواجهة عامة وواجهة خلفية ونشر على VPS.</p>
+            <details class="work-more"><summary>التفاصيل</summary><ul><li>وكيل LangGraph من نوع ReAct مع 16 أداة TMDB.</li><li>واجهة FastAPI مع سجل لكل جلسة وتحكم بالتزامن ومهلات قابلة للضبط.</li><li>واجهة محادثة متجاوبة مع إعلانات YouTube وأولوية للإعلان الرسمي.</li><li>نشر بـ Docker على Linux خلف Nginx مع Cloudflare.</li></ul></details>
+            <p class="work-stack" dir="ltr">Python · LangGraph · FastAPI · OpenAI · Docker · TMDB · Nginx</p>
+          </article>
+          <article class="work reveal">
+            <div class="work-top"><span class="work-idx">04</span><span class="work-tag">ويب · ترجمة</span><a class="work-link" href="https://ramaytranslation.com/" target="_blank" rel="noopener noreferrer">الموقع <span aria-hidden="true">↖</span></a></div>
+            <p class="work-metric"><b>249</b> لغة</p>
+            <h3>Ramay Translation</h3>
+            <p>مترجم مجاني لـ 249 لغة دون تسجيل، بنتائج فورية وصفحات SEO لكل زوج لغات رئيسي، مع عبارات أمثلة ورؤى لغوية ودعم PWA.</p>
+            <details class="work-more"><summary>التفاصيل</summary><ul><li>Laravel وVite مع واجهة ترجمة مباشرة حتى 10,000 حرف وأسماء اللغات بخطوطها الأصلية.</li><li>قاعدة عبارات لكل لغة: 90 عبارة في 6 فئات تُربط عند العرض لأي زوج.</li><li>رؤى لغوية ومحتوى SEO مولّد بالذكاء الاصطناعي، وصور OG ديناميكية لكل زوج.</li><li>تطبيق ويب تقدمي مع service worker ووضع دون اتصال وتحليلات مؤجلة.</li><li>صفحات أزواج عبر الإنجليزية للاتجاهات الأعلى زيارة.</li></ul></details>
+            <p class="work-stack" dir="ltr">Laravel · Vite · OpenAI · PWA · MySQL · GD</p>
+          </article>
+          <article class="work reveal">
+            <div class="work-top"><span class="work-idx">05</span><span class="work-tag">ويب · تنزيل</span><a class="work-link" href="https://ramaytik.org/" target="_blank" rel="noopener noreferrer">الموقع <span aria-hidden="true">↖</span></a></div>
+            <p class="work-metric"><b>20</b> لغة</p>
+            <h3>RamayTik — أداة تنزيل TikTok</h3>
+            <p>أداة تنزيل TikTok متعددة اللغات: الصق رابطًا عامًا واحفظ الفيديو MP4 دون علامة مائية أو استخرج الصوت MP3، منتج Laravel مُحسّن لمحركات البحث مع 20 لغة.</p>
+            <details class="work-more"><summary>التفاصيل</summary><ul><li>Laravel Blade مع Alpine.js وTailwind ومسار آمن: تحقق ← رمز مؤقت ← بث موقّع.</li><li>yt-dlp وffmpeg لتنزيل MP4 دون علامة مائية واستخراج MP3 عند الطلب.</li><li>20 لغة مع hreflang والعربية RTL وصفحات SEO مخصصة.</li><li>IndexNow وJSON-LD وخرائط الموقع وتثبيت PWA وتحليلات مؤجلة.</li><li>دون تسجيل، ويعمل على الجوال والحاسوب دون تثبيت تطبيق.</li></ul></details>
+            <p class="work-stack" dir="ltr">Laravel · Blade · Alpine.js · Tailwind · yt-dlp · ffmpeg · PWA · IndexNow</p>
+          </article>
+          <article class="work reveal">
+            <div class="work-top"><span class="work-idx">06</span><span class="work-tag">SaaS · ضيافة</span><a class="work-link" href="https://cafi.one/" target="_blank" rel="noopener noreferrer">الموقع <span aria-hidden="true">↖</span></a></div>
+            <p class="work-metric"><b>&lt;1s</b> لوحات التحكم</p>
+            <h3>Cafi</h3>
+            <p>منصة إدارة المقاهي والضيافة للعمليات اليومية — الطلبات والمخزون وسير عمل الموظفين وتقارير الفروع، بزمن استجابة أقل من ثانية.</p>
+            <details class="work-more"><summary>التفاصيل</summary><ul><li>واجهات Laravel REST تشغّل لوحات React لفرق الصالة والإدارة.</li><li>تخزين مؤقت بـ Redis للمسارات كثيفة القراءة في أوقات الذروة.</li><li>عروض حسب الدور للمديرين والموظفين مع ملخصات لحظية.</li><li>بيئة إنتاج Linux مع nginx وسجلات منظمة ومراقبة موارد الخادم.</li></ul></details>
+            <p class="work-stack" dir="ltr">Laravel · React · Redis · MySQL · nginx · Linux</p>
+          </article>
+          <article class="work reveal">
+            <div class="work-top"><span class="work-idx">07</span><span class="work-tag">لوجستيات · فوترة</span><a class="work-link" href="https://xdock.com.au/" target="_blank" rel="noopener noreferrer">الموقع <span aria-hidden="true">↖</span></a></div>
+            <p class="work-metric"><b>Xero</b> فوترة أسبوعية آلية</p>
+            <h3>Xdock<span class="work-role">(مطور متكامل أول)</span></h3>
+            <p>فوترة آلية لشركة ColdXpress — قواعد تسعير معقدة وربط مع Xero وإرسال أسبوعي للفواتير.</p>
+            <details class="work-more"><summary>التفاصيل</summary><ul><li>نظام فوترة آلي بقواعد تسعير حسب المواقع والأحياء وأسعار العملاء والتوصيلات.</li><li>بنيت 40% من وحدات النظام وأتمتتها.</li><li>ربط مع Xero لإنشاء الفواتير الأسبوعية وإرسالها آليًا.</li><li>تشغيل متواصل في المناطق ذات الإنترنت الضعيف.</li><li>لوحة Laravel Blade للإرسال والمخزون وحالة العملاء.</li><li>ربط IMAP لمعالجة رسائل البريد اللوجستية الواردة آليًا.</li></ul></details>
+            <p class="work-stack" dir="ltr">PHP · Laravel · Blade · Redis · MySQL · Apache · Linux · AWS</p>
+          </article>
+          <article class="work reveal">
+            <div class="work-top"><span class="work-idx">08</span><span class="work-tag">نقاط بيع · تقسيط</span><a class="work-link" href="https://super7.work/" target="_blank" rel="noopener noreferrer">الموقع <span aria-hidden="true">↖</span></a></div>
+            <p class="work-metric"><b>ويب + جوال</b> نقاط بيع</p>
+            <h3>Super 7 — نقاط بيع وتقسيط<span class="work-role">(عمل حر)</span></h3>
+            <p>تطبيقات ويب وجوال لنقاط البيع — البيع والشراء بالتقسيط وقفل الجهاز عند التأخر في السداد.</p>
+            <details class="work-more"><summary>التفاصيل</summary><ul><li>تطبيقات ويب وجوال لإدارة عمليات نقاط البيع.</li><li>البيع والشراء بالتقسيط من الويب والجوال.</li><li>قفل الهاتف عند عدم سداد الأقساط في موعدها.</li><li>تحسين القاعدة لمعالجة آلاف الإدخالات والتحديثات يوميًا.</li></ul></details>
+            <p class="work-stack" dir="ltr">PHP · Laravel · Blade · Pusher · PostgreSQL · React Native · cPanel · Chart.js</p>
+          </article>
+          <article class="work reveal">
+            <div class="work-top"><span class="work-idx">09</span><span class="work-tag">عمليات ميدانية · دون اتصال</span></div>
+            <p class="work-metric"><b>مزامنة</b> دون اتصال</p>
+            <h3>نظام إدارة الحدائق<span class="work-role">(عمل حر)</span></h3>
+            <p>تطبيقات ويب وحاسوب وجوال بمزامنة كاملة دون اتصال للعمليات الميدانية.</p>
+            <details class="work-more"><summary>التفاصيل</summary><ul><li>تطبيقات ويب وحاسوب وجوال تعمل بالكامل دون اتصال.</li><li>مزامنة آلية بين القاعدة المحلية والسحابية عبر PouchDB.</li><li>تتبع GPS مباشر للسائقين والمديرين عبر Socket.io وخرائط Google.</li><li>تحسين أداء القاعدة وأتمتة سير العمل لتقليل العمل اليدوي.</li></ul></details>
+            <p class="work-stack" dir="ltr">React.js · Node.js · Pusher · PouchDB · Linux · AWS · Chart.js · Socket.io · Ionic · Electron.js</p>
+          </article>
+          <article class="work reveal">
+            <div class="work-top"><span class="work-idx">10</span><span class="work-tag">جوال · توصيل طعام</span><a class="work-link" href="https://easyeatsapp.com/" target="_blank" rel="noopener noreferrer">الموقع <span aria-hidden="true">↖</span></a></div>
+            <p class="work-metric"><b>تتبع</b> مباشر للمندوب</p>
+            <h3>Easy Eats</h3>
+            <p>منصة طلب وتوصيل طعام تربط العملاء والمطاعم والمندوبين — مع توجيه بالخرائط وتتبع الطلبات وتجربة مناسبة للاتصالات البطيئة.</p>
+            <details class="work-more"><summary>التفاصيل</summary><ul><li>واجهة React مع Firebase للمصادقة والإشعارات ومزامنة الطلبات.</li><li>خرائط Google للتوجيه وتقدير وقت الوصول وموقع المندوب.</li><li>دورة الطلب من الإنشاء إلى التحضير إلى تأكيد التوصيل.</li><li>نشر على Apache مع تحسين الملفات للتحميل السريع على الجوال.</li></ul></details>
+            <p class="work-stack" dir="ltr">React · Google Maps · Firebase · Apache · JavaScript</p>
+          </article>
+          <article class="work reveal">
+            <div class="work-top"><span class="work-idx">11</span><span class="work-tag">جوال · عمليات ميدانية</span></div>
+            <p class="work-metric"><b>تنبيهات</b> لحظية</p>
+            <h3>Siloc</h3>
+            <p>منظومة عمليات ميدانية وإدارة صوامع: إدخال البيانات من الميدان عبر الجوال ومتابعة النشاط والمواقع والتنبيهات من لوحة مركزية.</p>
+            <details class="work-more"><summary>التفاصيل</summary><ul><li>تطبيقات Ionic لإدخال البيانات ميدانيًا مع مزامنة إلى Laravel.</li><li>إشعارات لحظية عبر Pusher لتغيرات الحالة والتنبيهات.</li><li>خرائط Google لتتبع الأصول والفرق والتقارير الجغرافية.</li><li>لوحة Laravel Blade لإدارة المستخدمين والتقارير.</li></ul></details>
+            <p class="work-stack" dir="ltr">Laravel · Blade · Pusher · Google Maps · Ionic · MySQL</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <section id="contact" class="section contact" aria-labelledby="contact-title">
       <div class="container">
         <h2 id="contact-title" class="contact-title reveal">لنبنِ <em>شيئًا معًا.</em></h2>
@@ -207,6 +347,6 @@
     </div>
   </footer>
 
-  <script src="/js/main.js?v=20261014a" defer></script>
+  <script src="/js/main.js?v=20261014f" defer></script>
 </body>
 </html>

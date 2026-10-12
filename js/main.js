@@ -49,6 +49,9 @@
   }
 
   // Long commit lists collapse to 4 items with a toggle
+  const ar = root.lang === "ar";
+  const moreLabel = (n) => (ar ? `+ عرض ${n} إنجازات أخرى` : `+ show ${n} more changes`);
+  const lessLabel = ar ? "− عرض أقل" : "− show less";
   document.querySelectorAll(".commit-list").forEach((list) => {
     const total = list.children.length;
     if (total <= 5) return;
@@ -57,11 +60,11 @@
     btn.type = "button";
     btn.className = "show-more";
     btn.setAttribute("aria-expanded", "false");
-    btn.textContent = `+ show ${total - 4} more changes`;
+    btn.textContent = moreLabel(total - 4);
     btn.addEventListener("click", () => {
       const clamped = list.classList.toggle("is-clamped");
       btn.setAttribute("aria-expanded", clamped ? "false" : "true");
-      btn.textContent = clamped ? `+ show ${total - 4} more changes` : "− show less";
+      btn.textContent = clamped ? moreLabel(total - 4) : lessLabel;
     });
     list.after(btn);
   });

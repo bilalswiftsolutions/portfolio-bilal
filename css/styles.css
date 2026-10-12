@@ -612,6 +612,19 @@ em { font-style: normal; }
 [dir="rtl"] .route { padding: 6px 6px 6px 14px; }
 [dir="rtl"] .crumbs, [dir="rtl"] .eyebrow, [dir="rtl"] .route, [dir="rtl"] .contact-label, [dir="rtl"] .byline, [dir="rtl"] .hire-link .route { font-family: var(--sans); letter-spacing: 0; }
 
+
+[dir="rtl"] .career { padding: 0 34px 0 0; }
+[dir="rtl"] .career::before { left: auto; right: 10px; }
+[dir="rtl"] .career-item > .node { left: auto; right: -32px; }
+[dir="rtl"] .commit-list li, [dir="rtl"] .work li { padding-left: 0; padding-right: 22px; }
+[dir="rtl"] .commit-list li::before { left: auto; right: 4px; }
+[dir="rtl"] .work li::before { left: auto; right: 2px; }
+[dir="rtl"] .now { margin-left: 0; margin-right: 8px; }
+[dir="rtl"] .work-metric b { margin-right: 0; margin-left: 6px; }
+[dir="rtl"] .work-stack { text-align: left; }
+[dir="rtl"] .career-meta, [dir="rtl"] .work-top, [dir="rtl"] .work-metric, [dir="rtl"] .work-role, [dir="rtl"] .work-link, [dir="rtl"] .show-more { font-family: var(--sans); letter-spacing: 0; }
+@media (max-width: 640px) { [dir="rtl"] .career { padding: 0 26px 0 0; } [dir="rtl"] .career::before { right: 6px; } [dir="rtl"] .career-item > .node { right: -24px; } }
+
 /* ---------- Reveal ---------- */
 .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.8s var(--ease), transform 0.8s var(--ease); transition-delay: calc(var(--i, 0) * 70ms); }
 .reveal.is-visible { opacity: 1; transform: none; }
