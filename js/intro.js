@@ -18,18 +18,24 @@
 </defs></svg>`;
 
   const bombSvg = `<svg viewBox="0 0 120 150" aria-hidden="true">
-<path d="M60 30 C 62 16, 74 18, 78 8" fill="none" stroke="#5a2c10" stroke-width="4" stroke-linecap="round"/>
-<g class="spark"><path d="M78 -4l3 8 8 3-8 3-3 8-3-8-8-3 8-3Z" fill="#ffd27a"/><circle cx="78" cy="7" r="3" fill="#fff"/></g>
-<rect x="45" y="26" width="30" height="17" rx="5" fill="url(#iCap)"/>
-<rect x="47" y="27" width="14" height="4" rx="2" fill="#fff" opacity=".25"/>
-<circle cx="60" cy="90" r="50" fill="url(#iOrange)"/>
-<ellipse cx="40" cy="64" rx="17" ry="9" fill="#fff" opacity=".55" transform="rotate(-32 40 64)"/>
-<circle cx="60" cy="90" r="49" fill="none" stroke="#fff" stroke-opacity=".18" stroke-width="2"/>
-<ellipse cx="47" cy="90" rx="5" ry="7" fill="#2a1a10"/><ellipse cx="73" cy="90" rx="5" ry="7" fill="#2a1a10"/>
-<circle cx="48.5" cy="87.5" r="1.8" fill="#fff"/><circle cx="74.5" cy="87.5" r="1.8" fill="#fff"/>
-<circle cx="37" cy="102" r="5" fill="#ffc49a"/><circle cx="83" cy="102" r="5" fill="#ffc49a"/>
-<ellipse cx="60" cy="106" rx="4.5" ry="5.5" fill="#2a1a10"/>
-<path d="M38 76q5-5 11-3M82 76q-5-5-11-3" fill="none" stroke="#2a1a10" stroke-width="2.4" stroke-linecap="round"/>
+<defs>
+<linearGradient id="bkBody" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffb06a"/><stop offset=".5" stop-color="#f2711c"/><stop offset="1" stop-color="#b9480a"/></linearGradient>
+<radialGradient id="bkPetal" cx="35%" cy="30%" r="80%"><stop offset="0" stop-color="#fff"/><stop offset=".6" stop-color="#fff4ea"/><stop offset="1" stop-color="#f1cfb2"/></radialGradient>
+<radialGradient id="bkPetalO" cx="35%" cy="30%" r="80%"><stop offset="0" stop-color="#ffd2b0"/><stop offset=".5" stop-color="#ff9a52"/><stop offset="1" stop-color="#d75c0c"/></radialGradient>
+<symbol id="bkFlower" viewBox="-20 -20 40 40"><g class="petals"><ellipse cx="0" cy="-10" rx="6.5" ry="9"/><ellipse cx="9.5" cy="-3.1" rx="6.5" ry="9" transform="rotate(72 9.5 -3.1)"/><ellipse cx="5.9" cy="8.1" rx="6.5" ry="9" transform="rotate(144 5.9 8.1)"/><ellipse cx="-5.9" cy="8.1" rx="6.5" ry="9" transform="rotate(216 -5.9 8.1)"/><ellipse cx="-9.5" cy="-3.1" rx="6.5" ry="9" transform="rotate(288 -9.5 -3.1)"/></g><circle r="6" fill="#ffd27a" stroke="#e8902f" stroke-width="1"/><circle cx="-1.6" cy="-1.8" r="1.8" fill="#fff" opacity=".8"/></symbol>
+</defs>
+<path d="M22 70 C 22 10, 98 10, 98 70" fill="none" stroke="#a9460a" stroke-width="8" stroke-linecap="round"/>
+<path d="M22 70 C 22 10, 98 10, 98 70" fill="none" stroke="#ffb27a" stroke-width="3" stroke-linecap="round" opacity=".7"/>
+<path d="M60 64 q-2-16 4-26" stroke="#2f8a3e" stroke-width="2.5" fill="none"/><path d="M40 66 q-4-14-14-20" stroke="#2f8a3e" stroke-width="2.5" fill="none"/><path d="M80 66 q4-14 14-20" stroke="#2f8a3e" stroke-width="2.5" fill="none"/>
+<g class="sway"><use href="#bkFlower" x="14" y="28" width="26" height="26" fill="url(#bkPetalO)"/><use href="#bkFlower" x="80" y="28" width="26" height="26" fill="url(#bkPetal)"/><use href="#bkFlower" x="44" y="18" width="34" height="34" fill="url(#bkPetal)"/><use href="#bkFlower" x="28" y="44" width="24" height="24" fill="url(#bkPetal)"/><use href="#bkFlower" x="68" y="44" width="24" height="24" fill="url(#bkPetalO)"/></g>
+<path d="M14 66 H106 L96 138 Q95 145 88 145 H32 Q25 145 24 138 Z" fill="url(#bkBody)"/>
+<g stroke="#a9460a" stroke-width="2.2" opacity=".55" fill="none"><path d="M18 84 H102"/><path d="M20 102 H100"/><path d="M22 120 H98"/><path d="M38 66 L42 145M60 66 V145M82 66 L78 145"/></g>
+<rect x="10" y="62" width="100" height="13" rx="6.5" fill="#d75c0c"/><rect x="14" y="63.5" width="60" height="4" rx="2" fill="#fff" opacity=".35"/>
+<ellipse cx="36" cy="86" rx="10" ry="4" fill="#fff" opacity=".35" transform="rotate(-8 36 86)"/>
+<ellipse cx="48" cy="104" rx="4.4" ry="5.8" fill="#2a1a10"/><ellipse cx="72" cy="104" rx="4.4" ry="5.8" fill="#2a1a10"/>
+<circle cx="49.4" cy="101.8" r="1.6" fill="#fff"/><circle cx="73.4" cy="101.8" r="1.6" fill="#fff"/>
+<circle cx="38" cy="114" r="5" fill="#ffc49a"/><circle cx="82" cy="114" r="5" fill="#ffc49a"/>
+<path d="M54 114 q6 6 12 0" fill="none" stroke="#2a1a10" stroke-width="2.6" stroke-linecap="round"/>
 </svg>`;
 
   const ov = document.createElement("div");
@@ -91,7 +97,7 @@
       { transform: `translate(-50%, ${groundY - size * 0.2}px) scale(1.7)`, opacity: 0 }
     ], { duration: 380, easing: "ease-out", fill: "forwards" }));
     track(shadow.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 380, fill: "forwards" }));
-    flash.style.background = `radial-gradient(circle at ${cx}px ${cy}px, rgba(255,250,240,.98) 0, rgba(255,190,130,.75) 18%, rgba(242,113,28,.35) 40%, rgba(242,113,28,0) 70%)`;
+    flash.style.background = `radial-gradient(circle at ${cx}px ${cy}px, rgba(255,252,246,.95) 0, rgba(255,214,176,.6) 20%, rgba(255,178,122,.25) 42%, rgba(242,113,28,0) 70%)`;
     track(flash.animate([{ opacity: 0 }, { opacity: 1, offset: 0.15 }, { opacity: 0 }], { duration: 1500, easing: "ease-out", fill: "forwards" }));
     rings.forEach((r, i) => {
       r.style.left = cx + "px";
@@ -146,7 +152,7 @@
     const bits = W < 640 ? 26 : 46;
     for (let i = 0; i < bits; i++) {
       const c = document.createElement("i");
-      c.className = "intro-confetti" + (i % 3 === 0 ? " w" : "");
+      c.className = "intro-confetti petal" + (i % 3 === 0 ? " w" : "");
       ov.appendChild(c);
       const a = Math.random() * Math.PI - Math.PI;
       const d = 120 + Math.random() * Math.max(W, H) * 0.5;
