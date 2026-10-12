@@ -1,6 +1,11 @@
 (function () {
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
   if (!document.querySelector(".hero-w")) return;
+  if (location.hash) return;
+  try {
+    if (sessionStorage.getItem("introSeen")) return;
+    sessionStorage.setItem("introSeen", "1");
+  } catch (e) {}
 
   const defs = `<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
 <radialGradient id="iOrange" cx="32%" cy="24%" r="85%"><stop offset="0" stop-color="#ffc49a"/><stop offset=".45" stop-color="#f7801f"/><stop offset="1" stop-color="#b9480a"/></radialGradient>

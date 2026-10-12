@@ -414,7 +414,7 @@
       document.body.appendChild(h);
       return h;
     };
-    const shower = (x, y, n) => {
+    const shower = (x, y, n, down) => {
       for (let i = 0; i < n; i++) {
         const a = (Math.PI * 2 * i) / n + Math.random() * 0.4;
         const d = 60 + Math.random() * 110;
@@ -425,7 +425,7 @@
         h.animate([
           { transform: "translate(" + (x - s / 2) + "px," + (y - s / 2) + "px) scale(0.2) rotate(0deg)", opacity: 1 },
           { transform: "translate(" + tx + "px," + ty + "px) scale(1.1) rotate(" + (Math.random() * 40 - 20) + "deg)", opacity: 1, offset: 0.45 },
-          { transform: "translate(" + tx + "px," + (ty - 60 - Math.random() * 40) + "px) scale(0.7) rotate(" + (Math.random() * 60 - 30) + "deg)", opacity: 0 }
+          { transform: "translate(" + tx + "px," + (ty + (down ? 1 : -1) * (60 + Math.random() * 40)) + "px) scale(0.7) rotate(" + (Math.random() * 60 - 30) + "deg)", opacity: 0 }
         ], { duration: 1300 + Math.random() * 500, easing: "cubic-bezier(.2,.7,.35,1)", fill: "forwards" });
         setTimeout(() => h.remove(), 1900);
       }
@@ -444,6 +444,8 @@
       k.style.top = y + "px";
       document.body.appendChild(k);
       const flip = x > window.innerWidth - 140 ? -1 : 1;
+      const down = y < 220;
+      if (down) k.style.marginTop = "18px";
       k.animate([
         { transform: "scale(" + 0 * flip + ",0) rotate(0deg)" },
         { transform: "scale(" + 1.2 * flip + ",1.2) rotate(" + -10 * flip + "deg)", offset: 0.6 },
@@ -459,12 +461,13 @@
         { transform: "rotate(25deg)" }
       ], { duration: 900, delay: 300, easing: "ease-in-out", fill: "forwards" });
       setTimeout(() => {
-        const sx = x + 20 * flip, sy = y - 36;
-        const ex = sx + 90 * flip, ey = sy - 110;
+        const sx = x + 20 * flip, sy = down ? y + 58 : y - 36;
+        const v = down ? 1 : -1;
+        const ex = sx + 90 * flip, ey = sy + 120 * v;
         const big = heart(sx, sy, 38, false);
         big.animate([
           { transform: "translate(" + (sx - 19) + "px," + (sy - 19) + "px) scale(0.3) rotate(0deg)" },
-          { transform: "translate(" + (sx + 55 * flip - 19) + "px," + (sy - 70 - 19) + "px) scale(1.25) rotate(" + 18 * flip + "deg)", offset: 0.6 },
+          { transform: "translate(" + (sx + 55 * flip - 19) + "px," + (sy + 75 * v - 19) + "px) scale(1.25) rotate(" + 18 * flip + "deg)", offset: 0.6 },
           { transform: "translate(" + (ex - 19) + "px," + (ey - 19) + "px) scale(1.6) rotate(" + -8 * flip + "deg)" }
         ], { duration: 750, easing: "cubic-bezier(.3,.7,.4,1)", fill: "forwards" });
         for (let i = 0; i < 9; i++) {
@@ -473,12 +476,12 @@
             const t = heart(sx, sy, s, i % 2 === 1);
             t.animate([
               { transform: "translate(" + (sx - s / 2) + "px," + (sy - s / 2) + "px) scale(0.4)", opacity: 1 },
-              { transform: "translate(" + (sx + (30 + Math.random() * 40) * flip - s / 2) + "px," + (sy - 50 - Math.random() * 50 - s / 2) + "px) scale(1)", opacity: 0 }
+              { transform: "translate(" + (sx + (30 + Math.random() * 40) * flip - s / 2) + "px," + (sy + v * (50 + Math.random() * 50) - s / 2) + "px) scale(1)", opacity: 0 }
             ], { duration: 900, easing: "ease-out", fill: "forwards" });
             setTimeout(() => t.remove(), 950);
           }, i * 90);
         }
-        setTimeout(() => { big.remove(); shower(ex, ey, 26); }, 760);
+        setTimeout(() => { big.remove(); shower(ex, ey, 26, down); }, 760);
       }, 620);
       k.animate([{ opacity: 1, transform: "scale(" + flip + ",1) rotate(" + -6 * flip + "deg)" }, { opacity: 0, transform: "scale(" + 0.3 * flip + ",0.3) translateY(10px)" }], { duration: 320, delay: 1500, easing: "ease-in", fill: "forwards" });
       setTimeout(() => { k.remove(); active--; }, 1850);
