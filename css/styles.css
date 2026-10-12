@@ -200,10 +200,9 @@ em { font-style: italic; }
 .cover-inner {
   --mast: min(20.4vw, 262px);
   position: relative;
-  min-height: min(calc(100svh - 66px), 860px);
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr) minmax(0, 1fr);
-  grid-template-rows: auto auto auto 1fr;
+  grid-template-rows: auto auto auto auto;
   column-gap: 24px;
 }
 .cover-meta {
@@ -277,8 +276,8 @@ em { font-style: italic; }
   z-index: 3;
   grid-column: 1 / -1;
   grid-row: 4;
-  align-self: end;
-  padding-bottom: 26px;
+  align-self: start;
+  padding: 6px 0 30px;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
