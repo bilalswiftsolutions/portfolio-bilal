@@ -20,7 +20,7 @@
       themeBtn.setAttribute("aria-label", label);
       themeBtn.setAttribute("title", label);
     }
-    if (themeMeta) themeMeta.setAttribute("content", isLight() ? "#f3eee3" : "#0d0b09");
+    if (themeMeta) themeMeta.setAttribute("content", isLight() ? "#eef1f8" : "#05060d");
   };
   syncThemeUi();
   if (themeBtn) {
@@ -87,7 +87,7 @@
   }
 
   // Stagger reveal delays among siblings
-  document.querySelectorAll(".bento, .hire-grid, .sp-grid, .record, .toolkit, .career, .sp-proof, .sp-faq").forEach((group) => {
+  document.querySelectorAll(".bento, .hire-grid, .sp-grid, .gauges, .toolkit, .career, .sp-proof, .sp-faq").forEach((group) => {
     Array.from(group.children).forEach((child, i) => {
       if (child.classList.contains("reveal")) child.style.setProperty("--i", String(i % 6));
     });
@@ -197,14 +197,39 @@
   window.addEventListener("scroll", onScroll, { passive: true });
   onScroll();
 
-  // Spotlight that follows the pointer on project cards
+  // Liquid-glass sheen follows the pointer; hero chips get a light parallax
   if (finePointer && !reduceMotion) {
-    document.querySelectorAll(".work").forEach((card) => {
-      card.addEventListener("pointermove", (e) => {
-        const r = card.getBoundingClientRect();
-        card.style.setProperty("--mx", e.clientX - r.left + "px");
-        card.style.setProperty("--my", e.clientY - r.top + "px");
+    const glassSel = ".glass, .work, .hire-link, .sp-card, .tool, .gauge, .career-item, .ff-card, .story-panel";
+    let raf = 0;
+    let last = null;
+    document.addEventListener("pointermove", (e) => {
+      last = e;
+      if (raf) return;
+      raf = requestAnimationFrame(() => {
+        raf = 0;
+        const el = last.target.closest && last.target.closest(glassSel);
+        if (el) {
+          const r = el.getBoundingClientRect();
+          el.style.setProperty("--mx", last.clientX - r.left + "px");
+          el.style.setProperty("--my", last.clientY - r.top + "px");
+        }
       });
-    });
+    }, { passive: true });
+
+    const hero = document.querySelector(".portal-wrap");
+    const chips = hero ? hero.querySelectorAll("[data-depth]") : [];
+    if (hero && chips.length) {
+      hero.addEventListener("pointermove", (e) => {
+        const r = hero.getBoundingClientRect();
+        const dx = (e.clientX - r.left) / r.width - 0.5;
+        const dy = (e.clientY - r.top) / r.height - 0.5;
+        chips.forEach((c) => {
+          const d = Number(c.dataset.depth);
+          c.style.setProperty("--px", (dx * d).toFixed(1) + "px");
+          c.style.setProperty("--py", (dy * d).toFixed(1) + "px");
+        });
+      });
+      hero.addEventListener("pointerleave", () => chips.forEach((c) => { c.style.setProperty("--px", "0px"); c.style.setProperty("--py", "0px"); }));
+    }
   }
 })();
