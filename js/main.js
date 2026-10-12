@@ -309,9 +309,7 @@
       }
     });
   }
-  document.querySelectorAll(".nav-cta, .contact-panel .contact-row, .btn-primary").forEach((el) => {
-    el.addEventListener("click", (e) => burst(e.clientX || 0, e.clientY || 0, 5));
-  });
+
 
   // Timeline dots pop as Bit walks past them
   const careerItems = Array.from(document.querySelectorAll(".career-item"));
@@ -347,6 +345,143 @@
         card.classList.remove("tilting");
         card.style.transform = "";
       });
+    });
+  }
+
+  // Small items pop in as they scroll into view
+  if ("IntersectionObserver" in window && !reduceMotion) {
+    const popSel = [
+      ".panel > div", ".shipped span", ".ff-list > div", ".story-body p", ".pull", ".commit-list li",
+      ".work-metrics > div", ".work-top", ".work-metric", ".chips li", ".tool-head", ".gauge h3", ".gauge p",
+      ".edu-meta", ".edu-card h3", ".edu-school", ".degree", ".contact-row", ".contact-note", ".copy-email",
+      ".sp-q", ".sp-related a", ".toc li", ".prose h2", ".prose p", ".prose pre", ".prose li", ".hire-link strong",
+      ".hire-link .route", ".sp-card h3", ".sp-card p", ".sp-proof-row h3", ".sp-proof-row p", ".footer-inner > *", ".hero-stats > div"
+    ].join(", ");
+    const counts = new Map();
+    const pops = Array.from(document.querySelectorAll(popSel)).filter((el) => !el.closest(".hero-w-grid") && !el.classList.contains("reveal"));
+    const popIO = new IntersectionObserver((entries) => {
+      entries.forEach((en) => {
+        if (!en.isIntersecting) return;
+        popIO.unobserve(en.target);
+        const el = en.target;
+        el.classList.add("is-visible");
+        setTimeout(() => { el.classList.remove("pop", "is-visible"); el.style.removeProperty("--pi"); el.style.removeProperty("--pr"); }, 1100);
+      });
+    }, { threshold: 0.05, rootMargin: "0px 0px -30px 0px" });
+    pops.forEach((el) => {
+      const parent = el.parentElement;
+      const n = counts.get(parent) || 0;
+      counts.set(parent, n + 1);
+      el.style.setProperty("--pi", String(n % 8));
+      el.style.setProperty("--pr", (n % 2 ? 2 : -2) + "deg");
+      el.classList.add("pop");
+      popIO.observe(el);
+    });
+    document.addEventListener("click", (e) => {
+      const btn = e.target.closest && e.target.closest(".show-more");
+      if (!btn) return;
+      const list = btn.previousElementSibling;
+      if (list) list.querySelectorAll(".pop").forEach((li) => li.classList.remove("pop", "is-visible"));
+    });
+  }
+
+  // A tiny Bit blows a flying kiss wherever you click
+  if (!reduceMotion) {
+    const kd = document.createElement("div");
+    kd.innerHTML = '<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>' +
+      '<radialGradient id="kBody" cx="32%" cy="22%" r="85%"><stop offset="0" stop-color="#ffb684"/><stop offset=".45" stop-color="#f7801f"/><stop offset="1" stop-color="#c94f08"/></radialGradient>' +
+      '<radialGradient id="kHeart" cx="34%" cy="28%" r="80%"><stop offset="0" stop-color="#ffd2b0"/><stop offset=".45" stop-color="#f7801f"/><stop offset="1" stop-color="#c24a06"/></radialGradient>' +
+      '<radialGradient id="kHeartW" cx="34%" cy="28%" r="80%"><stop offset="0" stop-color="#fff"/><stop offset=".6" stop-color="#fff3e8"/><stop offset="1" stop-color="#f3d2b6"/></radialGradient>' +
+      '<symbol id="kh" viewBox="0 0 24 24"><path d="M12 21.2S2.8 15.6 2.2 9.6C1.8 5.4 6.6 3.2 9.4 6L12 8.6 14.6 6c2.8-2.8 7.6-.6 7.2 3.6-.6 6-9.8 11.6-9.8 11.6Z"/><ellipse cx="7.4" cy="8.2" rx="2.2" ry="1.3" fill="#fff" opacity=".65" transform="rotate(-35 7.4 8.2)"/></symbol>' +
+      "</defs></svg>";
+    document.body.appendChild(kd.firstChild);
+    const kissSvg = '<svg viewBox="0 0 80 86" aria-hidden="true">' +
+      '<line x1="40" y1="13" x2="40" y2="5" stroke="#c4560a" stroke-width="3" stroke-linecap="round"/><circle cx="40" cy="5" r="4.2" fill="#ffb27a" stroke="#c4560a" stroke-width="1.2"/>' +
+      '<rect x="8" y="15" width="64" height="58" rx="20" fill="#a9460a"/><rect x="8" y="13" width="64" height="56" rx="20" fill="url(#kBody)"/>' +
+      '<ellipse cx="25" cy="19" rx="11" ry="3" fill="#fff" opacity=".5" transform="rotate(-10 25 19)"/>' +
+      '<rect x="16" y="23" width="48" height="36" rx="13" fill="#fff"/>' +
+      '<path d="M25 37q4.5-4.5 9 0M46 37q4.5-4.5 9 0" stroke="#2a1a10" stroke-width="2.8" fill="none" stroke-linecap="round"/>' +
+      '<circle cx="23" cy="47" r="3.8" fill="#ffb27a"/><circle cx="57" cy="47" r="3.8" fill="#ffb27a"/>' +
+      '<path d="M37.5 45.5c2.5-1.6 5 0 3.2 1.8 2.6.4 1.6 3.8-1.4 3.4" stroke="#2a1a10" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>' +
+      '<g class="k-hand"><path d="M72 58q12-2 9-16" stroke="#c4560a" stroke-width="5.5" fill="none" stroke-linecap="round"/><circle cx="81" cy="41" r="5" fill="#a9460a"/></g>' +
+      "</svg>";
+    const heart = (x, y, size, white) => {
+      const h = document.createElement("span");
+      h.className = "kiss-heart";
+      h.style.width = h.style.height = size + "px";
+      h.innerHTML = '<svg viewBox="0 0 24 24"><use href="#kh" fill="url(#' + (white ? "kHeartW" : "kHeart") + ')" stroke="' + (white ? "#f2711c" : "none") + '" stroke-width="' + (white ? "1.2" : "0") + '"/></svg>';
+      h.style.transform = "translate(" + (x - size / 2) + "px," + (y - size / 2) + "px)";
+      document.body.appendChild(h);
+      return h;
+    };
+    const shower = (x, y, n) => {
+      for (let i = 0; i < n; i++) {
+        const a = (Math.PI * 2 * i) / n + Math.random() * 0.4;
+        const d = 60 + Math.random() * 110;
+        const s = 12 + Math.random() * 18;
+        const h = heart(x, y, s, i % 3 === 0);
+        const tx = x + Math.cos(a) * d - s / 2;
+        const ty = y + Math.sin(a) * d - s / 2;
+        h.animate([
+          { transform: "translate(" + (x - s / 2) + "px," + (y - s / 2) + "px) scale(0.2) rotate(0deg)", opacity: 1 },
+          { transform: "translate(" + tx + "px," + ty + "px) scale(1.1) rotate(" + (Math.random() * 40 - 20) + "deg)", opacity: 1, offset: 0.45 },
+          { transform: "translate(" + tx + "px," + (ty - 60 - Math.random() * 40) + "px) scale(0.7) rotate(" + (Math.random() * 60 - 30) + "deg)", opacity: 0 }
+        ], { duration: 1300 + Math.random() * 500, easing: "cubic-bezier(.2,.7,.35,1)", fill: "forwards" });
+        setTimeout(() => h.remove(), 1900);
+      }
+    };
+    let active = 0;
+    document.addEventListener("click", (e) => {
+      if (e.target.closest && e.target.closest(".hero-bit")) return;
+      let x = e.clientX, y = e.clientY;
+      if (!x && !y && e.target.getBoundingClientRect) { const r = e.target.getBoundingClientRect(); x = r.left + r.width / 2; y = r.top + r.height / 2; }
+      if (active >= 4) { shower(x, y, 8); return; }
+      active++;
+      const k = document.createElement("div");
+      k.className = "kiss";
+      k.innerHTML = kissSvg;
+      k.style.left = x + "px";
+      k.style.top = y + "px";
+      document.body.appendChild(k);
+      const flip = x > window.innerWidth - 140 ? -1 : 1;
+      k.animate([
+        { transform: "scale(" + 0 * flip + ",0) rotate(0deg)" },
+        { transform: "scale(" + 1.2 * flip + ",1.2) rotate(" + -10 * flip + "deg)", offset: 0.6 },
+        { transform: "scale(" + flip + ",1) rotate(" + -6 * flip + "deg)" }
+      ], { duration: 420, easing: "cubic-bezier(.34,1.56,.64,1)", fill: "forwards" });
+      const hand = k.querySelector(".k-hand");
+      hand.style.transformBox = "fill-box";
+      hand.style.transformOrigin = "0% 100%";
+      hand.animate([
+        { transform: "rotate(0deg)" },
+        { transform: "rotate(-62deg) translate(-6px,4px)", offset: 0.35 },
+        { transform: "rotate(-62deg) translate(-6px,4px)", offset: 0.55 },
+        { transform: "rotate(25deg)" }
+      ], { duration: 900, delay: 300, easing: "ease-in-out", fill: "forwards" });
+      setTimeout(() => {
+        const sx = x + 20 * flip, sy = y - 36;
+        const ex = sx + 90 * flip, ey = sy - 110;
+        const big = heart(sx, sy, 38, false);
+        big.animate([
+          { transform: "translate(" + (sx - 19) + "px," + (sy - 19) + "px) scale(0.3) rotate(0deg)" },
+          { transform: "translate(" + (sx + 55 * flip - 19) + "px," + (sy - 70 - 19) + "px) scale(1.25) rotate(" + 18 * flip + "deg)", offset: 0.6 },
+          { transform: "translate(" + (ex - 19) + "px," + (ey - 19) + "px) scale(1.6) rotate(" + -8 * flip + "deg)" }
+        ], { duration: 750, easing: "cubic-bezier(.3,.7,.4,1)", fill: "forwards" });
+        for (let i = 0; i < 9; i++) {
+          setTimeout(() => {
+            const s = 9 + Math.random() * 6;
+            const t = heart(sx, sy, s, i % 2 === 1);
+            t.animate([
+              { transform: "translate(" + (sx - s / 2) + "px," + (sy - s / 2) + "px) scale(0.4)", opacity: 1 },
+              { transform: "translate(" + (sx + (30 + Math.random() * 40) * flip - s / 2) + "px," + (sy - 50 - Math.random() * 50 - s / 2) + "px) scale(1)", opacity: 0 }
+            ], { duration: 900, easing: "ease-out", fill: "forwards" });
+            setTimeout(() => t.remove(), 950);
+          }, i * 90);
+        }
+        setTimeout(() => { big.remove(); shower(ex, ey, 26); }, 760);
+      }, 620);
+      k.animate([{ opacity: 1, transform: "scale(" + flip + ",1) rotate(" + -6 * flip + "deg)" }, { opacity: 0, transform: "scale(" + 0.3 * flip + ",0.3) translateY(10px)" }], { duration: 320, delay: 1500, easing: "ease-in", fill: "forwards" });
+      setTimeout(() => { k.remove(); active--; }, 1850);
     });
   }
 })();

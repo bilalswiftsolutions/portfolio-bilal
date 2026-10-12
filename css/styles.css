@@ -866,6 +866,71 @@ em { font-style: normal; }
 .bit .b-shades { transform-box: fill-box; transform-origin: center; }
 @keyframes snooze { 0% { opacity: 0; transform: translate(0, 6px) scale(0.6); } 40% { opacity: 1; } 100% { opacity: 0; transform: translate(6px, -10px) scale(1.1); } }
 
+/* ---------- Bit cursor ---------- */
+@media (hover: hover) and (pointer: fine) {
+  html, body {
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cline x1='5' y1='3.5' x2='9.5' y2='8.5' stroke='%23c4560a' stroke-width='2' stroke-linecap='round'/%3E%3Ccircle cx='4' cy='3' r='2.4' fill='%23ffb27a' stroke='%23c4560a' stroke-width='1'/%3E%3Crect x='7' y='7.5' width='22' height='20' rx='7' fill='%23f2711c' stroke='%23a9460a' stroke-width='1.2'/%3E%3Cellipse cx='12.5' cy='9.4' rx='3.2' ry='1' fill='%23fff' opacity='.6'/%3E%3Crect x='10' y='10.5' width='16' height='12' rx='4.5' fill='%23fff'/%3E%3Crect x='13.4' y='13.2' width='2.4' height='4' rx='1.2' fill='%232a1a10'/%3E%3Crect x='20.2' y='13.2' width='2.4' height='4' rx='1.2' fill='%232a1a10'/%3E%3Cpath d='M16.4 19.2q1.6 1.4 3.2 0' stroke='%232a1a10' stroke-width='1.2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") 3 2, auto;
+  }
+  :is(a, button, summary, label, [role="button"], .chips li, .hero-bit) {
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cline x1='5' y1='3.5' x2='9.5' y2='8.5' stroke='%23c4560a' stroke-width='2' stroke-linecap='round'/%3E%3Ccircle cx='4' cy='3' r='2.6' fill='%23fff' stroke='%23f2711c' stroke-width='1.4'/%3E%3Crect x='7' y='7.5' width='22' height='20' rx='7' fill='%23f2711c' stroke='%23a9460a' stroke-width='1.2'/%3E%3Cellipse cx='12.5' cy='9.4' rx='3.2' ry='1' fill='%23fff' opacity='.6'/%3E%3Crect x='10' y='10.5' width='16' height='12' rx='4.5' fill='%23fff'/%3E%3Cpath d='M14.6 17.6l-2.1-2a1.25 1.25 0 0 1 2.1-1.5 1.25 1.25 0 0 1 2.1 1.5Z' fill='%23f2711c'/%3E%3Cpath d='M21.4 17.6l-2.1-2a1.25 1.25 0 0 1 2.1-1.5 1.25 1.25 0 0 1 2.1 1.5Z' fill='%23f2711c'/%3E%3Ccircle cx='12' cy='19.6' r='1.1' fill='%23ffb27a'/%3E%3Ccircle cx='24' cy='19.6' r='1.1' fill='%23ffb27a'/%3E%3Cpath d='M17 19.8q1 1 2 0' stroke='%232a1a10' stroke-width='1.1' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") 3 2, pointer;
+  }
+}
+
+/* ---------- Pop-in for small items ---------- */
+.pop { opacity: 0; transform: translateY(14px) scale(0.86) rotate(var(--pr, -2deg)); transition: opacity 0.45s var(--ease), transform 0.65s var(--spring); transition-delay: calc(var(--pi, 0) * 60ms); }
+.pop.is-visible { opacity: 1; transform: none; }
+
+/* ---------- Hover life on the quiet items ---------- */
+@keyframes boing { 0% { scale: 1 1; } 30% { scale: 1.16 0.86; } 60% { scale: 0.94 1.08; } 100% { scale: 1 1; } }
+@keyframes hop { 0%, 100% { translate: 0 0; } 40% { translate: 0 -6px; } 70% { translate: 0 1px; } }
+.panel > div, .hero-stats > div { transition: background-color 0.3s; }
+.panel > div:hover, .hero-stats > div:hover { background: var(--accent-soft); }
+.panel dt, .hero-stats dt { display: inline-block; transform-origin: 20% 100%; }
+.panel > div:hover dt, .hero-stats > div:hover dt { animation: boing 0.6s var(--spring); }
+.shipped span { display: inline-block; transition: color 0.2s; }
+.shipped span:hover { animation: hop 0.5s var(--spring); color: var(--o-600); }
+.ff-list > div { transition: translate 0.35s var(--spring), box-shadow 0.3s; }
+.ff-list > div:hover { translate: 6px 0; }
+.commit-list li, .work li { transition: color 0.2s, translate 0.3s var(--spring); }
+.commit-list li:hover, .work:not(.work--feature) li:hover { color: var(--text-2); translate: 4px 0; }
+.commit-list li::before, .work li::before { transition: transform 0.45s var(--spring); }
+.commit-list li:hover::before, .work li:hover::before { transform: rotate(225deg) scale(1.45); }
+.work-metrics > div { transition: translate 0.35s var(--spring), rotate 0.35s var(--spring); }
+.work-metrics > div:hover { translate: 0 -4px; rotate: -1.5deg; }
+.contact-note:hover, .copy-email:hover { animation: wiggle 0.5s var(--ease); }
+.sp-q { transition: translate 0.3s var(--spring), box-shadow 0.3s; }
+.sp-q:hover { translate: 0 -3px; box-shadow: var(--clay-hover); }
+.status-pill .dot::after { transition: transform 0.4s var(--spring); }
+.status-pill:hover .dot::after { transform: translateX(-11px); }
+.status-pill:hover { animation: hop 0.5s var(--spring); }
+.footer-inner a, .footer-inner p { display: inline-flex; }
+.footer-inner a:hover { animation: hop 0.5s var(--spring); }
+.section-title em { display: inline-block; transition: rotate 0.4s var(--spring), scale 0.4s var(--spring); }
+.section-title:hover em { rotate: -3deg; scale: 1.04; }
+.story-panel { transition: box-shadow 0.3s; }
+.story-panel:hover { box-shadow: var(--clay-hover); }
+.pull em { display: inline; transition: color 0.3s; }
+.toc a { display: inline-block; transition: translate 0.3s var(--spring), color 0.2s; }
+.toc a:hover { translate: 5px 0; }
+.tool:hover .led { animation: ping 1s infinite; }
+.hire-link .contact-arrow { transition: transform 0.4s var(--spring); }
+.hire-link:hover .contact-arrow { transform: rotate(-45deg) scale(1.1); }
+.work-link:hover, .lang-switch:hover { animation: hop 0.45s var(--spring); }
+.eyebrow:hover, .crumbs:hover { animation: wiggle 0.5s var(--ease); }
+.edu-school { display: inline-block; transition: rotate 0.4s var(--spring); }
+.edu-card:hover .edu-school { rotate: -2deg; }
+.prose h2 { transition: translate 0.3s var(--spring), color 0.2s; }
+.prose h2:hover { translate: 4px 0; color: var(--o-600); }
+.prose pre { transition: box-shadow 0.3s, translate 0.3s var(--spring); }
+.prose pre:hover { translate: 0 -3px; }
+[dir="rtl"] .ff-list > div:hover, [dir="rtl"] .commit-list li:hover, [dir="rtl"] .work:not(.work--feature) li:hover, [dir="rtl"] .toc a:hover, [dir="rtl"] .prose h2:hover { translate: -5px 0; }
+
+/* ---------- Flying kiss on click ---------- */
+.kiss { position: fixed; z-index: 150; left: 0; top: 0; width: 74px; height: 80px; margin: -84px 0 0 -37px; pointer-events: none; filter: drop-shadow(0 8px 8px rgba(150, 60, 10, 0.28)); }
+.kiss svg { display: block; width: 100%; height: 100%; overflow: visible; }
+.kiss-heart { position: fixed; z-index: 151; left: 0; top: 0; pointer-events: none; filter: drop-shadow(0 4px 4px rgba(150, 60, 10, 0.25)); }
+.kiss-heart svg { display: block; width: 100%; height: 100%; }
+
 /* ---------- Responsive ---------- */
 @media (max-width: 1080px) {
   .bento, .hire-grid, .sp-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
