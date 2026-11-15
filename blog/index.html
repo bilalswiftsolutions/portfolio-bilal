@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Guides on Moyasar, ZATCA and NestJS — Bilal Arshad</title>
+  <meta name="description" content="Practical guides by Bilal Arshad on building payments and e-invoicing into NestJS platforms: Moyasar webhooks and refunds, ZATCA Phase 2 and more." />
+  <meta name="author" content="Bilal Arshad" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+  <link rel="canonical" href="https://bilalarshad.pro/blog/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://bilalarshad.pro/blog/" />
+  <meta property="og:title" content="Guides on Moyasar, ZATCA and NestJS — Bilal Arshad" />
+  <meta property="og:description" content="Practical guides by Bilal Arshad on building payments and e-invoicing into NestJS platforms: Moyasar webhooks and refunds, ZATCA Phase 2 and more." />
+  <meta property="og:image" content="https://bilalarshad.pro/assets/og-image.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:site_name" content="Bilal Arshad" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Guides on Moyasar, ZATCA and NestJS — Bilal Arshad" />
+  <meta name="twitter:description" content="Practical guides by Bilal Arshad on building payments and e-invoicing into NestJS platforms: Moyasar webhooks and refunds, ZATCA Phase 2 and more." />
+  <meta name="twitter:image" content="https://bilalarshad.pro/assets/og-image.png" />
+  <meta name="theme-color" content="#fbf6f0" />
+  <script>
+    (function () {
+      try {
+        if (localStorage.getItem("calm") === "1") document.documentElement.setAttribute("data-calm", "1");
+        if (localStorage.getItem("theme") === "dark") {
+          document.documentElement.setAttribute("data-theme", "dark");
+          document.querySelector('meta[name="theme-color"]').setAttribute("content", "#17100b");
+        }
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="manifest" href="/site.webmanifest" />
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,300..800&family=Geist+Mono:wght@400..600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/styles.css?v=20261018g" />
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "CollectionPage",
+      "@id": "https://bilalarshad.pro/blog/#webpage",
+      "url": "https://bilalarshad.pro/blog/",
+      "name": "Guides on Moyasar, ZATCA and NestJS — Bilal Arshad",
+      "description": "Practical guides by Bilal Arshad on building payments and e-invoicing into NestJS platforms: Moyasar webhooks and refunds, ZATCA Phase 2 and more.",
+      "inLanguage": "en",
+      "isPartOf": {
+        "@id": "https://bilalarshad.pro/#website"
+      },
+      "author": {
+        "@id": "https://bilalarshad.pro/#person"
+      },
+      "mainEntity": {
+        "@type": "ItemList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "url": "https://bilalarshad.pro/blog/moyasar-nestjs-integration/",
+            "name": "Moyasar + NestJS: Webhooks, Refunds & Reconciliation"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "url": "https://bilalarshad.pro/blog/zatca-e-invoicing-nestjs/",
+            "name": "ZATCA Phase 2 E-Invoicing in NestJS: A Practical Guide"
+          }
+        ]
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://bilalarshad.pro/blog/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Bilal Arshad",
+          "item": "https://bilalarshad.pro/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Guides",
+          "item": "https://bilalarshad.pro/blog/"
+        }
+      ]
+    }
+  ]
+}
+  </script>
+  <script type="speculationrules">{"prefetch":[{"where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":"/*.pdf"}}]},"eagerness":"moderate"}]}</script>
+</head>
+<body>
+  <span id="top" class="page-anchor" aria-hidden="true"></span>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="scroll-progress" aria-hidden="true"></div>
+  <div class="bg-grid" aria-hidden="true"></div>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs><radialGradient id="bitBody" cx="32%" cy="22%" r="85%"><stop offset="0" stop-color="#ffb684"/><stop offset=".45" stop-color="#f7801f"/><stop offset="1" stop-color="#c94f08"/></radialGradient><linearGradient id="bitScreen" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff3e8"/><stop offset=".35" stop-color="#ffffff"/><stop offset="1" stop-color="#ffe9d6"/></linearGradient><radialGradient id="bitBulb" cx="35%" cy="30%" r="70%"><stop offset="0" stop-color="#fff"/><stop offset=".5" stop-color="#ffc79c"/><stop offset="1" stop-color="#f2711c"/></radialGradient><radialGradient id="bitFoot" cx="40%" cy="25%" r="80%"><stop offset="0" stop-color="#e2793a"/><stop offset="1" stop-color="#8f3a07"/></radialGradient></defs></svg>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="/" aria-label="Bilal Arshad">
+        <span class="logo-mark" aria-hidden="true">B<i>A</i></span>
+        <span class="logo-text">Bilal Arshad</span>
+      </a>
+      <nav class="site-nav" id="site-nav" aria-label="Primary">
+        <a href="/#about"><span aria-hidden="true">/</span>About</a>
+        <a href="/#skills"><span aria-hidden="true">/</span>Skills</a>
+        <a href="/#experience"><span aria-hidden="true">/</span>Experience</a>
+        <a href="/#projects"><span aria-hidden="true">/</span>Projects</a>
+        <a href="/#hire"><span aria-hidden="true">/</span>Services</a>
+        <a href="#contact" class="nav-cta">Hire me <span aria-hidden="true">→</span></a>
+      </nav>
+      <div class="header-actions">
+        <button class="calm-toggle" type="button" aria-pressed="false" title="Calm mode: turn animations off"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="c-on" d="M8 5v14M16 5v14" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/><path class="c-off" d="M8 5.5v13l11-6.5Z" fill="currentColor"/></svg><span class="calm-label">Calm</span></button>
+        <button class="theme-toggle" type="button" aria-label="Switch to dark mode" title="Switch to dark mode">
+          <span class="theme-track" aria-hidden="true">
+            <svg class="icon-moon" viewBox="0 0 24 24"><path fill="currentColor" d="M20.7 14.6A8.5 8.5 0 0 1 9.4 3.3a.6.6 0 0 0-.8-.7A9.8 9.8 0 1 0 21.4 15.4a.6.6 0 0 0-.7-.8Z"/></svg>
+            <svg class="icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.5" fill="currentColor"/><g stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></g></svg>
+            <span class="theme-thumb"></span>
+          </span>
+        </button>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+          <span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="sp-hero hero" aria-labelledby="page-title">
+      <div class="container">
+        <nav class="crumbs reveal" aria-label="Breadcrumb"><a href="/">bilalarshad.pro</a> <span aria-hidden="true">/</span> <span aria-current="page">guides</span></nav>
+        <p class="eyebrow reveal">Guides · Payments · E-invoicing · NestJS</p>
+        <h1 id="page-title" class="sp-title reveal">Guides <em>from production work.</em></h1>
+        <p class="sp-intro reveal">Notes from building payments and e-invoicing into a live Saudi marketplace with NestJS, Prisma and PostgreSQL. Each guide covers what tends to go wrong in production and how to handle it.</p>
+      </div>
+    </section>
+
+    <section class="section sp-section" aria-labelledby="guides-title">
+      <div class="container">
+        <header class="section-head reveal">
+          <span class="route"><b>01</b> The Guides</span>
+          <h2 id="guides-title" class="section-title">All guides</h2>
+        </header>
+        <div class="sp-proof">
+          <a class="sp-proof-row reveal" href="/blog/moyasar-nestjs-integration/"><h3>Integrating Moyasar payments with NestJS</h3><p>Secure payment verification, idempotent webhooks, refunds that keep orders and wallets in sync, and daily reconciliation. 13 Oct 2026.</p><span class="contact-arrow" aria-hidden="true">→</span></a>
+          <a class="sp-proof-row reveal" href="/blog/zatca-e-invoicing-nestjs/"><h3>ZATCA e-invoicing (Fatoora Phase 2) in NestJS</h3><p>Onboarding, the invoice chain, clearance vs reporting, retries, credit notes for refunds and status tracking. 13 Oct 2026.</p><span class="contact-arrow" aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section contact" aria-labelledby="contact-title">
+      <div class="container">
+        <h2 id="contact-title" class="contact-title reveal">Let's build <em>something.</em></h2>
+        <div class="contact-grid">
+          <address class="contact-list reveal">
+            <a class="contact-row" href="mailto:bilalarshad2088@gmail.com"><span class="contact-label">Email</span><span class="contact-val" dir="ltr">bilalarshad2088@gmail.com</span><span class="contact-arrow" aria-hidden="true">→</span></a>
+            <a class="contact-row" href="https://wa.me/966580712710" target="_blank" rel="noopener noreferrer"><span class="contact-label">WhatsApp</span><span class="contact-val" dir="ltr">+966 58 071 2710</span><span class="contact-arrow" aria-hidden="true">↗</span></a>
+            <a class="contact-row" href="https://www.linkedin.com/in/bilalarshadramay/" target="_blank" rel="noopener noreferrer"><span class="contact-label">LinkedIn</span><span class="contact-val" dir="ltr">bilalarshadramay</span><span class="contact-arrow" aria-hidden="true">↗</span></a>
+          </address>
+          <nav class="sp-related reveal" aria-label="Also hire me as">
+            <p class="route">Also hire me as</p>
+            <a href="/blog/">All guides <span aria-hidden="true">→</span></a>
+            <a href="/zatca-e-invoicing-developer/">ZATCA e-invoicing developer <span aria-hidden="true">→</span></a>
+            <a href="/blog/moyasar-nestjs-integration/">Guide: Moyasar + NestJS <span aria-hidden="true">→</span></a>
+            <a href="/nestjs-developer/">NestJS developer <span aria-hidden="true">→</span></a>
+            <a href="/moyasar-payment-integration/">Moyasar payment integration <span aria-hidden="true">→</span></a>
+          </nav>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p><span class="dot" aria-hidden="true"></span> &copy; <span id="year"></span> Bilal Arshad · Senior Full-Stack Developer</p>
+      <a href="/">bilalarshad.pro ↑</a>
+    </div>
+  </footer>
+
+  <script src="/js/main.js?v=20261018g" defer></script>
+</body>
+</html>

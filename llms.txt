@@ -18,6 +18,7 @@
 
 ## Writing
 
+- [All guides](https://bilalarshad.pro/blog/): index of articles
 - [Integrating Moyasar payments with NestJS](https://bilalarshad.pro/blog/moyasar-nestjs-integration/): verification, idempotent webhooks, refunds, reconciliation
 - [ZATCA e-invoicing (Fatoora Phase 2) in NestJS](https://bilalarshad.pro/blog/zatca-e-invoicing-nestjs/): onboarding, invoice chain, clearance vs reporting, credit notes
 
@@ -30,4 +31,8 @@
 - [Portfolio home](https://bilalarshad.pro/)
 - [Résumé (PDF)](https://bilalarshad.pro/resume/Bilal_Arshad_Resume.pdf)
 - [Résumé (HTML)](https://bilalarshad.pro/resume/resume.html)
-- [Keeld](https://keeldt.sa/), [CineBot](http://cinebot.bilalarshad.pro/), [Ramay Translation](https://ramaytranslation.com/), [RamayTik](https://ramaytik.org/), [Altadefinizione](https://altadefinizionepremium.net/)
+- [Keeld](https://keeldt.sa/): multi-vendor marketplace and payments platform
+- [CineBot](https://ask2cinemadb.xyz/): movie and TV AI agent
+- [Ramay Translation](https://ramaytranslation.com/): translation services site
+- [RamayTik](https://ramaytik.org/): TikTok downloader
+- [Altadefinizione](https://altadefinizionepremium.net/): streaming platform
